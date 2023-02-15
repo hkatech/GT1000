@@ -13,19 +13,41 @@ CHIP02 = 0x3a
 CHIP03 = 0x3b
 CHIPS = {0x38,0x39,0x3a,0x3b}
 
+# Bank Selects
+BANK1 = 21
+BANK2 = 20
+BANK3 = 16
+BANK4 = 7
+BANKS = {BANK1,BANK2,BANK3,BANK4}
+
+# GPIO Inputs
+EXT_IN_START = 13
+EXT_IN_ABORT = 19
+EXT_OUT_PASS = 18
+EXT_OUT_FAIL = 15
+EXT_OUT_INTEST = 23
+
+
 class Window(Frame):
+#  label = tk.Label()
+
   def __init__(self, master=None):
+    print("Starting Window.__init__")
     Frame.__init__(self,master)
     self.master = master
 
     self.pack(fill=BOTH, expand=1)
 
+
     # Try a button
-    exitCmd =  Button(self, text="Exit", command=self.clickExitCmd)
+    exitCmd =  Button(self, text="Exit", command=self.clickExitCmd,height=20,width=40)
     exitCmd.place(x=0,y=0)
 
+    updateCmd = Button(self, text="Update", command=self.update)
+    updateCmd.place(x=40, y=40)
+
     # Create a label
-    label = tk.Label(root, text="Hello World!")
+    label = tk.Label(root, textvariable=labelTxt)
 
 
     # Lay out label
@@ -35,17 +57,31 @@ class Window(Frame):
   def clickExitCmd(self):
     exit()
 
+  def update(self):
+    print("Window.update()")
+    on, off = ' On ', ' off'
+    labelTxt.set("Here")
+    print(labelTxt.get())
+    #self.label['text'] = on if self.label['text'] == ' On ' else off
+    #root.after(200, update)
+
 # Create the main window
 root = tk.Tk()
+labelTxt = StringVar()
+labelTxt.set("Hello World!")
+
 app = Window(root)
 root.title("My GUI")
 #root.geometry("320x200")
 root.geometry("800x480")
 
+
 # I2C Bus setup
 bus = smbus.SMBus(I2C_BUS)
 testRead = bus.read_byte_data(CHIP00, 0x00)
 
+# Register events
+root.after(200, root.update)
 # Run forever!
 root.mainloop()
 
