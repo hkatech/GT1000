@@ -6,6 +6,8 @@ import smbus
 import fcntl
 from tkinter import *
 
+import debugWindow
+
 I2C_BUS = 1
 CHIP00 = 0x38
 CHIP01 = 0x39
@@ -28,6 +30,7 @@ EXT_OUT_FAIL = 15
 EXT_OUT_INTEST = 23
 
 
+
 class Window(Frame):
 #  label = tk.Label()
 
@@ -40,7 +43,7 @@ class Window(Frame):
 
 
     # Try a button
-    exitCmd =  Button(self, text="Exit", command=self.clickExitCmd,height=20,width=40)
+    exitCmd =  Button(self, text="Exit", command=self.clickExitCmd,height=2,width=4)
     exitCmd.place(x=0,y=0)
 
     updateCmd = Button(self, text="Update", command=self.update)
@@ -62,17 +65,23 @@ class Window(Frame):
     on, off = ' On ', ' off'
     labelTxt.set("Here")
     print(labelTxt.get())
+    my_debug.attributes('-topmost', True)
+    my_debug.attributes('-topmost', False)
     #self.label['text'] = on if self.label['text'] == ' On ' else off
     #root.after(200, update)
 
 # Create the main window
+my_debug = tk.Tk()
 root = tk.Tk()
 labelTxt = StringVar()
 labelTxt.set("Hello World!")
 
-app = Window(root)
-root.title("My GUI")
+
+appDebug = debugWindow.debugWindow(my_debug)
+my_debug.title("Debug Window")
+
 #root.geometry("320x200")
+my_debug.geometry("800x480")
 root.geometry("800x480")
 
 
@@ -83,5 +92,11 @@ testRead = bus.read_byte_data(CHIP00, 0x00)
 # Register events
 root.after(200, root.update)
 # Run forever!
+app = Window(root)
+root.title("My GUI")
+
+root.lift()
+root.attributes('-topmost', True)
+root.after_idle(root.attributes, '-topmost', False)
 root.mainloop()
 
