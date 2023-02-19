@@ -4,6 +4,11 @@ from GT1000 import GT1000
 
 class debugWindow(Frame):
 
+  def periodicUpdate(self):
+    print("[call] periodicUpdate()")
+    self.updateInputsCmd__click()
+    self.after(500,self.periodicUpdate)
+
   def updateOutputsCmd__click(self):
     print("[call] updateOutputsCmd__click()")
     print("[end call] updateOutputsCmd__click()")
@@ -16,9 +21,11 @@ class debugWindow(Frame):
     self.LeakChkStatus.set(GT1000.GT_LK)
     self.User2ChkStatus.set(GT1000.GT_UserIn)
     self.bank1chip0Text.set(GT1000.GTchip0int[0])
+    self.bank1chip1Text.set(GT1000.GTchip1int[0])
     self.bank1chip2Text.set(GT1000.GTchip2int[0])
     self.bank1chip3Text.set(GT1000.GTchip3int[0])
     self.bank1chip4Text.set(GT1000.GTchip4int[0])
+    self.bank1chip5Text.set(GT1000.GTchip5int[0])
     self.bank1chip6Text.set(GT1000.GTchip6int[0])
     print("[end call] updateInputsCmd__click()")
 
@@ -35,9 +42,11 @@ class debugWindow(Frame):
 
     self.GT1000LblText = StringVar()
     self.bank1chip0Text = StringVar()
+    self.bank1chip1Text = StringVar()
     self.bank1chip2Text = StringVar()
     self.bank1chip3Text = StringVar()
     self.bank1chip4Text = StringVar()
+    self.bank1chip5Text = StringVar()
     self.bank1chip6Text = StringVar()
     self.bank2chip0Text = StringVar()
     self.bank2chip2Text = StringVar()
@@ -50,9 +59,11 @@ class debugWindow(Frame):
     self.bank3chip4Text = StringVar()
     self.bank3chip6Text = StringVar()
     self.bank1chip0Text.set("0x10")
+    self.bank1chip1Text.set("0x11")
     self.bank1chip2Text.set("0x12")
     self.bank1chip3Text.set("0x13")
     self.bank1chip4Text.set("0x14")
+    self.bank1chip5Text.set("0x15")
     self.bank1chip6Text.set("0x16")
     self.bank2chip0Text.set("0x20")
     self.bank2chip2Text.set("0x22")
@@ -80,9 +91,11 @@ class debugWindow(Frame):
     chip6Lbl = Label(self, text="Chip 110")
     bank1Lbl = Label(self, text="Bank 1", font=('Arial',10,'bold'))
     bank1chip0Lbl = Entry(self, textvariable=self.bank1chip0Text,width=12)
+    bank1chip1Lbl = Entry(self, textvariable=self.bank1chip1Text,width=12)
     bank1chip2Lbl = Entry(self, textvariable=self.bank1chip2Text,width=12)
     bank1chip3Lbl = Entry(self, textvariable=self.bank1chip3Text,width=12)
     bank1chip4Lbl = Entry(self, textvariable=self.bank1chip4Text,width=12)
+    bank1chip5Lbl = Entry(self, textvariable=self.bank1chip5Text,width=12)
     bank1chip6Lbl = Entry(self, textvariable=self.bank1chip6Text,width=12)
     bank2Lbl = Label(self, text="Bank 2", font=('Arial',10,'bold'))
     bank2chip0Lbl = Entry(self, textvariable=self.bank2chip0Text,width=12)
@@ -110,9 +123,11 @@ class debugWindow(Frame):
     chip6Lbl.place(x=680,y=25)
     bank1Lbl.place(x=500,y=50)
     bank1chip0Lbl.place(x=200,y=75)
+    bank1chip1Lbl.place(x=260,y=75)
     bank1chip2Lbl.place(x=320,y=75)
     bank1chip3Lbl.place(x=440,y=75)
     bank1chip4Lbl.place(x=560,y=75)
+    bank1chip5Lbl.place(x=620,y=75)
     bank1chip6Lbl.place(x=680,y=75)
     bank2Lbl.place(x=500,y=125)
     bank2chip0Lbl.place(x=200,y=150)

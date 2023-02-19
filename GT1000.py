@@ -82,7 +82,8 @@ class GT1000:
       self.GTchip5int[0] = self.__I2C.read_byte(self.CHIP101)
       self.GTchip6int[0] = self.__I2C.read_byte(self.CHIP110)
       self.GTchip7int[0] = self.__I2C.read_byte(self.CHIP111)
-    except:
+    except Exception as e:
+      print("!!! ", str(e), " !!!")
       pass
 
     print("[end call] read_inputs()")

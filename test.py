@@ -7,6 +7,7 @@ import fcntl
 from tkinter import *
 
 import debugWindow
+import leakTestWindow
 from GT1000 import GT1000
 
 I2C_BUS = 1
@@ -71,27 +72,41 @@ class Window(Frame):
     #self.label['text'] = on if self.label['text'] == ' On ' else off
     #root.after(200, update)
 
+def inputsLoop(self):
+  GT1000.read_inputs()
+  self.after(500,GT1000,self.inputsLoop)
 
 GT1000 = GT1000()
 # Create the main window
+my_leakTest = tk.Tk()
 my_debug = tk.Tk()
 root = tk.Tk()
+
+
 labelTxt = StringVar()
 labelTxt.set("Hello World!")
 
 
 appDebug = debugWindow.debugWindow(my_debug)
+appLeakTest = leakTestWindow.leakTestWindow(my_leakTest)
 my_debug.title("Debug Window")
+my_leakTest.title("Leak Test")
 appDebug.GT1000 = GT1000
+appLeakTest.GT1000 = GT1000
 appDebug.GT1000LblText.set(GT1000)
+
+
 #root.geometry("320x200")
+my_leakTest.geometry("800x480")
 my_debug.geometry("800x480")
 root.geometry("800x480")
 
+# Scheduled updates
+appDebug.periodicUpdate()
 
 # I2C Bus setup
-bus = smbus.SMBus(I2C_BUS)
-testRead = bus.read_byte_data(CHIP00, 0x00)
+#bus = smbus.SMBus(I2C_BUS)
+#testRead = bus.read_byte_data(CHIP00, 0x00)
 
 # Register events
 root.after(200, root.update)
@@ -102,5 +117,6 @@ root.title("My GUI")
 root.lift()
 root.attributes('-topmost', True)
 root.after_idle(root.attributes, '-topmost', False)
+
 root.mainloop()
 
