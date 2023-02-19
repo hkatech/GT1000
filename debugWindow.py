@@ -1,10 +1,11 @@
 import tkinter as tk
 from tkinter import *
+from GT1000 import GT1000
 
 class debugWindow(Frame):
 
   def __init__(self, master=None):
-    print("Initializing debugWindow...")
+    print("<NEW> Initializing debugWindow...")
     Frame.__init__(self,master)
     self.pack(fill=BOTH, expand=1)
 

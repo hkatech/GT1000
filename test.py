@@ -7,6 +7,7 @@ import fcntl
 from tkinter import *
 
 import debugWindow
+from GT1000 import GT1000
 
 I2C_BUS = 1
 CHIP00 = 0x38
@@ -70,6 +71,8 @@ class Window(Frame):
     #self.label['text'] = on if self.label['text'] == ' On ' else off
     #root.after(200, update)
 
+
+GT1000 = GT1000()
 # Create the main window
 my_debug = tk.Tk()
 root = tk.Tk()
