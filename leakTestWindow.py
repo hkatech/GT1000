@@ -7,6 +7,17 @@ class leakTestWindow(Frame):
   #def periodicUpdate(self):
   #  print("[call] periodicUpdate()")
   #  self.update
+  def periodicUpdate(self):
+    self.updateInputs()
+    self.after(500,self.periodicUpdate)
+
+  def updateInputs(self):
+    self.GT1000.read_inputs()
+
+  def resetResults(self):
+    for val in self.stationResults:
+      val = ""
+
   def __init__(self, master=None):
     print("<NEW> Initializing leakTestWindow")
     Frame.__init__(self,master)
@@ -14,6 +25,29 @@ class leakTestWindow(Frame):
 
     self.GT1000 = GT1000()
     self.testPart = "Nothing"
+
+    self.station01Result = StringVar()
+    self.station02Result = StringVar()
+    self.station03Result = StringVar()
+    self.station04Result = StringVar()
+    self.station05Result = StringVar()
+    self.station06Result = StringVar()
+    self.station07Result = StringVar()
+    self.station08Result = StringVar()
+    self.station09Result = StringVar()
+    self.station10Result = StringVar()
+    self.station11Result = StringVar()
+    self.station12Result = StringVar()
+    self.station13Result = StringVar()
+    self.station14Result = StringVar()
+    self.station15Result = StringVar()
+    self.station16Result = StringVar()
+    self.station17Result = StringVar()
+    self.station18Result = StringVar()
+    self.station19Result = StringVar()
+    self.station20Result = StringVar()
+    self.stationResults = [StringVar()] * 20
+    self.resetResults()
 
     self.station01Text = StringVar()
     self.station02Text = StringVar()

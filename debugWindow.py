@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from GT1000 import GT1000
+from threading import *
 
 class debugWindow(Frame):
 
@@ -173,10 +174,10 @@ class debugWindow(Frame):
     # Call update functions
     self.updateInputsCmd__click()
 
-#    q38Cmd = Button(self, text="Read 0x38", command=self.clickQ38Cmd, width=10)
-#    q38Cmd.place(x=5,y=5)
-#    q39Cmd = Button(self, text="Read 0x39", command=self.clickQ39Cmd, width=10)
-#    q39Cmd.place(x=200,y=100)
+    q38Cmd = Button(self, text="Start Test", command=self.clickQ38Cmd, width=10)
+    q38Cmd.place(x=200,y=325)
+    q39Cmd = Button(self, text="Reset all Outputs", command=self.clickQ39Cmd, width=10)
+    q39Cmd.place(x=350,y=325)
 #    q3aCmd = Button(self, text="Read 0x3a", command=self.clickQ3aCmd, width=10)
 #    q3aCmd.place(x=400,y=200)
 
@@ -185,9 +186,12 @@ class debugWindow(Frame):
 
   def clickQ38Cmd(self):
     print("clickQ38Cmd")
+    t1=Thread(target=lambda: self.GT1000.startTest())
+    t1.start()
 
   def clickQ39Cmd(self):
     print("clickQ39Cmd")
+    self.GT1000.resetAllOutputs()
 
   def clickQ3aCmd(self):
     print("clickQ3aCmd")
