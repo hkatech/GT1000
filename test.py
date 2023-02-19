@@ -82,7 +82,8 @@ labelTxt.set("Hello World!")
 
 appDebug = debugWindow.debugWindow(my_debug)
 my_debug.title("Debug Window")
-
+appDebug.GT1000 = GT1000
+appDebug.GT1000LblText.set(GT1000)
 #root.geometry("320x200")
 my_debug.geometry("800x480")
 root.geometry("800x480")

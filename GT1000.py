@@ -42,9 +42,19 @@ class GT1000:
   GT_InTest = False
   GT_UserOut = False
 
+  GTchip0int = [0,0,0]
+  GTchip1int = [0,0,0]
+  GTchip2int = [0,0,0]
+  GTchip3int = [0,0,0]
+  GTchip4int = [0,0,0]
+  GTchip5int = [0,0,0]
+  GTchip6int = [0,0,0]
+  GTchip7int = [0,0,0]
+  GTchip8int = [0,0,0]
+
 
   def __GPIO_Setup(self):
-    print("[Func] __GPIO_Setup()")
+    print("[call] __GPIO_Setup()")
     GPIO.setup(self.EXT_IN_START, GPIO.IN)
     GPIO.setup(self.EXT_IN_ABORT, GPIO.IN)
     GPIO.setup(self.EXT_IN_USER2, GPIO.IN)
@@ -54,14 +64,28 @@ class GT1000:
     GPIO.setup(self.EXT_OUT_FAIL, GPIO.OUT, initial=GPIO.LOW)
     GPIO.setup(self.EXT_OUT_INTEST, GPIO.OUT, initial=GPIO.LOW)
     GPIO.setup(self.EXT_OUT_USER1, GPIO.OUT, initial=GPIO.LOW)
+    print("[end call] __GPIO_Setup()")
 
 
   def read_inputs(self):
-    print("[Func] read_inputs()")
+    print("[call] read_inputs()")
     GT_Start = GPIO.input(self.EXT_IN_START)
     GT_Abort = GPIO.input(self.EXT_IN_ABORT)
     GT_UserIn = GPIO.input(self.EXT_IN_USER2)
     GT_LK = GPIO.input(self.EXT_IN_LEAK)
+    try:
+      self.GTchip0int[0] = self.__I2C.read_byte(self.CHIP000)
+      self.GTchip1int[0] = self.__I2C.read_byte(self.CHIP001)
+      self.GTchip2int[0] = self.__I2C.read_byte(self.CHIP010)
+      self.GTchip3int[0] = self.__I2C.read_byte(self.CHIP011)
+      self.GTchip4int[0] = self.__I2C.read_byte(self.CHIP100)
+      self.GTchip5int[0] = self.__I2C.read_byte(self.CHIP101)
+      self.GTchip6int[0] = self.__I2C.read_byte(self.CHIP110)
+      self.GTchip7int[0] = self.__I2C.read_byte(self.CHIP111)
+    except:
+      pass
+
+    print("[end call] read_inputs()")
 
   def __init__(self):
     # Setup the GT1000
