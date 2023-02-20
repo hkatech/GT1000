@@ -137,6 +137,52 @@ class GT1000:
       pass
     print("[end call] resetAllOutputs()")
 
+  def enableStations(self, val):
+    print("[call] enableStations(", val, ")")
+    self.GTchip2int[0] = 0
+    self.GTchip3int[0] = 0
+    for sval in val:
+        if sval == 1:
+          self.GTchip2int[0] += 1
+        if sval == 2:
+          self.GTchip2int[0] += 2
+        if sval == 3:
+          self.GTchip2int[0] += 4
+        if sval == 4:
+          self.GTchip2int[0] += 8
+        if sval == 5:
+          self.GTchip2int[0] += 16
+        if sval == 6:
+          self.GTchip2int[0] += 32
+        if sval == 7:
+          self.GTchip2int[0] += 64
+        if sval == 8:
+          self.GTchip3int[0] += 128
+        if sval == 9:
+          self.GTchip3int[0] += 1
+        if sval == 10:
+          self.GTchip3int[0] += 2
+        if sval == 11:
+          self.GTchip3int[0] += 4
+        if sval == 12:
+          self.GTchip3int[0] += 8
+        if sval == 13:
+          self.GTchip3int[0] += 16
+        if sval == 14:
+          self.GTchip3int[0] += 32
+        if sval == 15:
+          self.GTchip3int[0] += 64
+        if sval == 16:
+          self.GTchip3int[0] += 128
+    try:
+      self.write_output(self.CHIP010,self.GTchip2int[0])
+      self.write_output(self.CHIP011,self.GTchip3int[0])
+    except Exception as e:
+      print("!!! ", str(e), " !!!")
+      pass
+
+    print("[end call] enableStations()")
+
   def startTest(self):
     startFunction = time.time()
     print("startTest() at ", startFunction)
@@ -153,7 +199,8 @@ class GT1000:
       if (currtime - startFunction) > 2:
         print("Tester didn't start")
         GPIO.output(self.EXT_OUT_START, 0)
-        return -1
+        #return -1
+        break
     GPIO.output(self.EXT_OUT_START,0)
     print("Tester in test...")
     return 1
@@ -174,4 +221,5 @@ class GT1000:
     self.__GPIO_Setup()
     self.resetAllOutputs()
     self.read_inputs()
+
 

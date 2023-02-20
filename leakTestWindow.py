@@ -69,6 +69,7 @@ class leakTestWindow(Frame):
     self.station18Text = StringVar()
     self.station19Text = StringVar()
     self.station20Text = StringVar()
+    self.stationTexts = [StringVar()] * 20
 
     self.station01Text.set("Station 1")
     self.station02Text.set("Station 2")
@@ -90,6 +91,7 @@ class leakTestWindow(Frame):
     self.station18Text.set("Test All")
     self.station19Text.set("Reset")
     self.station20Text.set("")
+
 
     self.station01Cmd = Button(self,textvariable=self.station01Text,command=self.station01Cmd__click,height=6,width=16)
     self.station01Cmd.grid(row=0,column=0,sticky='nsew')
@@ -133,40 +135,426 @@ class leakTestWindow(Frame):
     self.station20Cmd.grid(row=3,column=4,sticky='nsew')
     self.resetButtonColours()
 
+# TODO: Add case checks for blank stations and ignore
 
   def station01Cmd__click(self):
     print("1")
+    s = self.station01Text.get()
+    self.GT1000.enableStations([1])
+    self.station01Cmd["bg"] = "yellow"
+    self.station01Cmd["activebackground"] = "yellow"
+    self.station01Text.set(s + "\nIn Test")
+    self.update()
+    if self.GT1000.startTest() >= 1:
+      while self.GT1000.GT_InTest:
+        self.GT1000.read_inputs()
+        if self.GT1000.GT_Abort:
+          print("{Test Abort}")
+          self.station01Cmd["bg"] = "red"
+          self.station01Text.set(s + "\nTest Aborted")
+          return
+        if self.GT1000.GT_Fail:
+          print("{Test FAILED}")
+          self.station01Cmd["bg"] = "red"
+          self.station01Text.set(s + "\nTest FAILED")
+          return
+        if self.GT1000.GT_Pass:
+          print("{Test PASSED}")
+          self.station01Cmd["bg"] = "green"
+          self.station01Text.set(s +"\n << PASSED >>")
+          return
+      self.station01Cmd["bg"] = "red"
+      self.station01Cmd["activebackground"] = self.station01Cmd["bg"]
+      self.station01Text.set(s + "\nAbnormal Completion")
   def station02Cmd__click(self):
     print("2")
+    s = self.station02Text.get()
+    if self.testPart == "4568":
+      self.GT1000.enableStations([2])
+    else:
+      self.GT1000.enableStations([3])
+    self.station02Cmd["bg"] = "yellow"
+    self.station02Cmd["activebackground"] = "yellow"
+    self.station02Text.set(s + "\nIn Test")
+    self.update()
+    if self.GT1000.startTest() >= 1:
+      while self.GT1000.GT_InTest:
+        self.GT1000.read_inputs()
+        if self.GT1000.GT_Abort:
+          print("{Test Abort}")
+          self.station02Cmd["bg"] = "red"
+          self.station02Text.set(s + "\nTest Aborted")
+          return
+        if self.GT1000.GT_Fail:
+          print("{Test FAILED}")
+          self.station02Cmd["bg"] = "red"
+          self.station02Text.set(s + "\nTest FAILED")
+          return
+        if self.GT1000.GT_Pass:
+          print("{Test PASSED}")
+          self.station02Cmd["bg"] = "green"
+          self.station02Text.set(s +"\n << PASSED >>")
+          return
+      self.station02Cmd["bg"] = "red"
+      self.station02Cmd["activebackground"] = self.station02Cmd["bg"]
+      self.station02Text.set(s + "\nAbnormal Completion")
   def station03Cmd__click(self):
     print("3")
+    s = self.station03Text.get()
+    self.GT1000.enableStations([4])
+    self.station03Cmd["bg"] = "yellow"
+    self.station03Cmd["activebackground"] = "yellow"
+    self.station03Text.set(s + "\nIn Test")
+    self.update()
+    if self.GT1000.startTest() >= 1:
+      while self.GT1000.GT_InTest:
+        self.GT1000.read_inputs()
+        if self.GT1000.GT_Abort:
+          print("{Test Abort}")
+          self.station03Cmd["bg"] = "red"
+          self.station03Text.set(s + "\nTest Aborted")
+          return
+        if self.GT1000.GT_Fail:
+          print("{Test FAILED}")
+          self.station03Cmd["bg"] = "red"
+          self.station03Text.set(s + "\nTest FAILED")
+          return
+        if self.GT1000.GT_Pass:
+          print("{Test PASSED}")
+          self.station03Cmd["bg"] = "green"
+          self.station03Text.set(s +"\n << PASSED >>")
+          return
+      self.station03Cmd["bg"] = "red"
+      self.station03Cmd["activebackground"] = self.station03Cmd["bg"]
+      self.station03Text.set(s + "\nAbnormal Completion")
   def station04Cmd__click(self):
     print("4")
+    s = self.station04Text.get()
+    self.GT1000.enableStations([5])
+    self.station04Cmd["bg"] = "yellow"
+    self.station04Cmd["activebackground"] = "yellow"
+    self.station04Text.set(s + "\nIn Test")
+    self.update()
+    if self.GT1000.startTest() >= 1:
+      while self.GT1000.GT_InTest:
+        self.GT1000.read_inputs()
+        if self.GT1000.GT_Abort:
+          print("{Test Abort}")
+          self.station04Cmd["bg"] = "red"
+          self.station04Text.set(s + "\nTest Aborted")
+          return
+        if self.GT1000.GT_Fail:
+          print("{Test FAILED}")
+          self.station04Cmd["bg"] = "red"
+          self.station04Text.set(s + "\nTest FAILED")
+          return
+        if self.GT1000.GT_Pass:
+          print("{Test PASSED}")
+          self.station04Cmd["bg"] = "green"
+          self.station04Text.set(s +"\n << PASSED >>")
+          return
+      self.station04Cmd["bg"] = "red"
+      self.station04Cmd["activebackground"] = self.station04Cmd["bg"]
+      self.station04Text.set(s + "\nAbnormal Completion")
   def station05Cmd__click(self):
     print("5")
+    s = self.station05Text.get()
+    self.GT1000.enableStations([6])
+    self.station05Cmd["bg"] = "yellow"
+    self.station05Cmd["activebackground"] = "yellow"
+    self.station05Text.set(s + "\nIn Test")
+    self.update()
+    if self.GT1000.startTest() >= 1:
+      while self.GT1000.GT_InTest:
+        self.GT1000.read_inputs()
+        if self.GT1000.GT_Abort:
+          print("{Test Abort}")
+          self.station05Cmd["bg"] = "red"
+          self.station05Text.set(s + "\nTest Aborted")
+          return
+        if self.GT1000.GT_Fail:
+          print("{Test FAILED}")
+          self.station05Cmd["bg"] = "red"
+          self.station05Text.set(s + "\nTest FAILED")
+          return
+        if self.GT1000.GT_Pass:
+          print("{Test PASSED}")
+          self.station05Cmd["bg"] = "green"
+          self.station05Text.set(s +"\n << PASSED >>")
+          return
+      self.station05Cmd["bg"] = "red"
+      self.station05Cmd["activebackground"] = self.station05Cmd["bg"]
+      self.station05Text.set(s + "\nAbnormal Completion")
   def station06Cmd__click(self):
     print("6")
+    s = self.station06Text.get()
+    self.GT1000.enableStations([7])
+    self.station06Cmd["bg"] = "yellow"
+    self.station06Cmd["activebackground"] = "yellow"
+    self.station06Text.set(s + "\nIn Test")
+    self.update()
+    if self.GT1000.startTest() >= 1:
+      while self.GT1000.GT_InTest:
+        self.GT1000.read_inputs()
+        if self.GT1000.GT_Abort:
+          print("{Test Abort}")
+          self.station06Cmd["bg"] = "red"
+          self.station06Text.set(s + "\nTest Aborted")
+          return
+        if self.GT1000.GT_Fail:
+          print("{Test FAILED}")
+          self.station06Cmd["bg"] = "red"
+          self.station06Text.set(s + "\nTest FAILED")
+          return
+        if self.GT1000.GT_Pass:
+          print("{Test PASSED}")
+          self.station06Cmd["bg"] = "green"
+          self.station06Text.set(s +"\n << PASSED >>")
+          return
+      self.station06Cmd["bg"] = "red"
+      self.station06Cmd["activebackground"] = self.station06Cmd["bg"]
+      self.station06Text.set(s + "\nAbnormal Completion")
   def station07Cmd__click(self):
     print("7")
+    s = self.station07Text.get()
+    if self.testPart == "4568":
+      self.GT1000.enableStations([8])
+    else:
+      self.GT1000.enableStations([9])
+    self.station07Cmd["bg"] = "yellow"
+    self.station07Cmd["activebackground"] = "yellow"
+    self.station07Text.set(s + "\nIn Test")
+    self.update()
+    if self.GT1000.startTest() >= 1:
+      while self.GT1000.GT_InTest:
+        self.GT1000.read_inputs()
+        if self.GT1000.GT_Abort:
+          print("{Test Abort}")
+          self.station07Cmd["bg"] = "red"
+          self.station07Text.set(s + "\nTest Aborted")
+          return
+        if self.GT1000.GT_Fail:
+          print("{Test FAILED}")
+          self.station07Cmd["bg"] = "red"
+          self.station07Text.set(s + "\nTest FAILED")
+          return
+        if self.GT1000.GT_Pass:
+          print("{Test PASSED}")
+          self.station07Cmd["bg"] = "green"
+          self.station07Text.set(s +"\n << PASSED >>")
+          return
+      self.station07Cmd["bg"] = "red"
+      self.station07Cmd["activebackground"] = self.station07Cmd["bg"]
+      self.station07Text.set(s + "\nAbnormal Completion")
   def station08Cmd__click(self):
     print("8")
+    s = self.station08Text.get()
+    self.GT1000.enableStations([10])
+    self.station08Cmd["bg"] = "yellow"
+    self.station08Cmd["activebackground"] = "yellow"
+    self.station08Text.set(s + "\nIn Test")
+    self.update()
+    if self.GT1000.startTest() >= 1:
+      while self.GT1000.GT_InTest:
+        self.GT1000.read_inputs()
+        if self.GT1000.GT_Abort:
+          print("{Test Abort}")
+          self.station08Cmd["bg"] = "red"
+          self.station08Text.set(s + "\nTest Aborted")
+          return
+        if self.GT1000.GT_Fail:
+          print("{Test FAILED}")
+          self.station08Cmd["bg"] = "red"
+          self.station08Text.set(s + "\nTest FAILED")
+          return
+        if self.GT1000.GT_Pass:
+          print("{Test PASSED}")
+          self.station08Cmd["bg"] = "green"
+          self.station08Text.set(s +"\n << PASSED >>")
+          return
+      self.station08Cmd["bg"] = "red"
+      self.station08Cmd["activebackground"] = self.station08Cmd["bg"]
+      self.station08Text.set(s + "\nAbnormal Completion")
   def station09Cmd__click(self):
     print("9")
+    s = self.station09Text.get()
+    self.GT1000.enableStations([11])
+    self.station09Cmd["bg"] = "yellow"
+    self.station09Cmd["activebackground"] = "yellow"
+    self.station09Text.set(s + "\nIn Test")
+    self.update()
+    if self.GT1000.startTest() >= 1:
+      while self.GT1000.GT_InTest:
+        self.GT1000.read_inputs()
+        if self.GT1000.GT_Abort:
+          print("{Test Abort}")
+          self.station09Cmd["bg"] = "red"
+          self.station09Text.set(s + "\nTest Aborted")
+          return
+        if self.GT1000.GT_Fail:
+          print("{Test FAILED}")
+          self.station09Cmd["bg"] = "red"
+          self.station09Text.set(s + "\nTest FAILED")
+          return
+        if self.GT1000.GT_Pass:
+          print("{Test PASSED}")
+          self.station09Cmd["bg"] = "green"
+          self.station09Text.set(s +"\n << PASSED >>")
+          return
+      self.station09Cmd["bg"] = "red"
+      self.station09Cmd["activebackground"] = self.station09Cmd["bg"]
+      self.station09Text.set(s + "\nAbnormal Completion")
   def station10Cmd__click(self):
     print("10")
+    s = self.station10Text.get()
+    self.GT1000.enableStations([12])
+    self.station10Cmd["bg"] = "yellow"
+    self.station10Cmd["activebackground"] = "yellow"
+    self.station10Text.set(s + "\nIn Test")
+    self.update()
+    if self.GT1000.startTest() >= 1:
+      while self.GT1000.GT_InTest:
+        self.GT1000.read_inputs()
+        if self.GT1000.GT_Abort:
+          print("{Test Abort}")
+          self.station10Cmd["bg"] = "red"
+          self.station10Text.set(s + "\nTest Aborted")
+          return
+        if self.GT1000.GT_Fail:
+          print("{Test FAILED}")
+          self.station10Cmd["bg"] = "red"
+          self.station10Text.set(s + "\nTest FAILED")
+          return
+        if self.GT1000.GT_Pass:
+          print("{Test PASSED}")
+          self.station10Cmd["bg"] = "green"
+          self.station10Text.set(s +"\n << PASSED >>")
+          return
+      self.station10Cmd["bg"] = "red"
+      self.station10Cmd["activebackground"] = self.station10Cmd["bg"]
+      self.station10Text.set(s + "\nAbnormal Completion")
   def station11Cmd__click(self):
     print("11")
+    s = self.station11Text.get()
+    self.GT1000.enableStations([13])
+    self.station11Cmd["bg"] = "yellow"
+    self.station11Cmd["activebackground"] = "yellow"
+    self.station11Text.set(s + "\nIn Test")
+    self.update()
+    if self.GT1000.startTest() >= 1:
+      while self.GT1000.GT_InTest:
+        self.GT1000.read_inputs()
+        if self.GT1000.GT_Abort:
+          print("{Test Abort}")
+          self.station11Cmd["bg"] = "red"
+          self.station11Text.set(s + "\nTest Aborted")
+          return
+        if self.GT1000.GT_Fail:
+          print("{Test FAILED}")
+          self.station11Cmd["bg"] = "red"
+          self.station11Text.set(s + "\nTest FAILED")
+          return
+        if self.GT1000.GT_Pass:
+          print("{Test PASSED}")
+          self.station11Cmd["bg"] = "green"
+          self.station11Text.set(s +"\n << PASSED >>")
+          return
+      self.station11Cmd["bg"] = "red"
+      self.station11Cmd["activebackground"] = self.station11Cmd["bg"]
+      self.station11Text.set(s + "\nAbnormal Completion")
   def station12Cmd__click(self):
     print("12")
+    s = self.station12Text.get()
+    self.GT1000.enableStations([14])
+    self.station12Cmd["bg"] = "yellow"
+    self.station12Cmd["activebackground"] = "yellow"
+    self.station12Text.set(s + "\nIn Test")
+    self.update()
+    if self.GT1000.startTest() >= 1:
+      while self.GT1000.GT_InTest:
+        self.GT1000.read_inputs()
+        if self.GT1000.GT_Abort:
+          print("{Test Abort}")
+          self.station12Cmd["bg"] = "red"
+          self.station12Text.set(s + "\nTest Aborted")
+          return
+        if self.GT1000.GT_Fail:
+          print("{Test FAILED}")
+          self.station12Cmd["bg"] = "red"
+          self.station12Text.set(s + "\nTest FAILED")
+          return
+        if self.GT1000.GT_Pass:
+          print("{Test PASSED}")
+          self.station12Cmd["bg"] = "green"
+          self.station12Text.set(s +"\n << PASSED >>")
+          return
+      self.station12Cmd["bg"] = "red"
+      self.station12Cmd["activebackground"] = self.station12Cmd["bg"]
+      self.station12Text.set(s + "\nAbnormal Completion")
   def station13Cmd__click(self):
     print("13")
+    s = self.station13Text.get()
+    self.GT1000.enableStations([15])
+    self.station13Cmd["bg"] = "yellow"
+    self.station13Cmd["activebackground"] = "yellow"
+    self.station13Text.set(s + "\nIn Test")
+    self.update()
+    if self.GT1000.startTest() >= 1:
+      while self.GT1000.GT_InTest:
+        self.GT1000.read_inputs()
+        if self.GT1000.GT_Abort:
+          print("{Test Abort}")
+          self.station13Cmd["bg"] = "red"
+          self.station13Text.set(s + "\nTest Aborted")
+          return
+        if self.GT1000.GT_Fail:
+          print("{Test FAILED}")
+          self.station13Cmd["bg"] = "red"
+          self.station13Text.set(s + "\nTest FAILED")
+          return
+        if self.GT1000.GT_Pass:
+          print("{Test PASSED}")
+          self.station13Cmd["bg"] = "green"
+          self.station13Text.set(s +"\n << PASSED >>")
+          return
+      self.station13Cmd["bg"] = "red"
+      self.station13Cmd["activebackground"] = self.station13Cmd["bg"]
+      self.station13Text.set(s + "\nAbnormal Completion")
   def station14Cmd__click(self):
     print("14")
+    s = self.station14Text.get()
+    self.GT1000.enableStations([16])
+    self.station14Cmd["bg"] = "yellow"
+    self.station14Cmd["activebackground"] = "yellow"
+    self.station14Text.set(s + "\nIn Test")
+    self.update()
+    if self.GT1000.startTest() >= 1:
+      while self.GT1000.GT_InTest:
+        self.GT1000.read_inputs()
+        if self.GT1000.GT_Abort:
+          print("{Test Abort}")
+          self.station14Cmd["bg"] = "red"
+          self.station14Text.set(s + "\nTest Aborted")
+          return
+        if self.GT1000.GT_Fail:
+          print("{Test FAILED}")
+          self.station14Cmd["bg"] = "red"
+          self.station14Text.set(s + "\nTest FAILED")
+          return
+        if self.GT1000.GT_Pass:
+          print("{Test PASSED}")
+          self.station14Cmd["bg"] = "green"
+          self.station14Text.set(s +"\n << PASSED >>")
+          return
+      self.station14Cmd["bg"] = "red"
+      self.station14Cmd["activebackground"] = self.station14Cmd["bg"]
+      self.station14Text.set(s + "\nAbnormal Completion")
   def station15Cmd__click(self):
     print("15")
   def station16Cmd__click(self):
     print("<LOAD 4568>")
     self.testPart = "4568"
+    self.resetButtonColours()
     self.station01Text.set("Test ACM 1")
     self.station02Text.set("Test AFB 1")
     self.station03Text.set("Test LED_L")
@@ -186,6 +574,7 @@ class leakTestWindow(Frame):
   def station17Cmd__click(self):
     print("<LOAD 4569>")
     self.testPart = "4569"
+    self.resetButtonColours()
     self.station01Text.set("Test ACM 2")
     self.station02Text.set("Test AFB 2")
     self.station03Text.set("Test HELMET_FAN")
@@ -204,9 +593,27 @@ class leakTestWindow(Frame):
 
   def station18Cmd__click(self):
     print("<TEST ALL>")
+    self.station19Cmd__click()
+    if self.testPart == "4569":
+      self.station17Cmd__click()
+    else:
+      self.station16Cmd__click()
+
   def station19Cmd__click(self):
     print("<RESET>")
     self.resetButtonColours()
+    if self.testPart == "4569":
+      self.station17Cmd__click()
+    else:
+      self.station16Cmd__click()
+    self.resetButtonColours()
+
+  def station20Cmd__click(self):
+    print("<NOTHING>")
+
+
+  def resetButtonColours(self):
+    print("resetButtonColours()")
     self.station01Cmd["bg"]="grey90"
     self.station02Cmd["bg"]="grey90"
     self.station03Cmd["bg"]="grey90"
@@ -222,10 +629,4 @@ class leakTestWindow(Frame):
     self.station13Cmd["bg"]="grey90"
     self.station14Cmd["bg"]="grey90"
     self.station15Cmd["bg"]="grey90"
-  def station20Cmd__click(self):
-    print("<NOTHING>")
-
-
-  def resetButtonColours(self):
-    print("resetButtonColours()")
 #    self.station01Cmd.configure(bg="grey")
