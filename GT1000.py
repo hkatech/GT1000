@@ -98,6 +98,8 @@ class GT1000:
     GPIO.setup(self.EXT_OUT_LATCHRELEASE, GPIO.OUT, initial=GPIO.LOW)
     print("[end call] __GPIO_Setup()")
 
+  def getLatchState(self):
+    return GPIO.input(self.EXT_OUT_LATCHRELEASE)
 
   def read_inputs(self):
     print("[call] read_inputs()")
@@ -113,7 +115,9 @@ class GT1000:
     except Exception as e:
       print("!!! ", str(e), " !!!")
       pass
-
+    self.GT_InTest = self.GTchip0int[0] & 0x01
+    self.GT_Pass = self.GTchip0int[0] & 0x02
+    self.GT_Fail = self.GTchip0int[0] & 0x04
     print("[end call] read_inputs()")
 
   def write_output(self, addy, data):
@@ -200,6 +204,7 @@ class GT1000:
         print("Tester didn't start")
         GPIO.output(self.EXT_OUT_START, 0)
         #return -1
+        self.GT_InTest = True
         break
     GPIO.output(self.EXT_OUT_START,0)
     print("Tester in test...")
@@ -210,6 +215,21 @@ class GT1000:
     GPIO.output(self.EXT_OUT_ABORT, 1)
     sleep(0.8)
     GPIO.output(self.EXT_OUT_ABORT, 0)
+
+  def pulseRelease(self):
+    print("[call] pulseRelease()")
+    GPIO.output(self.EXT_OUT_LATCHRELEASE, 1)
+    time.sleep(1)
+    GPIO.output(self.EXT_OUT_LATCHRELEASE, 0)
+    print("[end call] pulseRelease()")
+
+  def latchReleaseEn(self):
+    print("Releasing latch")
+    GPIO.output(self.EXT_OUT_LATCHRELEASE, 1)
+
+  def latchReleaseDis(self):
+    print("Engaging latch")
+    GPIO.output(self.EXT_OUT_LATCHRELEASE, 0)
 
   def __init__(self):
     # Setup the GT1000

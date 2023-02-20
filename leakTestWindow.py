@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from GT1000 import GT1000
+import time
 
 class leakTestWindow(Frame):
 
@@ -9,6 +10,20 @@ class leakTestWindow(Frame):
   #  self.update
   def periodicUpdate(self):
     self.updateInputs()
+    if not self.GT1000.GT_Abort:
+      self.lastAbortTick = time.time()
+    if (time.time() - self.lastAbortTick) > 5:
+      if not self.GT1000.getLatchState():
+        self.GT1000.latchReleaseEn()
+    elif self.GT1000.getLatchState():
+      self.GT1000.latchReleaseDis()
+    if self.testPart == "4568":
+      if self.GT1000.GT_PartSelect:
+        self.station17Cmd__click()
+    elif self.testPart == "4569":
+      if not self.GT1000.GT_PartSelect:
+        self.station16Cmd__click()
+
     self.after(500,self.periodicUpdate)
 
   def updateInputs(self):
@@ -25,6 +40,8 @@ class leakTestWindow(Frame):
 
     self.GT1000 = GT1000()
     self.testPart = "Nothing"
+    self.abortSignal = False
+    self.testingAll = False
 
     self.station01Result = StringVar()
     self.station02Result = StringVar()
@@ -147,6 +164,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.GT1000.startTest() >= 1:
       while self.GT1000.GT_InTest:
+        print("Waiting on station 1...", self.GT1000.GT_InTest)
         self.GT1000.read_inputs()
         if self.GT1000.GT_Abort:
           print("{Test Abort}")
@@ -598,9 +616,86 @@ class leakTestWindow(Frame):
       self.station17Cmd__click()
     else:
       self.station16Cmd__click()
+    self.abortSignal = False
+    self.testingAll = True
+    self.station01Cmd__click()
+    if self.abortSignal:
+      self.abortSignal = False
+      return
+    self.station02Cmd__click()
+    if self.abortSignal:
+      self.abortSignal = False
+      return
+    self.station03Cmd__click()
+    if self.abortSignal:
+      self.abortSignal = False
+      return
+    self.station04Cmd__click()
+    if self.abortSignal:
+      self.abortSignal = False
+      return
+    self.station05Cmd__click()
+    if self.abortSignal:
+      self.abortSignal = False
+      return
+    self.station06Cmd__click()
+    if self.abortSignal:
+      self.abortSignal = False
+      return
+    self.station07Cmd__click()
+    if self.abortSignal:
+      self.abortSignal = False
+      return
+    self.station08Cmd__click()
+    if self.abortSignal:
+      self.abortSignal = False
+      return
+    self.station09Cmd__click()
+    if self.abortSignal:
+      self.abortSignal = False
+      return
+    self.station10Cmd__click()
+    if self.abortSignal:
+      self.abortSignal = False
+      return
+    self.station11Cmd__click()
+    if self.abortSignal:
+      self.abortSignal = False
+      return
+    self.station12Cmd__click()
+    if self.abortSignal:
+      self.abortSignal = False
+      return
+    self.station13Cmd__click()
+    if self.abortSignal:
+      self.abortSignal = False
+      return
+    self.station14Cmd__click()
+    self.checkForPass()
+
+  def checkForPass(self):
+    if (self.station01Cmd["bg"] == "green") and \
+       (self.station02Cmd["bg"] == "green") and \
+       (self.station03Cmd["bg"] == "green") and \
+       (self.station04Cmd["bg"] == "green") and \
+       (self.station05Cmd["bg"] == "green") and \
+       (self.station06Cmd["bg"] == "green") and \
+       (self.station07Cmd["bg"] == "green") and \
+       (self.station08Cmd["bg"] == "green") and \
+       (self.station09Cmd["bg"] == "green") and \
+       (self.station10Cmd["bg"] == "green") and \
+       (self.station11Cmd["bg"] == "green") and \
+       (self.station12Cmd["bg"] == "green") and \
+       (self.station13Cmd["bg"] == "green") and \
+       (self.station14Cmd["bg"] == "green"):
+      print("*** All Tests PASSED ***")
+      self.GT1000.pulseRelease()
 
   def station19Cmd__click(self):
     print("<RESET>")
+    self.abortSignal = True
+    if self.testingAll:
+      return
     self.resetButtonColours()
     if self.testPart == "4569":
       self.station17Cmd__click()
@@ -629,4 +724,3 @@ class leakTestWindow(Frame):
     self.station13Cmd["bg"]="grey90"
     self.station14Cmd["bg"]="grey90"
     self.station15Cmd["bg"]="grey90"
-#    self.station01Cmd.configure(bg="grey")
