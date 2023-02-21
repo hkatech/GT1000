@@ -9,20 +9,34 @@ class leakTestWindow(Frame):
   #  print("[call] periodicUpdate()")
   #  self.update
   def periodicUpdate(self):
+    print("--- Periodic Call ---")
     self.updateInputs()
-    if not self.GT1000.GT_Abort:
-      self.lastAbortTick = time.time()
+
+    # This section manually releases the latches after 5seconds
+    try:
+      if not self.GT1000.GT_Abort:
+        self.lastAbortTick = time.time()
+    except Exception as e:
+      pass
     if (time.time() - self.lastAbortTick) > 5:
       if not self.GT1000.getLatchState():
         self.GT1000.latchReleaseEn()
     elif self.GT1000.getLatchState():
       self.GT1000.latchReleaseDis()
+
+    # Update part number based on selector switch
     if self.testPart == "4568":
       if self.GT1000.GT_PartSelect:
         self.station17Cmd__click()
     elif self.testPart == "4569":
       if not self.GT1000.GT_PartSelect:
         self.station16Cmd__click()
+    else:
+      self.station17Cmd__click()
+
+    # Handle the start push
+    if self.GT1000.GT_Start:
+      self.station18Cmd__click()
 
     self.after(500,self.periodicUpdate)
 
@@ -366,6 +380,10 @@ class leakTestWindow(Frame):
       self.station07Text.set(s + "\nAbnormal Completion")
   def station08Cmd__click(self):
     print("8")
+    if self.testPart == "4569":
+      self.station08Cmd["bg"] = "green"
+      self.station08Cmd["activebackground"] = "green"
+      return
     s = self.station08Text.get()
     self.GT1000.enableStations([10])
     self.station08Cmd["bg"] = "yellow"
@@ -395,6 +413,10 @@ class leakTestWindow(Frame):
       self.station08Text.set(s + "\nAbnormal Completion")
   def station09Cmd__click(self):
     print("9")
+    if self.testPart == "4569":
+      self.station09Cmd["bg"] = "green"
+      self.station09Cmd["activebackground"] = "green"
+      return
     s = self.station09Text.get()
     self.GT1000.enableStations([11])
     self.station09Cmd["bg"] = "yellow"
@@ -424,6 +446,10 @@ class leakTestWindow(Frame):
       self.station09Text.set(s + "\nAbnormal Completion")
   def station10Cmd__click(self):
     print("10")
+    if self.testPart == "4569":
+      self.station10Cmd["bg"] = "green"
+      self.station10Cmd["activebackground"] = "green"
+      return
     s = self.station10Text.get()
     self.GT1000.enableStations([12])
     self.station10Cmd["bg"] = "yellow"
@@ -453,6 +479,10 @@ class leakTestWindow(Frame):
       self.station10Text.set(s + "\nAbnormal Completion")
   def station11Cmd__click(self):
     print("11")
+    if self.testPart == "4569":
+      self.station11Cmd["bg"] = "green"
+      self.station11Cmd["activebackground"] = "green"
+      return
     s = self.station11Text.get()
     self.GT1000.enableStations([13])
     self.station11Cmd["bg"] = "yellow"
@@ -482,6 +512,10 @@ class leakTestWindow(Frame):
       self.station11Text.set(s + "\nAbnormal Completion")
   def station12Cmd__click(self):
     print("12")
+    if self.testPart == "4569":
+      self.station12Cmd["bg"] = "green"
+      self.station12Cmd["activebackground"] = "green"
+      return
     s = self.station12Text.get()
     self.GT1000.enableStations([14])
     self.station12Cmd["bg"] = "yellow"
@@ -511,6 +545,10 @@ class leakTestWindow(Frame):
       self.station12Text.set(s + "\nAbnormal Completion")
   def station13Cmd__click(self):
     print("13")
+    if self.testPart == "4569":
+      self.station13Cmd["bg"] = "green"
+      self.station13Cmd["activebackground"] = "green"
+      return
     s = self.station13Text.get()
     self.GT1000.enableStations([15])
     self.station13Cmd["bg"] = "yellow"
@@ -540,6 +578,10 @@ class leakTestWindow(Frame):
       self.station13Text.set(s + "\nAbnormal Completion")
   def station14Cmd__click(self):
     print("14")
+    if self.testPart == "4569":
+      self.station14Cmd["bg"] = "green"
+      self.station14Cmd["activebackground"] = "green"
+      return
     s = self.station14Text.get()
     self.GT1000.enableStations([16])
     self.station14Cmd["bg"] = "yellow"
@@ -611,7 +653,13 @@ class leakTestWindow(Frame):
 
   def station18Cmd__click(self):
     print("<TEST ALL>")
+    if self.testingAll:
+      return
+
+    # Reset label colours
     self.station19Cmd__click()
+
+    # Reset labels
     if self.testPart == "4569":
       self.station17Cmd__click()
     else:
@@ -619,59 +667,129 @@ class leakTestWindow(Frame):
     self.abortSignal = False
     self.testingAll = True
     self.station01Cmd__click()
-    if self.abortSignal:
+    self.GT1000.waitForIdle()
+#    time.sleep(1)
+#    self.GT1000.read_inputs()
+    self.update()
+    if self.abortSignal or self.GT1000.GT_Abort:
+      self.testingAll = False
       self.abortSignal = False
       return
     self.station02Cmd__click()
+    self.GT1000.waitForIdle()
+#    time.sleep(0.5)
+#    self.GT1000.read_inputs()
+    self.update()
     if self.abortSignal:
+      self.testingAll = False
       self.abortSignal = False
       return
     self.station03Cmd__click()
-    if self.abortSignal:
+    self.GT1000.waitForIdle()
+#    time.sleep(0.5)
+#    self.GT1000.read_inputs()
+    self.update()
+    if self.abortSignal or self.GT1000.GT_Abort:
+      self.testingAll = False
       self.abortSignal = False
       return
     self.station04Cmd__click()
-    if self.abortSignal:
+    self.GT1000.waitForIdle()
+#    time.sleep(0.5)
+#    self.GT1000.read_inputs()
+    self.update()
+    if self.abortSignal or self.GT1000.GT_Abort:
+      self.testingAll = False
       self.abortSignal = False
       return
     self.station05Cmd__click()
-    if self.abortSignal:
+    self.GT1000.waitForIdle()
+#    time.sleep(0.5)
+#    self.GT1000.read_inputs()
+    self.update()
+    if self.abortSignal or self.GT1000.GT_Abort:
+      self.testingAll = False
       self.abortSignal = False
       return
     self.station06Cmd__click()
-    if self.abortSignal:
+    self.GT1000.waitForIdle()
+#    time.sleep(0.5)
+#    self.GT1000.read_inputs()
+    self.update()
+    if self.abortSignal or self.GT1000.GT_Abort:
+      self.testingAll = False
       self.abortSignal = False
       return
     self.station07Cmd__click()
-    if self.abortSignal:
+    self.GT1000.waitForIdle()
+#    time.sleep(0.5)
+#    self.GT1000.read_inputs()
+    self.update()
+    if self.abortSignal or self.GT1000.GT_Abort:
+      self.testingAll = False
       self.abortSignal = False
       return
     self.station08Cmd__click()
-    if self.abortSignal:
+    self.GT1000.waitForIdle()
+#    time.sleep(0.5)
+#    self.GT1000.read_inputs()
+    self.update()
+    if self.abortSignal or self.GT1000.GT_Abort:
+      self.testingAll = False
       self.abortSignal = False
       return
     self.station09Cmd__click()
+    self.GT1000.waitForIdle()
+#    time.sleep(0.5)
+ #   self.GT1000.read_inputs()
+    self.update()
     if self.abortSignal:
+      self.testingAll = False
       self.abortSignal = False
       return
     self.station10Cmd__click()
-    if self.abortSignal:
+    self.GT1000.waitForIdle()
+#    time.sleep(0.5)
+#    self.GT1000.read_inputs()
+    self.update()
+    if self.abortSignal or self.GT1000.GT_Abort:
+      self.testingAll = False
       self.abortSignal = False
       return
     self.station11Cmd__click()
-    if self.abortSignal:
+    self.GT1000.waitForIdle()
+#    time.sleep(0.5)
+#    self.GT1000.read_inputs()
+    self.update()
+    if self.abortSignal or self.GT1000.GT_Abort:
+      self.testingAll = False
       self.abortSignal = False
       return
     self.station12Cmd__click()
-    if self.abortSignal:
+    self.GT1000.waitForIdle()
+#    time.sleep(0.5)
+#    self.GT1000.read_inputs()
+    self.update()
+    if self.abortSignal or self.GT1000.GT_Abort:
+      self.testingAll = False
       self.abortSignal = False
       return
     self.station13Cmd__click()
-    if self.abortSignal:
+#    time.sleep(0.5)
+    self.GT1000.waitForIdle()
+#    self.GT1000.read_inputs()
+    self.update()
+    if self.abortSignal or self.GT1000.GT_Abort:
+      self.testingAll = False
       self.abortSignal = False
       return
     self.station14Cmd__click()
+#    self.GT1000.waitForIdle()
+#    time.sleep(0.5)
+    self.GT1000.read_inputs()
+    self.update()
     self.checkForPass()
+    self.testingAll = False
 
   def checkForPass(self):
     if (self.station01Cmd["bg"] == "green") and \

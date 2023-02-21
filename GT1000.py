@@ -101,13 +101,22 @@ class GT1000:
   def getLatchState(self):
     return GPIO.input(self.EXT_OUT_LATCHRELEASE)
 
+  def waitForIdle(self):
+    toTim = time.time()
+    while (time.time() - toTim) < 2:
+      self.read_inputs()
+      if not self.GT_InTest:
+        time.sleep(0.5)
+        break
+
   def read_inputs(self):
     print("[call] read_inputs()")
-    GT_Start = GPIO.input(self.EXT_IN_START)
-    GT_Abort = GPIO.input(self.EXT_IN_ABORT)
-    GT_PartSelect = GPIO.input(self.EXT_IN_PART2)
+    self.GT_Start = (GPIO.input(self.EXT_IN_START) == 0)
+    self.GT_Abort = (GPIO.input(self.EXT_IN_ABORT) == 0)
+    self.GT_PartSelect = (GPIO.input(self.EXT_IN_PART2) == 0)
+    print(">>Start: ", self.GT_Start, "  Part Select: ", self.GT_PartSelect, "  Abort: ",self.GT_Abort)
     try:
-      self.GTchip0int[0] = self.__I2C.read_byte(self.CHIP000)
+      self.GTchip0int[0] = 255 - self.__I2C.read_byte(self.CHIP000)
       #self.GTchip2int[0] = self.__I2C.read_byte(self.CHIP010)
       #self.GTchip3int[0] = self.__I2C.read_byte(self.CHIP011)
       #self.GTchip4int[0] = self.__I2C.read_byte(self.CHIP100)
@@ -118,6 +127,8 @@ class GT1000:
     self.GT_InTest = self.GTchip0int[0] & 0x01
     self.GT_Pass = self.GTchip0int[0] & 0x02
     self.GT_Fail = self.GTchip0int[0] & 0x04
+    GPIO.output(self.EXT_OUT_ABORT, self.GT_Abort)
+    print(">>In Test: ", self.GT_InTest, "  Pass: ", self.GT_Pass, "  Fail: ", self.GT_Fail)
     print("[end call] read_inputs()")
 
   def write_output(self, addy, data):
@@ -161,7 +172,7 @@ class GT1000:
         if sval == 7:
           self.GTchip2int[0] += 64
         if sval == 8:
-          self.GTchip3int[0] += 128
+          self.GTchip2int[0] += 128
         if sval == 9:
           self.GTchip3int[0] += 1
         if sval == 10:
@@ -188,6 +199,7 @@ class GT1000:
     print("[end call] enableStations()")
 
   def startTest(self):
+    restarted = False
     startFunction = time.time()
     print("startTest() at ", startFunction)
     if self.GT_InTest:
@@ -200,12 +212,17 @@ class GT1000:
       time.sleep(0.2)
       self.read_inputs()
       print(currtime - startFunction)
-      if (currtime - startFunction) > 2:
+      if ((currtime - startFunction) > 2) and not restarted:
+        GPIO.output(self.EXT_OUT_START, 0)
+        restarted = True
+      if ((currtime - startFunction) > 2.5) and restarted:
+        GPIO.output(self.EXT_OUT_START, 1)
+      if (currtime - startFunction) > 5:
         print("Tester didn't start")
         GPIO.output(self.EXT_OUT_START, 0)
-        #return -1
-        self.GT_InTest = True
-        break
+        return -1
+        #self.GT_InTest = True
+        #break
     GPIO.output(self.EXT_OUT_START,0)
     print("Tester in test...")
     return 1
