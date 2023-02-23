@@ -38,6 +38,9 @@ class leakTestWindow(Frame):
     if self.GT1000.GT_Start:
       self.station18Cmd__click()
 
+    # Try exhausting all stations
+    if self.GT1000.GT_Abort:
+      self.GT1000.enableStations([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])
     self.after(500,self.periodicUpdate)
 
   def updateInputs(self):
@@ -124,45 +127,45 @@ class leakTestWindow(Frame):
     self.station20Text.set("")
 
 
-    self.station01Cmd = Button(self,textvariable=self.station01Text,command=self.station01Cmd__click,height=6,width=16)
+    self.station01Cmd = Button(self,textvariable=self.station01Text,command=self.station01Cmd__click,height=6,width=15,font=("Arial",10,"bold"))
     self.station01Cmd.grid(row=0,column=0,sticky='nsew')
-    self.station02Cmd = Button(self,textvariable=self.station02Text,command=self.station02Cmd__click,width=16)
+    self.station02Cmd = Button(self,textvariable=self.station02Text,command=self.station02Cmd__click,width=15,font=("Arial",10,"bold"))
     self.station02Cmd.grid(row=0,column=1,sticky='nsew')
-    self.station03Cmd = Button(self,textvariable=self.station03Text,command=self.station03Cmd__click,width=16)
+    self.station03Cmd = Button(self,textvariable=self.station03Text,command=self.station03Cmd__click,width=15,font=("Arial",10,"bold"))
     self.station03Cmd.grid(row=0,column=2,sticky='nsew')
-    self.station04Cmd = Button(self,textvariable=self.station04Text,command=self.station04Cmd__click,width=16)
+    self.station04Cmd = Button(self,textvariable=self.station04Text,command=self.station04Cmd__click,width=15,font=("Arial",10,"bold"))
     self.station04Cmd.grid(row=0,column=3,sticky='nsew')
-    self.station05Cmd = Button(self,textvariable=self.station05Text,command=self.station05Cmd__click,width=16)
+    self.station05Cmd = Button(self,textvariable=self.station05Text,command=self.station05Cmd__click,width=15,font=("Arial",10,"bold"))
     self.station05Cmd.grid(row=0,column=4,sticky='nsew')
-    self.station06Cmd = Button(self,textvariable=self.station06Text,command=self.station06Cmd__click,height=6,)
+    self.station06Cmd = Button(self,textvariable=self.station06Text,command=self.station06Cmd__click,height=6,width=15,font=("Arial",10,"bold"))
     self.station06Cmd.grid(row=1,column=0,sticky='nsew')
-    self.station07Cmd = Button(self,textvariable=self.station07Text,command=self.station07Cmd__click)
+    self.station07Cmd = Button(self,textvariable=self.station07Text,command=self.station07Cmd__click,width=15,font=("Arial",10,"bold"))
     self.station07Cmd.grid(row=1,column=1,sticky='nsew')
-    self.station08Cmd = Button(self,textvariable=self.station08Text,command=self.station08Cmd__click)
+    self.station08Cmd = Button(self,textvariable=self.station08Text,command=self.station08Cmd__click,font=("Arial",10,"bold"))
     self.station08Cmd.grid(row=1,column=2,sticky='nsew')
-    self.station09Cmd = Button(self,textvariable=self.station09Text,command=self.station09Cmd__click)
+    self.station09Cmd = Button(self,textvariable=self.station09Text,command=self.station09Cmd__click,font=("Arial",10,"bold"))
     self.station09Cmd.grid(row=1,column=3,sticky='nsew')
-    self.station10Cmd = Button(self,textvariable=self.station10Text,command=self.station10Cmd__click)
+    self.station10Cmd = Button(self,textvariable=self.station10Text,command=self.station10Cmd__click,font=("Arial",10,"bold"))
     self.station10Cmd.grid(row=1,column=4,sticky='nsew')
-    self.station11Cmd = Button(self,textvariable=self.station11Text,command=self.station11Cmd__click,height=6)
+    self.station11Cmd = Button(self,textvariable=self.station11Text,command=self.station11Cmd__click,height=6,font=("Arial",10,"bold"))
     self.station11Cmd.grid(row=2,column=0,sticky='nsew')
-    self.station12Cmd = Button(self,textvariable=self.station12Text,command=self.station12Cmd__click)
+    self.station12Cmd = Button(self,textvariable=self.station12Text,command=self.station12Cmd__click,font=("Arial",10,"bold"))
     self.station12Cmd.grid(row=2,column=1,sticky='nsew')
-    self.station13Cmd = Button(self,textvariable=self.station13Text,command=self.station13Cmd__click)
+    self.station13Cmd = Button(self,textvariable=self.station13Text,command=self.station13Cmd__click,font=("Arial",10,"bold"))
     self.station13Cmd.grid(row=2,column=2,sticky='nsew')
-    self.station14Cmd = Button(self,textvariable=self.station14Text,command=self.station14Cmd__click)
+    self.station14Cmd = Button(self,textvariable=self.station14Text,command=self.station14Cmd__click,font=("Arial",10,"bold"))
     self.station14Cmd.grid(row=2,column=3,sticky='nsew')
-    self.station15Cmd = Button(self,textvariable=self.station15Text,command=self.station15Cmd__click)
+    self.station15Cmd = Button(self,textvariable=self.station15Text,command=self.station15Cmd__click,font=("Arial",10,"bold"))
     self.station15Cmd.grid(row=2,column=4,sticky='nsew')
-    self.station16Cmd = Button(self,textvariable=self.station16Text,command=self.station16Cmd__click,height=6,bg="yellow")
+    self.station16Cmd = Button(self,textvariable=self.station16Text,command=self.station16Cmd__click,height=6,bg="white",font=("Arial",10,"bold"))
     self.station16Cmd.grid(row=3,column=0,sticky='nsew')
-    self.station17Cmd = Button(self,textvariable=self.station17Text,command=self.station17Cmd__click,bg="white")
+    self.station17Cmd = Button(self,textvariable=self.station17Text,command=self.station17Cmd__click,bg="yellow",font=("Arial",10,"bold"))
     self.station17Cmd.grid(row=3,column=1,sticky='nsew')
-    self.station18Cmd = Button(self,textvariable=self.station18Text,command=self.station18Cmd__click,bg="cyan")
+    self.station18Cmd = Button(self,textvariable=self.station18Text,command=self.station18Cmd__click,bg="cyan",font=("Arial",10,"bold"))
     self.station18Cmd.grid(row=3,column=2,sticky='nsew')
-    self.station19Cmd = Button(self,textvariable=self.station19Text,command=self.station19Cmd__click,fg="white",bg="black")
+    self.station19Cmd = Button(self,textvariable=self.station19Text,command=self.station19Cmd__click,fg="white",bg="black",font=("Arial",10,"bold"))
     self.station19Cmd.grid(row=3,column=3,sticky='nsew')
-    self.station20Cmd = Button(self,textvariable=self.station20Text,command=self.station20Cmd__click)
+    self.station20Cmd = Button(self,textvariable=self.station20Text,command=self.station20Cmd__click,font=("Arial",10,"bold"))
     self.station20Cmd.grid(row=3,column=4,sticky='nsew')
     self.resetButtonColours()
 
@@ -175,7 +178,7 @@ class leakTestWindow(Frame):
       self.station01Cmd["bg"] = "green"
       self.station01Cmd["activebackground"] = "green"
       return
-    self.GT1000.enableStations([1])
+    self.GT1000.enableStations([8])
     self.station01Cmd["bg"] = "yellow"
     self.station01Cmd["activebackground"] = "yellow"
     self.station01Text.set(s + "\nIn Test")
@@ -187,22 +190,23 @@ class leakTestWindow(Frame):
         if self.GT1000.GT_Abort:
           print("{Test Abort}")
           self.station01Cmd["bg"] = "red"
-          self.station01Cmd["activebackground"] = self.station01Cmd["bg"]
+          self.station01Cmd["activebackground"] = "red"
           self.station01Text.set(s + "\nTest Aborted")
           return
         if self.GT1000.GT_Fail:
           print("{Test FAILED}")
           self.station01Cmd["bg"] = "red"
-          self.station01Cmd["activebackground"] = self.station01Cmd["bg"]
+          self.station01Cmd["activebackground"] = "red"
           self.station01Text.set(s + "\nTest FAILED")
           return
         if self.GT1000.GT_Pass:
           print("{Test PASSED}")
           self.station01Cmd["bg"] = "green"
+          self.station01Cmd["activebackground"] = "green"
           self.station01Text.set(s +"\n << PASSED >>")
           return
       self.station01Cmd["bg"] = "red"
-      self.station01Cmd["activebackground"] = self.station01Cmd["bg"]
+      self.station01Cmd["activebackground"] = "red"
       self.station01Text.set(s + "\nAbnormal Completion")
   def station02Cmd__click(self):
     print("2")
@@ -212,9 +216,9 @@ class leakTestWindow(Frame):
       self.station02Cmd["activebackground"] = "green"
       return
     if self.testPart == "4568":
-      self.GT1000.enableStations([2])
+      self.GT1000.enableStations([7])
     else:
-      self.GT1000.enableStations([3])
+      self.GT1000.enableStations([6])
     self.station02Cmd["bg"] = "yellow"
     self.station02Cmd["activebackground"] = "yellow"
     self.station02Text.set(s + "\nIn Test")
@@ -225,20 +229,23 @@ class leakTestWindow(Frame):
         if self.GT1000.GT_Abort:
           print("{Test Abort}")
           self.station02Cmd["bg"] = "red"
+          self.station02Cmd["activebackground"] = "red"
           self.station02Text.set(s + "\nTest Aborted")
           return
         if self.GT1000.GT_Fail:
           print("{Test FAILED}")
           self.station02Cmd["bg"] = "red"
+          self.station02Cmd["activebackground"] = "red"
           self.station02Text.set(s + "\nTest FAILED")
           return
         if self.GT1000.GT_Pass:
           print("{Test PASSED}")
           self.station02Cmd["bg"] = "green"
+          self.station02Cmd["activebackground"] = "green"
           self.station02Text.set(s +"\n << PASSED >>")
           return
       self.station02Cmd["bg"] = "red"
-      self.station02Cmd["activebackground"] = self.station02Cmd["bg"]
+      self.station02Cmd["activebackground"] = "red"
       self.station02Text.set(s + "\nAbnormal Completion")
   def station03Cmd__click(self):
     print("3")
@@ -247,7 +254,7 @@ class leakTestWindow(Frame):
       self.station03Cmd["bg"] = "green"
       self.station03Cmd["activebackground"] = "green"
       return
-    self.GT1000.enableStations([4])
+    self.GT1000.enableStations([5])
     self.station03Cmd["bg"] = "yellow"
     self.station03Cmd["activebackground"] = "yellow"
     self.station03Text.set(s + "\nIn Test")
@@ -258,20 +265,23 @@ class leakTestWindow(Frame):
         if self.GT1000.GT_Abort:
           print("{Test Abort}")
           self.station03Cmd["bg"] = "red"
+          self.station03Cmd["activebackground"] = "red"
           self.station03Text.set(s + "\nTest Aborted")
           return
         if self.GT1000.GT_Fail:
           print("{Test FAILED}")
           self.station03Cmd["bg"] = "red"
+          self.station03Cmd["activebackground"] = "red"
           self.station03Text.set(s + "\nTest FAILED")
           return
         if self.GT1000.GT_Pass:
           print("{Test PASSED}")
           self.station03Cmd["bg"] = "green"
+          self.station03Cmd["activebackground"] = "green"
           self.station03Text.set(s +"\n << PASSED >>")
           return
       self.station03Cmd["bg"] = "red"
-      self.station03Cmd["activebackground"] = self.station03Cmd["bg"]
+      self.station03Cmd["activebackground"] = "red"
       self.station03Text.set(s + "\nAbnormal Completion")
   def station04Cmd__click(self):
     print("4")
@@ -280,7 +290,7 @@ class leakTestWindow(Frame):
       self.station04Cmd["activebackground"] = "green"
       return
     s = self.station04Text.get()
-    self.GT1000.enableStations([5])
+    self.GT1000.enableStations([4])
     self.station04Cmd["bg"] = "yellow"
     self.station04Cmd["activebackground"] = "yellow"
     self.station04Text.set(s + "\nIn Test")
@@ -291,16 +301,19 @@ class leakTestWindow(Frame):
         if self.GT1000.GT_Abort:
           print("{Test Abort}")
           self.station04Cmd["bg"] = "red"
+          self.station04Cmd["activebackground"] = "red"
           self.station04Text.set(s + "\nTest Aborted")
           return
         if self.GT1000.GT_Fail:
           print("{Test FAILED}")
           self.station04Cmd["bg"] = "red"
+          self.station04Cmd["activebackground"] = "red"
           self.station04Text.set(s + "\nTest FAILED")
           return
         if self.GT1000.GT_Pass:
           print("{Test PASSED}")
           self.station04Cmd["bg"] = "green"
+          self.station04Cmd["activebackground"] = "green"
           self.station04Text.set(s +"\n << PASSED >>")
           return
       self.station04Cmd["bg"] = "red"
@@ -313,7 +326,7 @@ class leakTestWindow(Frame):
       self.station05Cmd["activebackground"] = "green"
       return
     s = self.station05Text.get()
-    self.GT1000.enableStations([6])
+    self.GT1000.enableStations([3])
     self.station05Cmd["bg"] = "yellow"
     self.station05Cmd["activebackground"] = "yellow"
     self.station05Text.set(s + "\nIn Test")
@@ -324,20 +337,23 @@ class leakTestWindow(Frame):
         if self.GT1000.GT_Abort:
           print("{Test Abort}")
           self.station05Cmd["bg"] = "red"
+          self.station05Cmd["activebackground"] = "red"
           self.station05Text.set(s + "\nTest Aborted")
           return
         if self.GT1000.GT_Fail:
           print("{Test FAILED}")
           self.station05Cmd["bg"] = "red"
+          self.station05Cmd["activebackground"] = "red"
           self.station05Text.set(s + "\nTest FAILED")
           return
         if self.GT1000.GT_Pass:
           print("{Test PASSED}")
           self.station05Cmd["bg"] = "green"
+          self.station05Cmd["activebackground"] = "green"
           self.station05Text.set(s +"\n << PASSED >>")
           return
       self.station05Cmd["bg"] = "red"
-      self.station05Cmd["activebackground"] = self.station05Cmd["bg"]
+      self.station05Cmd["activebackground"] = "red"
       self.station05Text.set(s + "\nAbnormal Completion")
   def station06Cmd__click(self):
     print("6")
@@ -346,7 +362,7 @@ class leakTestWindow(Frame):
       self.station06Cmd["activebackground"] = "green"
       return
     s = self.station06Text.get()
-    self.GT1000.enableStations([7])
+    self.GT1000.enableStations([2])
     self.station06Cmd["bg"] = "yellow"
     self.station06Cmd["activebackground"] = "yellow"
     self.station06Text.set(s + "\nIn Test")
@@ -357,20 +373,23 @@ class leakTestWindow(Frame):
         if self.GT1000.GT_Abort:
           print("{Test Abort}")
           self.station06Cmd["bg"] = "red"
+          self.station06Cmd["activebackground"] = "red"
           self.station06Text.set(s + "\nTest Aborted")
           return
         if self.GT1000.GT_Fail:
           print("{Test FAILED}")
           self.station06Cmd["bg"] = "red"
+          self.station06Cmd["activebackground"] = "red"
           self.station06Text.set(s + "\nTest FAILED")
           return
         if self.GT1000.GT_Pass:
           print("{Test PASSED}")
           self.station06Cmd["bg"] = "green"
+          self.station06Cmd["activebackground"] = "green"
           self.station06Text.set(s +"\n << PASSED >>")
           return
       self.station06Cmd["bg"] = "red"
-      self.station06Cmd["activebackground"] = self.station06Cmd["bg"]
+      self.station06Cmd["activebackground"] = "red"
       self.station06Text.set(s + "\nAbnormal Completion")
   def station07Cmd__click(self):
     print("7")
@@ -379,7 +398,7 @@ class leakTestWindow(Frame):
       self.station07Cmd["activebackground"] = "green"
       return
     s = self.station07Text.get()
-    self.GT1000.enableStations([8])
+    self.GT1000.enableStations([1])
     self.station07Cmd["bg"] = "yellow"
     self.station07Cmd["activebackground"] = "yellow"
     self.station07Text.set(s + "\nIn Test")
@@ -390,20 +409,23 @@ class leakTestWindow(Frame):
         if self.GT1000.GT_Abort:
           print("{Test Abort}")
           self.station07Cmd["bg"] = "red"
+          self.station07Cmd["activebackground"] = "red"
           self.station07Text.set(s + "\nTest Aborted")
           return
         if self.GT1000.GT_Fail:
           print("{Test FAILED}")
           self.station07Cmd["bg"] = "red"
+          self.station07Cmd["activebackground"] = "red"
           self.station07Text.set(s + "\nTest FAILED")
           return
         if self.GT1000.GT_Pass:
           print("{Test PASSED}")
           self.station07Cmd["bg"] = "green"
+          self.station07Cmd["activebackground"] = "green"
           self.station07Text.set(s +"\n << PASSED >>")
           return
       self.station07Cmd["bg"] = "red"
-      self.station07Cmd["activebackground"] = self.station07Cmd["bg"]
+      self.station07Cmd["activebackground"] = "red"
       self.station07Text.set(s + "\nAbnormal Completion")
   def station08Cmd__click(self):
     print("8")
@@ -412,9 +434,9 @@ class leakTestWindow(Frame):
       self.station08Cmd["activebackground"] = "green"
       return
     if self.testPart == "4568":
-      self.GT1000.enableStations([9])
-    else:
       self.GT1000.enableStations([10])
+    else:
+      self.GT1000.enableStations([9])
     s = self.station08Text.get()
     self.station08Cmd["bg"] = "yellow"
     self.station08Cmd["activebackground"] = "yellow"
@@ -426,20 +448,23 @@ class leakTestWindow(Frame):
         if self.GT1000.GT_Abort:
           print("{Test Abort}")
           self.station08Cmd["bg"] = "red"
+          self.station08Cmd["activebackground"] = "red"
           self.station08Text.set(s + "\nTest Aborted")
           return
         if self.GT1000.GT_Fail:
           print("{Test FAILED}")
           self.station08Cmd["bg"] = "red"
+          self.station08Cmd["activebackground"] = "red"
           self.station08Text.set(s + "\nTest FAILED")
           return
         if self.GT1000.GT_Pass:
           print("{Test PASSED}")
           self.station08Cmd["bg"] = "green"
+          self.station08Cmd["activebackground"] = "green"
           self.station08Text.set(s +"\n << PASSED >>")
           return
       self.station08Cmd["bg"] = "red"
-      self.station08Cmd["activebackground"] = self.station08Cmd["bg"]
+      self.station08Cmd["activebackground"] = "red"
       self.station08Text.set(s + "\nAbnormal Completion")
   def station09Cmd__click(self):
     print("9")
@@ -459,20 +484,23 @@ class leakTestWindow(Frame):
         if self.GT1000.GT_Abort:
           print("{Test Abort}")
           self.station09Cmd["bg"] = "red"
+          self.station09Cmd["activebackground"] = "red"
           self.station09Text.set(s + "\nTest Aborted")
           return
         if self.GT1000.GT_Fail:
           print("{Test FAILED}")
           self.station09Cmd["bg"] = "red"
+          self.station09Cmd["activebackground"] = "red"
           self.station09Text.set(s + "\nTest FAILED")
           return
         if self.GT1000.GT_Pass:
           print("{Test PASSED}")
           self.station09Cmd["bg"] = "green"
+          self.station09Cmd["activebackground"] = "green"
           self.station09Text.set(s +"\n << PASSED >>")
           return
       self.station09Cmd["bg"] = "red"
-      self.station09Cmd["activebackground"] = self.station09Cmd["bg"]
+      self.station09Cmd["activebackground"] = "red"
       self.station09Text.set(s + "\nAbnormal Completion")
   def station10Cmd__click(self):
     print("10")
@@ -492,20 +520,23 @@ class leakTestWindow(Frame):
         if self.GT1000.GT_Abort:
           print("{Test Abort}")
           self.station10Cmd["bg"] = "red"
+          self.station10Cmd["activebackground"] = "red"
           self.station10Text.set(s + "\nTest Aborted")
           return
         if self.GT1000.GT_Fail:
           print("{Test FAILED}")
           self.station10Cmd["bg"] = "red"
+          self.station10Cmd["activebackground"] = "red"
           self.station10Text.set(s + "\nTest FAILED")
           return
         if self.GT1000.GT_Pass:
           print("{Test PASSED}")
           self.station10Cmd["bg"] = "green"
+          self.station10Cmd["activebackground"] = "green"
           self.station10Text.set(s +"\n << PASSED >>")
           return
       self.station10Cmd["bg"] = "red"
-      self.station10Cmd["activebackground"] = self.station10Cmd["bg"]
+      self.station10Cmd["activebackground"] = "red"
       self.station10Text.set(s + "\nAbnormal Completion")
   def station11Cmd__click(self):
     print("11")
@@ -525,20 +556,23 @@ class leakTestWindow(Frame):
         if self.GT1000.GT_Abort:
           print("{Test Abort}")
           self.station11Cmd["bg"] = "red"
+          self.station11Cmd["activebackground"] = "red"
           self.station11Text.set(s + "\nTest Aborted")
           return
         if self.GT1000.GT_Fail:
           print("{Test FAILED}")
           self.station11Cmd["bg"] = "red"
+          self.station11Cmd["activebackground"] = "red"
           self.station11Text.set(s + "\nTest FAILED")
           return
         if self.GT1000.GT_Pass:
           print("{Test PASSED}")
           self.station11Cmd["bg"] = "green"
+          self.station11Cmd["activebackground"] = "green"
           self.station11Text.set(s +"\n << PASSED >>")
           return
       self.station11Cmd["bg"] = "red"
-      self.station11Cmd["activebackground"] = self.station11Cmd["bg"]
+      self.station11Cmd["activebackground"] = "red"
       self.station11Text.set(s + "\nAbnormal Completion")
   def station12Cmd__click(self):
     print("12")
@@ -558,20 +592,23 @@ class leakTestWindow(Frame):
         if self.GT1000.GT_Abort:
           print("{Test Abort}")
           self.station12Cmd["bg"] = "red"
+          self.station12Cmd["activebackground"] = "red"
           self.station12Text.set(s + "\nTest Aborted")
           return
         if self.GT1000.GT_Fail:
           print("{Test FAILED}")
           self.station12Cmd["bg"] = "red"
+          self.station12Cmd["activebackground"] = "red"
           self.station12Text.set(s + "\nTest FAILED")
           return
         if self.GT1000.GT_Pass:
           print("{Test PASSED}")
           self.station12Cmd["bg"] = "green"
+          self.station12Cmd["activebackground"] = "green"
           self.station12Text.set(s +"\n << PASSED >>")
           return
       self.station12Cmd["bg"] = "red"
-      self.station12Cmd["activebackground"] = self.station12Cmd["bg"]
+      self.station12Cmd["activebackground"] = "red"
       self.station12Text.set(s + "\nAbnormal Completion")
   def station13Cmd__click(self):
     print("13")
@@ -591,20 +628,23 @@ class leakTestWindow(Frame):
         if self.GT1000.GT_Abort:
           print("{Test Abort}")
           self.station13Cmd["bg"] = "red"
+          self.station13Cmd["activebackground"] = "red"
           self.station13Text.set(s + "\nTest Aborted")
           return
         if self.GT1000.GT_Fail:
           print("{Test FAILED}")
           self.station13Cmd["bg"] = "red"
+          self.station13Cmd["activebackground"] = "red"
           self.station13Text.set(s + "\nTest FAILED")
           return
         if self.GT1000.GT_Pass:
           print("{Test PASSED}")
           self.station13Cmd["bg"] = "green"
+          self.station13Cmd["activebackground"] = "green"
           self.station13Text.set(s +"\n << PASSED >>")
           return
       self.station13Cmd["bg"] = "red"
-      self.station13Cmd["activebackground"] = self.station13Cmd["bg"]
+      self.station13Cmd["activebackground"] = "red"
       self.station13Text.set(s + "\nAbnormal Completion")
   def station14Cmd__click(self):
     print("14")
@@ -624,20 +664,23 @@ class leakTestWindow(Frame):
         if self.GT1000.GT_Abort:
           print("{Test Abort}")
           self.station14Cmd["bg"] = "red"
+          self.station14Cmd["activebackground"] = "red"
           self.station14Text.set(s + "\nTest Aborted")
           return
         if self.GT1000.GT_Fail:
           print("{Test FAILED}")
           self.station14Cmd["bg"] = "red"
+          self.station14Cmd["activebackground"] = "red"
           self.station14Text.set(s + "\nTest FAILED")
           return
         if self.GT1000.GT_Pass:
           print("{Test PASSED}")
           self.station14Cmd["bg"] = "green"
+          self.station14Cmd["activebackground"] = "green"
           self.station14Text.set(s +"\n << PASSED >>")
           return
       self.station14Cmd["bg"] = "red"
-      self.station14Cmd["activebackground"] = self.station14Cmd["bg"]
+      self.station14Cmd["activebackground"] = "red"
       self.station14Text.set(s + "\nAbnormal Completion")
   def station15Cmd__click(self):
     print("15")
@@ -650,37 +693,37 @@ class leakTestWindow(Frame):
     print("<LOAD 4568>")
     self.testPart = "4568"
     self.resetButtonColours()
-    self.station01Text.set("Test LED_L")
-    self.station02Text.set("Test WIPER")
-    self.station03Text.set("Test SNS 1")
-    self.station04Text.set("Test AFB 1")
-    self.station05Text.set("Test ACM 1")
-    self.station06Text.set("Test DLC 1")
-    self.station07Text.set("Test DLC 2")
-    self.station08Text.set("Test PWR_FLIP")
-    self.station09Text.set("Test WASHER")
-    self.station10Text.set("Test KEY_PAD")
-    self.station11Text.set("Test LED_R")
-    self.station12Text.set("Test LED_HOOD")
-    self.station13Text.set("Test LED_BUMPER")
-    self.station14Text.set("Test LED_ROOF")
+    self.station01Text.set("Press to Test\nLED_L")
+    self.station02Text.set("Press to Test\nWIPER")
+    self.station03Text.set("Press to Test\nSNS 1")
+    self.station04Text.set("Press to Test\nAFB 1")
+    self.station05Text.set("Press to Test\nACM 1")
+    self.station06Text.set("Press to Test\nDLC 1")
+    self.station07Text.set("Press to Test\nDLC 2")
+    self.station08Text.set("Press to Test\nPWR_FLIP")
+    self.station09Text.set("Press to Test\nWASHER")
+    self.station10Text.set("Press to Test\nKEY_PAD")
+    self.station11Text.set("Press to Test\nLED_R")
+    self.station12Text.set("Press to Test\nLED_HOOD")
+    self.station13Text.set("Press to Test\nLED_ROOF")
+    self.station14Text.set("Press to Test\nLED_BUMPER")
     self.station15Text.set("")
 
   def station17Cmd__click(self):
     print("<LOAD 4569>")
     self.testPart = "4569"
     self.resetButtonColours()
-    self.station01Text.set("Test HELMET_FAN")
-    self.station02Text.set("Test AFB 2")
+    self.station01Text.set("Press to Test\nHELMET_FAN")
+    self.station02Text.set("Press to Test\nAFB 2")
     self.station03Text.set("")
     self.station04Text.set("")
-    self.station05Text.set("Test ACM 2")
+    self.station05Text.set("Press to Test\nACM 2")
     self.station06Text.set("")
-    self.station07Text.set("Test LED_CHASE_1")
-    self.station08Text.set("Test LED_CHASE_2")
+    self.station07Text.set("Press to Test\nLED_CHASE_1")
+    self.station08Text.set("Press to Test\nLED_CHASE_2")
     self.station09Text.set("")
-    self.station10Text.set("Test LED_CHASE_3")
-    self.station11Text.set("Test PARTICULE")
+    self.station10Text.set("Press to Test\nLED_CHASE_3")
+    self.station11Text.set("Press to Test\nPARTICULE")
     self.station12Text.set("")
     self.station13Text.set("")
     self.station14Text.set("")
