@@ -866,6 +866,10 @@ class leakTestWindow(Frame):
 #    time.sleep(0.5)
     self.GT1000.read_inputs()
     self.update()
+
+    # Try exhausting all stations
+    self.GT1000.enableStations([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])
+
     self.checkForPass()
     self.testingAll = False
 
