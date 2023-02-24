@@ -31,6 +31,7 @@ class GT1000:
   EXT_IN_START = 6
   EXT_IN_ABORT = 13
   EXT_IN_PART2 = 19
+  EXT_IN_CAMOK = 26
 
   EXT_OUT_PASS = 8
   EXT_OUT_FAIL = 24
@@ -49,6 +50,9 @@ class GT1000:
   GT_UserOut = False
   GT_LTStart = False
   GT_LTAbort = False
+  GT_CameraOk = False
+  GT_CameraOP2 = False
+  GT_CameraOP3 = False
 
   GTchip0int = [0,0,0]
   GTchip1int = [0,0,0]
@@ -91,6 +95,7 @@ class GT1000:
     GPIO.setup(self.EXT_IN_START, GPIO.IN)
     GPIO.setup(self.EXT_IN_ABORT, GPIO.IN)
     GPIO.setup(self.EXT_IN_PART2, GPIO.IN)
+    GPIO.setup(self.EXT_IN_CAMOK, GPIO.IN)
 
     GPIO.setup(self.EXT_OUT_START, GPIO.OUT, initial=GPIO.LOW)
     GPIO.setup(self.EXT_OUT_ABORT, GPIO.OUT, initial=GPIO.LOW)
@@ -114,7 +119,9 @@ class GT1000:
     self.GT_Start = (GPIO.input(self.EXT_IN_START) == 0)
     self.GT_Abort = (GPIO.input(self.EXT_IN_ABORT) == 0)
     self.GT_PartSelect = (GPIO.input(self.EXT_IN_PART2) == 0)
-    print(">>Start: ", self.GT_Start, "  Part Select: ", self.GT_PartSelect, "  Abort: ",self.GT_Abort)
+#    self.GT_CameraOk = (GPIO.input(self.EXT_IN_CAMOK) == 0)
+
+    print(">>Start: ", self.GT_Start, "  Part Select: ", self.GT_PartSelect, "  Abort: ",self.GT_Abort, "  Camera: ", GT_CameraOk)
     try:
       self.GTchip0int[0] = 255 - self.__I2C.read_byte(self.CHIP000)
       #self.GTchip2int[0] = self.__I2C.read_byte(self.CHIP010)
@@ -127,6 +134,8 @@ class GT1000:
     self.GT_InTest = self.GTchip0int[0] & 0x01
     self.GT_Pass = self.GTchip0int[0] & 0x02
     self.GT_Fail = self.GTchip0int[0] & 0x04
+#    self.GT_CameraOP2 = self.GTchip0int[0] & 0xF0
+#    self.GT_CameraOP3 = self.GTchip0int[0] & 0x80
     GPIO.output(self.EXT_OUT_ABORT, self.GT_Abort)
     print(">>In Test: ", self.GT_InTest, "  Pass: ", self.GT_Pass, "  Fail: ", self.GT_Fail)
     print("[end call] read_inputs()")

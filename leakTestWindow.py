@@ -43,6 +43,16 @@ class leakTestWindow(Frame):
       self.GT1000.enableStations([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])
     self.after(500,self.periodicUpdate)
 
+    # Show camera status
+ #   if self.GT1000.GT_CameraOK:
+ #     self.station15Cmd["bg"] = "green"
+ #     self.station15Cmd["activebackground"] = "green"
+ #   else:
+ #     self.station15Cmd["bg"] = "red"
+ #     self.station15Cmd["activebackground"] = "red"
+
+
+
   def updateInputs(self):
     self.GT1000.read_inputs()
 
@@ -707,7 +717,7 @@ class leakTestWindow(Frame):
     self.station12Text.set("Press to Test\nLED_HOOD")
     self.station13Text.set("Press to Test\nLED_ROOF")
     self.station14Text.set("Press to Test\nLED_BUMPER")
-    self.station15Text.set("")
+    self.station15Text.set("Camera")
 
   def station17Cmd__click(self):
     print("<LOAD 4569>")
@@ -727,7 +737,7 @@ class leakTestWindow(Frame):
     self.station12Text.set("")
     self.station13Text.set("")
     self.station14Text.set("")
-    self.station15Text.set("")
+    self.station15Text.set("Camera")
 
   def station18Cmd__click(self):
     print("<TEST ALL>")
