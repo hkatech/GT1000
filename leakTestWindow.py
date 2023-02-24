@@ -44,24 +44,29 @@ class leakTestWindow(Frame):
     self.after(500,self.periodicUpdate)
 
     # Show camera status
-    if self.GT1000.GT_CameraOk:
+    if self.testPart == "4569":
       self.station15Cmd["bg"] = "green"
       self.station15Cmd["activebackground"] = "green"
-      self.station15Text.set("Fuse Box OK")
-
+      self.station15Text.set("Press to Release\nIf All OK")
     else:
-      self.station15Cmd["bg"] = "red"
-      self.station15Cmd["activebackground"] = "red"
-      if self.GT1000.GT_CameraOP3:
-        self.station15Text.set("Fuses OK")
+      if self.GT1000.GT_CameraOk:
+        self.station15Cmd["bg"] = "green"
+        self.station15Cmd["activebackground"] = "green"
+        self.station15Text.set("Fuse Box OK\n\nPress to Release\nIf All OK")
+
       else:
-        self.station15Text.set("Fuses << BAD >>")
-      if self.GT1000.GT_CameraOP2:
-        s = self.station15Text.get()
-        self.station15Text.set(s + "\nRelay OK")
-      else:
-        self.station15Text.set(self.station15Text.get() + "\nRelay << BAD >>")
-      self.station15Text.set(self.station15Text.get() + "\n\nPress to Check")
+        self.station15Cmd["bg"] = "red"
+        self.station15Cmd["activebackground"] = "red"
+        if self.GT1000.GT_CameraOP3:
+          self.station15Text.set("Fuses OK")
+        else:
+          self.station15Text.set("Fuses << BAD >>")
+        if self.GT1000.GT_CameraOP2:
+          s = self.station15Text.get()
+          self.station15Text.set(s + "\nRelay OK")
+        else:
+          self.station15Text.set(self.station15Text.get() + "\nRelay << BAD >>")
+        self.station15Text.set(self.station15Text.get() + "\n\nPress to Check")
 
 
 
@@ -917,9 +922,13 @@ class leakTestWindow(Frame):
        (self.station12Cmd["bg"] == "green") and \
        (self.station13Cmd["bg"] == "green") and \
        (self.station14Cmd["bg"] == "green") and \
-       (self.station15Cmd["bg"] == "green"):
+       ((self.station15Cmd["bg"] == "green") or (self.testPart == "4569")):
       print("*** All Tests PASSED ***")
       self.GT1000.pulseRelease()
+    if self.testPart == "4568":
+      self.GT1000.enableStations([7])
+    else:
+      self.GT1000.enableStations([6])
 
   def station19Cmd__click(self):
     print("<RESET>")
