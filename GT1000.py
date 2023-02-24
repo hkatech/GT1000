@@ -33,12 +33,13 @@ class GT1000:
   EXT_IN_PART2 = 19
   EXT_IN_CAMOK = 26
 
-  EXT_OUT_PASS = 8
-  EXT_OUT_FAIL = 24
   EXT_OUT_INTEST = 23
   EXT_OUT_LATCHRELEASE = 14
   EXT_OUT_START = 23
   EXT_OUT_ABORT = 18
+  EXT_OUT_CAMTRIGGER = 8
+  EXT_OUT_CAMCLK = 15
+  EXT_OUT_CAMDATA = 24
 
   GT_Start = False
   GT_Abort = False
@@ -99,8 +100,10 @@ class GT1000:
 
     GPIO.setup(self.EXT_OUT_START, GPIO.OUT, initial=GPIO.LOW)
     GPIO.setup(self.EXT_OUT_ABORT, GPIO.OUT, initial=GPIO.LOW)
-    GPIO.setup(self.EXT_OUT_INTEST, GPIO.OUT, initial=GPIO.LOW)
     GPIO.setup(self.EXT_OUT_LATCHRELEASE, GPIO.OUT, initial=GPIO.LOW)
+    GPIO.setup(self.EXT_OUT_CAMTRIGGER, GPIO.OUT, initial=GPIO.LOW)
+    GPIO.setup(self.EXT_OUT_CAMCLK, GPIO.OUT, initial=GPIO.LOW)
+    GPIO.setup(self.EXT_OUT_CAMDATA, GPIO.OUT, initial=GPIO.LOW)
     print("[end call] __GPIO_Setup()")
 
   def getLatchState(self):
@@ -119,9 +122,9 @@ class GT1000:
     self.GT_Start = (GPIO.input(self.EXT_IN_START) == 0)
     self.GT_Abort = (GPIO.input(self.EXT_IN_ABORT) == 0)
     self.GT_PartSelect = (GPIO.input(self.EXT_IN_PART2) == 0)
-#    self.GT_CameraOk = (GPIO.input(self.EXT_IN_CAMOK) == 0)
+    self.GT_CameraOk = (GPIO.input(self.EXT_IN_CAMOK) == 0)
 
-    print(">>Start: ", self.GT_Start, "  Part Select: ", self.GT_PartSelect, "  Abort: ",self.GT_Abort, "  Camera: ", GT_CameraOk)
+    print(">>Start: ", self.GT_Start, "  Part Select: ", self.GT_PartSelect, "  Abort: ",self.GT_Abort)
     try:
       self.GTchip0int[0] = 255 - self.__I2C.read_byte(self.CHIP000)
       #self.GTchip2int[0] = self.__I2C.read_byte(self.CHIP010)
@@ -134,8 +137,8 @@ class GT1000:
     self.GT_InTest = self.GTchip0int[0] & 0x01
     self.GT_Pass = self.GTchip0int[0] & 0x02
     self.GT_Fail = self.GTchip0int[0] & 0x04
-#    self.GT_CameraOP2 = self.GTchip0int[0] & 0xF0
-#    self.GT_CameraOP3 = self.GTchip0int[0] & 0x80
+    self.GT_CameraOP2 = self.GTchip0int[0] & 0xF0
+    self.GT_CameraOP3 = self.GTchip0int[0] & 0x80
     GPIO.output(self.EXT_OUT_ABORT, self.GT_Abort)
     print(">>In Test: ", self.GT_InTest, "  Pass: ", self.GT_Pass, "  Fail: ", self.GT_Fail)
     print("[end call] read_inputs()")
@@ -241,6 +244,14 @@ class GT1000:
     GPIO.output(self.EXT_OUT_ABORT, 1)
     sleep(0.8)
     GPIO.output(self.EXT_OUT_ABORT, 0)
+
+  def triggerCamera(self):
+    print("[call] triggerCamera()")
+    GPIO.output(self.EXT_OUT_CAMTRIGGER, 1)
+    time.sleep(0.5)
+    GPIO.output(self.EXT_OUT_CAMTRIGGER, 0)
+    print("[end call] pulseRelease()")
+
 
   def pulseRelease(self):
     print("[call] pulseRelease()")

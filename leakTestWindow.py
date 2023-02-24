@@ -44,12 +44,25 @@ class leakTestWindow(Frame):
     self.after(500,self.periodicUpdate)
 
     # Show camera status
- #   if self.GT1000.GT_CameraOK:
- #     self.station15Cmd["bg"] = "green"
- #     self.station15Cmd["activebackground"] = "green"
- #   else:
- #     self.station15Cmd["bg"] = "red"
- #     self.station15Cmd["activebackground"] = "red"
+    if self.GT1000.GT_CameraOk:
+      self.station15Cmd["bg"] = "green"
+      self.station15Cmd["activebackground"] = "green"
+      self.station15Text.set("Fuse Box OK")
+
+    else:
+      self.station15Cmd["bg"] = "red"
+      self.station15Cmd["activebackground"] = "red"
+      if self.GT1000.GT_CameraOP3:
+        self.station15Text.set("Fuses OK")
+      else:
+        self.station15Text.set("Fuses << BAD >>")
+      if self.GT1000.GT_CameraOP2:
+        s = self.station15Text.get()
+        self.station15Text.set(s + "\nRelay OK")
+      else:
+        self.station15Text.set(self.station15Text.get() + "\nRelay << BAD >>")
+      self.station15Text.set(self.station15Text.get() + "\n\nPress to Check")
+
 
 
 
@@ -694,10 +707,16 @@ class leakTestWindow(Frame):
       self.station14Text.set(s + "\nAbnormal Completion")
   def station15Cmd__click(self):
     print("15")
-    if self.station15Text.get() == "":
-      self.station15Cmd["bg"] = "green"
-      self.station15Cmd["activebackground"] = "green"
-      return
+# Old handling for non-entities
+#    if self.station15Text.get() == "":
+#      self.station15Cmd["bg"] = "green"
+#      self.station15Cmd["activebackground"] = "green"
+#      return
+    self.GT1000.triggerCamera()
+    time.sleep(0.5)
+    self.update()
+    self.checkForPass()
+
 
   def station16Cmd__click(self):
     print("<LOAD 4568>")
@@ -897,7 +916,8 @@ class leakTestWindow(Frame):
        (self.station11Cmd["bg"] == "green") and \
        (self.station12Cmd["bg"] == "green") and \
        (self.station13Cmd["bg"] == "green") and \
-       (self.station14Cmd["bg"] == "green"):
+       (self.station14Cmd["bg"] == "green") and \
+       (self.station15Cmd["bg"] == "green"):
       print("*** All Tests PASSED ***")
       self.GT1000.pulseRelease()
 
@@ -934,3 +954,18 @@ class leakTestWindow(Frame):
     self.station13Cmd["bg"]="grey90"
     self.station14Cmd["bg"]="grey90"
     self.station15Cmd["bg"]="grey90"
+    self.station01Cmd["activebackground"]="grey90"
+    self.station02Cmd["activebackground"]="grey90"
+    self.station03Cmd["activebackground"]="grey90"
+    self.station04Cmd["activebackground"]="grey90"
+    self.station05Cmd["activebackground"]="grey90"
+    self.station06Cmd["activebackground"]="grey90"
+    self.station07Cmd["activebackground"]="grey90"
+    self.station08Cmd["activebackground"]="grey90"
+    self.station09Cmd["activebackground"]="grey90"
+    self.station10Cmd["activebackground"]="grey90"
+    self.station11Cmd["activebackground"]="grey90"
+    self.station12Cmd["activebackground"]="grey90"
+    self.station13Cmd["activebackground"]="grey90"
+    self.station14Cmd["activebackground"]="grey90"
+    self.station15Cmd["activebackground"]="grey90"
