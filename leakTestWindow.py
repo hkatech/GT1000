@@ -739,7 +739,8 @@ class leakTestWindow(Frame):
     self.station10Text.set("Press to Test\nKEY_PAD")
     self.station11Text.set("Press to Test\nLED_R")
     self.station12Text.set("Press to Test\nLED_HOOD")
-    self.station13Text.set("Press to Test\nLED_ROOF")
+    self.station13Text.set("")
+#    self.station13Text.set("Press to Test\nLED_ROOF")
     self.station14Text.set("Press to Test\nLED_BUMPER")
     self.station15Text.set("Camera")
 
