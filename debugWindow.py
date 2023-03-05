@@ -20,7 +20,7 @@ class debugWindow(Frame):
     self.StartChkStatus.set(GT1000.GT_Start)
     self.AbortChkStatus.set(GT1000.GT_Abort)
     self.LeakChkStatus.set(GT1000.GT_LK)
-    self.User2ChkStatus.set(GT1000.GT_UserIn)
+    self.User2ChkStatus.set(GT1000.GT_CameraOk)
     self.bank1chip0Text.set(GT1000.GTchip0int[0])
     self.bank1chip1Text.set(GT1000.GTchip1int[0])
     self.bank1chip2Text.set(GT1000.GTchip2int[0])

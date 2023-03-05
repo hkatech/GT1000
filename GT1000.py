@@ -104,6 +104,10 @@ class GT1000:
     GPIO.setup(self.EXT_OUT_CAMTRIGGER, GPIO.OUT, initial=GPIO.LOW)
     GPIO.setup(self.EXT_OUT_CAMCLK, GPIO.OUT, initial=GPIO.LOW)
     GPIO.setup(self.EXT_OUT_CAMDATA, GPIO.OUT, initial=GPIO.LOW)
+    GPIO.setup(self.BANKS[0], GPIO.OUT, initial=GPIO.LOW)
+    GPIO.setup(self.BANKS[1], GPIO.OUT, initial=GPIO.LOW)
+    GPIO.setup(self.BANKS[2], GPIO.OUT, initial=GPIO.LOW)
+    GPIO.setup(self.BANKS[3], GPIO.OUT, initial=GPIO.LOW)
     print("[end call] __GPIO_Setup()")
 
   def getLatchState(self):
@@ -145,6 +149,11 @@ class GT1000:
 
   def write_output(self, addy, data):
     self.__I2C.write_byte_data(addy, 1, data)
+
+  def setBank(self, val):
+    for c in self.BANKS:
+      GPIO.output(c,0)
+    GPIO.output(self.CHIPS[val+1],1)
 
   def resetAllOutputs(self):
     print("[call] resetAllOutputs()")
