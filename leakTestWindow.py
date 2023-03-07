@@ -18,11 +18,14 @@ class leakTestWindow(Frame):
         self.lastAbortTick = time.time()
     except Exception as e:
       pass
-    if (time.time() - self.lastAbortTick) > 5:
-      if not self.GT1000.getLatchState():
-        self.GT1000.latchReleaseEn()
-    elif self.GT1000.getLatchState():
-      self.GT1000.latchReleaseDis()
+    try:
+      if (time.time() - self.lastAbortTick) > 5:
+        if not self.GT1000.getLatchState():
+          self.GT1000.latchReleaseEn()
+      elif self.GT1000.getLatchState():
+        self.GT1000.latchReleaseDis()
+    except Exception as e:
+      pass
 
     # Update part number based on selector switch
 #    if self.testPart == "4568":
@@ -55,8 +58,8 @@ class leakTestWindow(Frame):
     self.pack(fill=BOTH, expand=1)
 
 
-    self.myScroll = Scrollbar(self)
-    self.myScroll.grid(row=0,column=0)
+#    self.myScroll = Scrollbar(self)
+ #   self.myScroll.grid(row=0,column=0)
 
     self.GT1000 = GT1000()
     self.testPart = "Nothing"
@@ -369,338 +372,351 @@ class leakTestWindow(Frame):
     gridWidth = 11
     gridHeight = 1
     rowIndex = 0
-    fontHeight = 1
+    fontHeight = 8
 
 
-    self.test00Cmd = Button(self, textvariable=self.test00Text,command=self.test00Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.canvasScroll = Scrollbar(self, orient=VERTICAL, width=50)
+    self.canvasScroll.pack(fill=Y, side=RIGHT, expand=FALSE)
+    self.mainCanvas = Canvas(self,bd=0,highlightthickness=0,yscrollcommand=self.canvasScroll.set)
+    self.mainCanvas.pack(side=LEFT, fill=BOTH, expand=TRUE)
+    self.canvasScroll.config(command=self.mainCanvas.yview)
+    self.mainCanvas.xview_moveto(0)
+    self.mainCanvas.yview_moveto(0)
+
+    self.mainFrame = Frame(self)
+    self.mainCanvas.create_window(0,0,window=self.mainFrame,anchor=NW)
+
+
+    self.test00Cmd = Button(self.mainFrame, textvariable=self.test00Text,command=self.test00Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test00Cmd.grid(row=0,column=7,sticky='w')
-    self.test0001Cmd = Button(self, textvariable=self.test0001Text,command=self.test0001Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0001Cmd = Button(self.mainFrame, textvariable=self.test0001Text,command=self.test0001Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0001Cmd.grid(row=1,column=7,sticky='w')
 
     # Test 1
-    self.test01Cmd = Button(self, textvariable=self.test01Text,command=self.test01Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test01Cmd = Button(self.mainFrame, textvariable=self.test01Text,command=self.test01Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test01Cmd.grid(row=0,column=0,sticky='w')
-    self.test0101Cmd = Button(self, textvariable=self.test0101Text,command=self.test0101Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0101Cmd = Button(self.mainFrame, textvariable=self.test0101Text,command=self.test0101Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0101Cmd.grid(row=0,column=1,sticky='w')
 
     # Test 2
     rowIndex += 1
-    self.test02Cmd = Button(self, textvariable=self.test02Text,command=self.test02Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test02Cmd = Button(self.mainFrame, textvariable=self.test02Text,command=self.test02Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test02Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test0201Cmd = Button(self, textvariable=self.test0201Text,command=self.test0201Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0201Cmd = Button(self.mainFrame, textvariable=self.test0201Text,command=self.test0201Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0201Cmd.grid(row=rowIndex,column=1,sticky='w')
-    self.test0202Cmd = Button(self, textvariable=self.test0202Text,command=self.test0202Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0202Cmd = Button(self.mainFrame, textvariable=self.test0202Text,command=self.test0202Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0202Cmd.grid(row=rowIndex,column=2,sticky='w')
-    self.test0203Cmd = Button(self, textvariable=self.test0203Text,command=self.test0203Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0203Cmd = Button(self.mainFrame, textvariable=self.test0203Text,command=self.test0203Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0203Cmd.grid(row=rowIndex,column=3,sticky='w')
-    self.test0204Cmd = Button(self, textvariable=self.test0204Text,command=self.test0204Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0204Cmd = Button(self.mainFrame, textvariable=self.test0204Text,command=self.test0204Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0204Cmd.grid(row=rowIndex,column=4,sticky='w')
-    self.test0205Cmd = Button(self, textvariable=self.test0205Text,command=self.test0205Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0205Cmd = Button(self.mainFrame, textvariable=self.test0205Text,command=self.test0205Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0205Cmd.grid(row=rowIndex,column=5,sticky='w')
     rowIndex += 1
-    self.test0206Cmd = Button(self, textvariable=self.test0206Text,command=self.test0206Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0206Cmd = Button(self.mainFrame, textvariable=self.test0206Text,command=self.test0206Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0206Cmd.grid(row=rowIndex,column=1,sticky='w')
-    self.test0207Cmd = Button(self, textvariable=self.test0207Text,command=self.test0207Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0207Cmd = Button(self.mainFrame, textvariable=self.test0207Text,command=self.test0207Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0207Cmd.grid(row=rowIndex,column=2,sticky='w')
-    self.test0208Cmd = Button(self, textvariable=self.test0208Text,command=self.test0208Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0208Cmd = Button(self.mainFrame, textvariable=self.test0208Text,command=self.test0208Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0208Cmd.grid(row=rowIndex,column=3,sticky='w')
-    self.test0209Cmd = Button(self, textvariable=self.test0209Text,command=self.test0209Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0209Cmd = Button(self.mainFrame, textvariable=self.test0209Text,command=self.test0209Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0209Cmd.grid(row=rowIndex,column=4,sticky='w')
 
     # Test 3
     rowIndex += 1
-    self.test03Cmd = Button(self, textvariable=self.test03Text,command=self.test03Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test03Cmd = Button(self.mainFrame, textvariable=self.test03Text,command=self.test03Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test03Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test0301Cmd = Button(self, textvariable=self.test0301Text,command=self.test0301Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0301Cmd = Button(self.mainFrame, textvariable=self.test0301Text,command=self.test0301Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0301Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 4
     rowIndex += 1
-    self.test04Cmd = Button(self, textvariable=self.test04Text,command=self.test04Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test04Cmd = Button(self.mainFrame, textvariable=self.test04Text,command=self.test04Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test04Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test0401Cmd = Button(self, textvariable=self.test0401Text,command=self.test0401Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0401Cmd = Button(self.mainFrame, textvariable=self.test0401Text,command=self.test0401Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0401Cmd.grid(row=rowIndex,column=1,sticky='w')
-    self.test0402Cmd = Button(self, textvariable=self.test0402Text,command=self.test0402Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0402Cmd = Button(self.mainFrame, textvariable=self.test0402Text,command=self.test0402Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0402Cmd.grid(row=rowIndex,column=2,sticky='w')
-    self.test0403Cmd = Button(self, textvariable=self.test0403Text,command=self.test0403Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0403Cmd = Button(self.mainFrame, textvariable=self.test0403Text,command=self.test0403Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0403Cmd.grid(row=rowIndex,column=3,sticky='w')
-    self.test0404Cmd = Button(self, textvariable=self.test0404Text,command=self.test0404Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0404Cmd = Button(self.mainFrame, textvariable=self.test0404Text,command=self.test0404Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0404Cmd.grid(row=rowIndex,column=4,sticky='w')
-    self.test0405Cmd = Button(self, textvariable=self.test0405Text,command=self.test0405Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0405Cmd = Button(self.mainFrame, textvariable=self.test0405Text,command=self.test0405Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0405Cmd.grid(row=rowIndex,column=5,sticky='w')
     rowIndex += 1
-    self.test0406Cmd = Button(self, textvariable=self.test0406Text,command=self.test0406Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0406Cmd = Button(self.mainFrame, textvariable=self.test0406Text,command=self.test0406Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0406Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 5
     rowIndex += 1
-    self.test05Cmd = Button(self, textvariable=self.test05Text,command=self.test05Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test05Cmd = Button(self.mainFrame, textvariable=self.test05Text,command=self.test05Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test05Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test0501Cmd = Button(self, textvariable=self.test0501Text,command=self.test0501Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0501Cmd = Button(self.mainFrame, textvariable=self.test0501Text,command=self.test0501Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0501Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 6
     rowIndex += 1
-    self.test06Cmd = Button(self, textvariable=self.test06Text,command=self.test06Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test06Cmd = Button(self.mainFrame, textvariable=self.test06Text,command=self.test06Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test06Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test0601Cmd = Button(self, textvariable=self.test0601Text,command=self.test0601Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0601Cmd = Button(self.mainFrame, textvariable=self.test0601Text,command=self.test0601Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0601Cmd.grid(row=rowIndex,column=1,sticky='w')
-    self.test0602Cmd = Button(self, textvariable=self.test0602Text,command=self.test0602Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0602Cmd = Button(self.mainFrame, textvariable=self.test0602Text,command=self.test0602Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0602Cmd.grid(row=rowIndex,column=2,sticky='w')
 
     # Test 7
     rowIndex += 1
-    self.test07Cmd = Button(self, textvariable=self.test07Text,command=self.test07Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test07Cmd = Button(self.mainFrame, textvariable=self.test07Text,command=self.test07Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test07Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test0701Cmd = Button(self, textvariable=self.test0701Text,command=self.test0701Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0701Cmd = Button(self.mainFrame, textvariable=self.test0701Text,command=self.test0701Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0701Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 8
     rowIndex += 1
-    self.test08Cmd = Button(self, textvariable=self.test08Text,command=self.test08Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test08Cmd = Button(self.mainFrame, textvariable=self.test08Text,command=self.test08Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test08Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test0801Cmd = Button(self, textvariable=self.test0801Text,command=self.test0801Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0801Cmd = Button(self.mainFrame, textvariable=self.test0801Text,command=self.test0801Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0801Cmd.grid(row=rowIndex,column=1,sticky='w')
-    self.test0802Cmd = Button(self, textvariable=self.test0802Text,command=self.test0802Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0802Cmd = Button(self.mainFrame, textvariable=self.test0802Text,command=self.test0802Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0802Cmd.grid(row=rowIndex,column=2,sticky='w')
 
     # Test 9
     rowIndex += 1
-    self.test09Cmd = Button(self, textvariable=self.test09Text,command=self.test09Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test09Cmd = Button(self.mainFrame, textvariable=self.test09Text,command=self.test09Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test09Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test0901Cmd = Button(self, textvariable=self.test0901Text,command=self.test0901Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0901Cmd = Button(self.mainFrame, textvariable=self.test0901Text,command=self.test0901Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0901Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 10
     rowIndex += 1
-    self.test10Cmd = Button(self, textvariable=self.test10Text,command=self.test10Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test10Cmd = Button(self.mainFrame, textvariable=self.test10Text,command=self.test10Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test10Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test1001Cmd = Button(self, textvariable=self.test1001Text,command=self.test1001Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test1001Cmd = Button(self.mainFrame, textvariable=self.test1001Text,command=self.test1001Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test1001Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 11
     rowIndex += 1
-    self.test11Cmd = Button(self, textvariable=self.test11Text,command=self.test11Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test11Cmd = Button(self.mainFrame, textvariable=self.test11Text,command=self.test11Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test11Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test1101Cmd = Button(self, textvariable=self.test1101Text,command=self.test1101Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test1101Cmd = Button(self.mainFrame, textvariable=self.test1101Text,command=self.test1101Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test1101Cmd.grid(row=rowIndex,column=1,sticky='w')
-    self.test1102Cmd = Button(self, textvariable=self.test1102Text,command=self.test1102Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test1102Cmd = Button(self.mainFrame, textvariable=self.test1102Text,command=self.test1102Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test1102Cmd.grid(row=rowIndex,column=2,sticky='w')
-    self.test1103Cmd = Button(self, textvariable=self.test1103Text,command=self.test1103Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test1103Cmd = Button(self.mainFrame, textvariable=self.test1103Text,command=self.test1103Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test1103Cmd.grid(row=rowIndex,column=3,sticky='w')
 
     # Test 12
     rowIndex += 1
-    self.test12Cmd = Button(self, textvariable=self.test12Text,command=self.test12Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test12Cmd = Button(self.mainFrame, textvariable=self.test12Text,command=self.test12Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test12Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test1201Cmd = Button(self, textvariable=self.test1201Text,command=self.test1201Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test1201Cmd = Button(self.mainFrame, textvariable=self.test1201Text,command=self.test1201Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test1201Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 13
     rowIndex += 1
-    self.test13Cmd = Button(self, textvariable=self.test13Text,command=self.test13Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test13Cmd = Button(self.mainFrame, textvariable=self.test13Text,command=self.test13Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test13Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test1301Cmd = Button(self, textvariable=self.test1301Text,command=self.test1301Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test1301Cmd = Button(self.mainFrame, textvariable=self.test1301Text,command=self.test1301Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test1301Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 14
     rowIndex += 1
-    self.test14Cmd = Button(self, textvariable=self.test14Text,command=self.test14Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test14Cmd = Button(self.mainFrame, textvariable=self.test14Text,command=self.test14Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test14Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test1401Cmd = Button(self, textvariable=self.test1401Text,command=self.test1401Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test1401Cmd = Button(self.mainFrame, textvariable=self.test1401Text,command=self.test1401Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test1401Cmd.grid(row=rowIndex,column=1,sticky='w')
-    self.test1402Cmd = Button(self, textvariable=self.test1402Text,command=self.test1402Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test1402Cmd = Button(self.mainFrame, textvariable=self.test1402Text,command=self.test1402Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test1402Cmd.grid(row=rowIndex,column=2,sticky='w')
-    self.test1403Cmd = Button(self, textvariable=self.test1403Text,command=self.test1403Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test1403Cmd = Button(self.mainFrame, textvariable=self.test1403Text,command=self.test1403Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test1403Cmd.grid(row=rowIndex,column=3,sticky='w')
 
     # Test 15
     rowIndex += 1
-    self.test15Cmd = Button(self, textvariable=self.test15Text,command=self.test15Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test15Cmd = Button(self.mainFrame, textvariable=self.test15Text,command=self.test15Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test15Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test1501Cmd = Button(self, textvariable=self.test1501Text,command=self.test1501Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test1501Cmd = Button(self.mainFrame, textvariable=self.test1501Text,command=self.test1501Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test1501Cmd.grid(row=rowIndex,column=1,sticky='w')
-    self.test1502Cmd = Button(self, textvariable=self.test1502Text,command=self.test1502Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test1502Cmd = Button(self.mainFrame, textvariable=self.test1502Text,command=self.test1502Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test1502Cmd.grid(row=rowIndex,column=2,sticky='w')
-    self.test1503Cmd = Button(self, textvariable=self.test1503Text,command=self.test1503Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test1503Cmd = Button(self.mainFrame, textvariable=self.test1503Text,command=self.test1503Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test1503Cmd.grid(row=rowIndex,column=3,sticky='w')
 
     # Test 16
     rowIndex += 1
-    self.test16Cmd = Button(self, textvariable=self.test16Text,command=self.test16Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test16Cmd = Button(self.mainFrame, textvariable=self.test16Text,command=self.test16Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test16Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test1601Cmd = Button(self, textvariable=self.test1601Text,command=self.test1601Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test1601Cmd = Button(self.mainFrame, textvariable=self.test1601Text,command=self.test1601Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test1601Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 17
     rowIndex += 1
-    self.test17Cmd = Button(self, textvariable=self.test17Text,command=self.test17Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test17Cmd = Button(self.mainFrame, textvariable=self.test17Text,command=self.test17Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test17Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test1701Cmd = Button(self, textvariable=self.test1701Text,command=self.test1701Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test1701Cmd = Button(self.mainFrame, textvariable=self.test1701Text,command=self.test1701Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test1701Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 18
     rowIndex += 1
-    self.test18Cmd = Button(self, textvariable=self.test18Text,command=self.test18Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test18Cmd = Button(self.mainFrame, textvariable=self.test18Text,command=self.test18Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test18Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test1801Cmd = Button(self, textvariable=self.test1801Text,command=self.test1801Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test1801Cmd = Button(self.mainFrame, textvariable=self.test1801Text,command=self.test1801Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test1801Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 19
+    rowIndex = 0
     rowIndex += 1
-    self.test19Cmd = Button(self, textvariable=self.test19Text,command=self.test19Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test19Cmd = Button(self.mainFrame, textvariable=self.test19Text,command=self.test19Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test19Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test1901Cmd = Button(self, textvariable=self.test1901Text,command=self.test1901Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test1901Cmd = Button(self.mainFrame, textvariable=self.test1901Text,command=self.test1901Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test1901Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 20
     rowIndex += 1
-    self.test20Cmd = Button(self, textvariable=self.test20Text,command=self.test20Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test20Cmd = Button(self.mainFrame, textvariable=self.test20Text,command=self.test20Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test20Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test2001Cmd = Button(self, textvariable=self.test2001Text,command=self.test2001Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test2001Cmd = Button(self.mainFrame, textvariable=self.test2001Text,command=self.test2001Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test2001Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 21
     rowIndex += 1
-    self.test21Cmd = Button(self, textvariable=self.test21Text,command=self.test21Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test21Cmd = Button(self.mainFrame, textvariable=self.test21Text,command=self.test21Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test21Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test2101Cmd = Button(self, textvariable=self.test2101Text,command=self.test2101Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test2101Cmd = Button(self.mainFrame, textvariable=self.test2101Text,command=self.test2101Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test2101Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 22
     rowIndex += 1
-    self.test22Cmd = Button(self, textvariable=self.test22Text,command=self.test22Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test22Cmd = Button(self.mainFrame, textvariable=self.test22Text,command=self.test22Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test22Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test2201Cmd = Button(self, textvariable=self.test2201Text,command=self.test2201Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test2201Cmd = Button(self.mainFrame, textvariable=self.test2201Text,command=self.test2201Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test2201Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 23
     rowIndex += 1
-    self.test23Cmd = Button(self, textvariable=self.test23Text,command=self.test23Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test23Cmd = Button(self.mainFrame, textvariable=self.test23Text,command=self.test23Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test23Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test2301Cmd = Button(self, textvariable=self.test2301Text,command=self.test2301Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test2301Cmd = Button(self.mainFrame, textvariable=self.test2301Text,command=self.test2301Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test2301Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 24
     rowIndex += 1
-    self.test24Cmd = Button(self, textvariable=self.test24Text,command=self.test24Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test24Cmd = Button(self.mainFrame, textvariable=self.test24Text,command=self.test24Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test24Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test2401Cmd = Button(self, textvariable=self.test2401Text,command=self.test2401Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test2401Cmd = Button(self.mainFrame, textvariable=self.test2401Text,command=self.test2401Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test2401Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 25
     rowIndex += 1
-    self.test25Cmd = Button(self, textvariable=self.test25Text,command=self.test25Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test25Cmd = Button(self.mainFrame, textvariable=self.test25Text,command=self.test25Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test25Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test2501Cmd = Button(self, textvariable=self.test2501Text,command=self.test2501Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test2501Cmd = Button(self.mainFrame, textvariable=self.test2501Text,command=self.test2501Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test2501Cmd.grid(row=rowIndex,column=1,sticky='w')
-    self.test2502Cmd = Button(self, textvariable=self.test2502Text,command=self.test2502Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test2502Cmd = Button(self.mainFrame, textvariable=self.test2502Text,command=self.test2502Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test2502Cmd.grid(row=rowIndex,column=2,sticky='w')
 
     # Test 26
     rowIndex += 1
-    self.test26Cmd = Button(self, textvariable=self.test26Text,command=self.test26Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test26Cmd = Button(self.mainFrame, textvariable=self.test26Text,command=self.test26Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test26Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test2601Cmd = Button(self, textvariable=self.test2601Text,command=self.test2601Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test2601Cmd = Button(self.mainFrame, textvariable=self.test2601Text,command=self.test2601Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test2601Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 27
     rowIndex += 1
-    self.test27Cmd = Button(self, textvariable=self.test27Text,command=self.test27Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test27Cmd = Button(self.mainFrame, textvariable=self.test27Text,command=self.test27Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test27Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test2701Cmd = Button(self, textvariable=self.test2701Text,command=self.test2701Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test2701Cmd = Button(self.mainFrame, textvariable=self.test2701Text,command=self.test2701Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test2701Cmd.grid(row=rowIndex,column=1,sticky='w')
-    self.test2702Cmd = Button(self, textvariable=self.test2702Text,command=self.test2702Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test2702Cmd = Button(self.mainFrame, textvariable=self.test2702Text,command=self.test2702Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test2702Cmd.grid(row=rowIndex,column=2,sticky='w')
 
     # Test 28
     rowIndex += 1
-    self.test28Cmd = Button(self, textvariable=self.test28Text,command=self.test28Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test28Cmd = Button(self.mainFrame, textvariable=self.test28Text,command=self.test28Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test28Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test2801Cmd = Button(self, textvariable=self.test2801Text,command=self.test2801Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test2801Cmd = Button(self.mainFrame, textvariable=self.test2801Text,command=self.test2801Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test2801Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 29
     rowIndex += 1
-    self.test29Cmd = Button(self, textvariable=self.test29Text,command=self.test29Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test29Cmd = Button(self.mainFrame, textvariable=self.test29Text,command=self.test29Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test29Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test2901Cmd = Button(self, textvariable=self.test2901Text,command=self.test2901Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test2901Cmd = Button(self.mainFrame, textvariable=self.test2901Text,command=self.test2901Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test2901Cmd.grid(row=rowIndex,column=1,sticky='w')
-    self.test2902Cmd = Button(self, textvariable=self.test2902Text,command=self.test2902Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test2902Cmd = Button(self.mainFrame, textvariable=self.test2902Text,command=self.test2902Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test2902Cmd.grid(row=rowIndex,column=2,sticky='w')
 
     # Test 30
     rowIndex += 1
-    self.test30Cmd = Button(self, textvariable=self.test30Text,command=self.test30Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test30Cmd = Button(self.mainFrame, textvariable=self.test30Text,command=self.test30Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test30Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test3001Cmd = Button(self, textvariable=self.test3001Text,command=self.test3001Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test3001Cmd = Button(self.mainFrame, textvariable=self.test3001Text,command=self.test3001Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test3001Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 31
     rowIndex += 1
-    self.test31Cmd = Button(self, textvariable=self.test31Text,command=self.test31Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test31Cmd = Button(self.mainFrame, textvariable=self.test31Text,command=self.test31Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test31Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test3101Cmd = Button(self, textvariable=self.test3101Text,command=self.test3101Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test3101Cmd = Button(self.mainFrame, textvariable=self.test3101Text,command=self.test3101Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test3101Cmd.grid(row=rowIndex,column=1,sticky='w')
-    self.test3102Cmd = Button(self, textvariable=self.test3102Text,command=self.test3102Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test3102Cmd = Button(self.mainFrame, textvariable=self.test3102Text,command=self.test3102Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test3102Cmd.grid(row=rowIndex,column=2,sticky='w')
 
     # Test 32
     rowIndex += 1
-    self.test32Cmd = Button(self, textvariable=self.test32Text,command=self.test32Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test32Cmd = Button(self.mainFrame, textvariable=self.test32Text,command=self.test32Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test32Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test3201Cmd = Button(self, textvariable=self.test3201Text,command=self.test3201Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test3201Cmd = Button(self.mainFrame, textvariable=self.test3201Text,command=self.test3201Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test3201Cmd.grid(row=rowIndex,column=1,sticky='w')
-    self.test3202Cmd = Button(self, textvariable=self.test3202Text,command=self.test3202Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test3202Cmd = Button(self.mainFrame, textvariable=self.test3202Text,command=self.test3202Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test3202Cmd.grid(row=rowIndex,column=2,sticky='w')
-    self.test3203Cmd = Button(self, textvariable=self.test3203Text,command=self.test3203Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test3203Cmd = Button(self.mainFrame, textvariable=self.test3203Text,command=self.test3203Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test3203Cmd.grid(row=rowIndex,column=3,sticky='w')
 
     # Test 33
     rowIndex += 1
-    self.test33Cmd = Button(self, textvariable=self.test33Text,command=self.test33Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test33Cmd = Button(self.mainFrame, textvariable=self.test33Text,command=self.test33Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test33Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test3301Cmd = Button(self, textvariable=self.test3301Text,command=self.test3301Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test3301Cmd = Button(self.mainFrame, textvariable=self.test3301Text,command=self.test3301Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test3301Cmd.grid(row=rowIndex,column=1,sticky='w')
-    self.test3302Cmd = Button(self, textvariable=self.test3302Text,command=self.test3302Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test3302Cmd = Button(self.mainFrame, textvariable=self.test3302Text,command=self.test3302Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test3302Cmd.grid(row=rowIndex,column=2,sticky='w')
 
     # Test 34
     rowIndex += 1
-    self.test34Cmd = Button(self, textvariable=self.test34Text,command=self.test34Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test34Cmd = Button(self.mainFrame, textvariable=self.test34Text,command=self.test34Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test34Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test3401Cmd = Button(self, textvariable=self.test3401Text,command=self.test3401Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test3401Cmd = Button(self.mainFrame, textvariable=self.test3401Text,command=self.test3401Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test3401Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 35
     rowIndex += 1
-    self.test35Cmd = Button(self, textvariable=self.test35Text,command=self.test35Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test35Cmd = Button(self.mainFrame, textvariable=self.test35Text,command=self.test35Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test35Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test3501Cmd = Button(self, textvariable=self.test3501Text,command=self.test3501Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test3501Cmd = Button(self.mainFrame, textvariable=self.test3501Text,command=self.test3501Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test3501Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 36
     rowIndex += 1
-    self.test36Cmd = Button(self, textvariable=self.test36Text,command=self.test36Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test36Cmd = Button(self.mainFrame, textvariable=self.test36Text,command=self.test36Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test36Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test3601Cmd = Button(self, textvariable=self.test3601Text,command=self.test3601Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test3601Cmd = Button(self.mainFrame, textvariable=self.test3601Text,command=self.test3601Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test3601Cmd.grid(row=rowIndex,column=1,sticky='w')
-    self.test3602Cmd = Button(self, textvariable=self.test3602Text,command=self.test3602Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test3602Cmd = Button(self.mainFrame, textvariable=self.test3602Text,command=self.test3602Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test3602Cmd.grid(row=rowIndex,column=2,sticky='w')
-    self.test3603Cmd = Button(self, textvariable=self.test3603Text,command=self.test3603Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test3603Cmd = Button(self.mainFrame, textvariable=self.test3603Text,command=self.test3603Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test3603Cmd.grid(row=rowIndex,column=3,sticky='w')
-    self.test3604Cmd = Button(self, textvariable=self.test3604Text,command=self.test3604Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test3604Cmd = Button(self.mainFrame, textvariable=self.test3604Text,command=self.test3604Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test3604Cmd.grid(row=rowIndex,column=4,sticky='w')
-    self.test3605Cmd = Button(self, textvariable=self.test3605Text,command=self.test3605Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test3605Cmd = Button(self.mainFrame, textvariable=self.test3605Text,command=self.test3605Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test3605Cmd.grid(row=rowIndex,column=5,sticky='w')
 
     # Test 37
     rowIndex += 1
-    self.test37Cmd = Button(self, textvariable=self.test37Text,command=self.test37Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test37Cmd = Button(self.mainFrame, textvariable=self.test37Text,command=self.test37Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test37Cmd.grid(row=rowIndex,column=0,sticky='w')
-    self.test3701Cmd = Button(self, textvariable=self.test3701Text,command=self.test3701Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test3701Cmd = Button(self.mainFrame, textvariable=self.test3701Text,command=self.test3701Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test3701Cmd.grid(row=rowIndex,column=1,sticky='w')
-    self.test3702Cmd = Button(self, textvariable=self.test3702Text,command=self.test3702Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test3702Cmd = Button(self.mainFrame, textvariable=self.test3702Text,command=self.test3702Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test3702Cmd.grid(row=rowIndex,column=2,sticky='w')
 
     """
@@ -747,6 +763,152 @@ class leakTestWindow(Frame):
     self.resetButtonColours()
     """
   def resetContLabels(self):
+    self.test01Cmd["bg"] = "grey"
+    self.test0101Cmd["bg"] = "grey"
+
+    self.test02Cmd["bg"] = "grey"
+    self.test0201Cmd["bg"] = "grey"
+    self.test0202Cmd["bg"] = "grey"
+    self.test0203Cmd["bg"] = "grey"
+    self.test0204Cmd["bg"] = "grey"
+    self.test0205Cmd["bg"] = "grey"
+    self.test0206Cmd["bg"] = "grey"
+    self.test0207Cmd["bg"] = "grey"
+    self.test0208Cmd["bg"] = "grey"
+    self.test0209Cmd["bg"] = "grey"
+
+
+    self.test03Cmd["bg"] = "grey"
+    self.test0301Cmd["bg"] = "grey"
+
+    self.test04Cmd["bg"] = "grey"
+    self.test0401Cmd["bg"] = "grey"
+    self.test0402Cmd["bg"] = "grey"
+    self.test0403Cmd["bg"] = "grey"
+    self.test0404Cmd["bg"] = "grey"
+    self.test0405Cmd["bg"] = "grey"
+    self.test0406Cmd["bg"] = "grey"
+
+    self.test05Cmd["bg"] = "grey"
+    self.test0501Cmd["bg"] = "grey"
+
+    self.test06Cmd["bg"] = "grey"
+    self.test0601Cmd["bg"] = "grey"
+    self.test0602Cmd["bg"] = "grey"
+
+    self.test07Cmd["bg"] = "grey"
+    self.test0701Cmd["bg"] = "grey"
+
+    self.test08Cmd["bg"] = "grey"
+    self.test0801Cmd["bg"] = "grey"
+    self.test0802Cmd["bg"] = "grey"
+
+    self.test09Cmd["bg"] = "grey"
+    self.test0901Cmd["bg"] = "grey"
+
+    self.test10Cmd["bg"] = "grey"
+    self.test1001Cmd["bg"] = "grey"
+
+    self.test11Cmd["bg"] = "grey"
+    self.test1101Cmd["bg"] = "grey"
+    self.test1102Cmd["bg"] = "grey"
+    self.test1103Cmd["bg"] = "grey"
+
+    self.test12Cmd["bg"] = "grey"
+    self.test1201Cmd["bg"] = "grey"
+
+    self.test13Cmd["bg"] = "grey"
+    self.test1301Cmd["bg"] = "grey"
+
+    self.test14Cmd["bg"] = "grey"
+    self.test1401Cmd["bg"] = "grey"
+    self.test1402Cmd["bg"] = "grey"
+    self.test1403Cmd["bg"] = "grey"
+
+    self.test15Cmd["bg"] = "grey"
+    self.test1501Cmd["bg"] = "grey"
+    self.test1502Cmd["bg"] = "grey"
+    self.test1503Cmd["bg"] = "grey"
+
+    self.test16Cmd["bg"] = "grey"
+    self.test1601Cmd["bg"] = "grey"
+
+    self.test17Cmd["bg"] = "grey"
+    self.test1701Cmd["bg"] = "grey"
+
+    self.test18Cmd["bg"] = "grey"
+    self.test1801Cmd["bg"] = "grey"
+
+    self.test19Cmd["bg"] = "grey"
+    self.test1901Cmd["bg"] = "grey"
+
+    self.test20Cmd["bg"] = "grey"
+    self.test2001Cmd["bg"] = "grey"
+
+    self.test21Cmd["bg"] = "grey"
+    self.test2101Cmd["bg"] = "grey"
+
+    self.test22Cmd["bg"] = "grey"
+    self.test2201Cmd["bg"] = "grey"
+
+    self.test23Cmd["bg"] = "grey"
+    self.test2301Cmd["bg"] = "grey"
+
+    self.test24Cmd["bg"] = "grey"
+    self.test2401Cmd["bg"] = "grey"
+
+    self.test25Cmd["bg"] = "grey"
+    self.test2501Cmd["bg"] = "grey"
+    self.test2502Cmd["bg"] = "grey"
+
+    self.test26Cmd["bg"] = "grey"
+    self.test2601Cmd["bg"] = "grey"
+
+    self.test27Cmd["bg"] = "grey"
+    self.test2701Cmd["bg"] = "grey"
+    self.test2702Cmd["bg"] = "grey"
+
+    self.test28Cmd["bg"] = "grey"
+    self.test2801Cmd["bg"] = "grey"
+
+    self.test29Cmd["bg"] = "grey"
+    self.test2901Cmd["bg"] = "grey"
+    self.test2902Cmd["bg"] = "grey"
+
+    self.test30Cmd["bg"] = "grey"
+    self.test3001Cmd["bg"] = "grey"
+
+    self.test31Cmd["bg"] = "grey"
+    self.test3101Cmd["bg"] = "grey"
+    self.test3102Cmd["bg"] = "grey"
+
+    self.test32Cmd["bg"] = "grey"
+    self.test3201Cmd["bg"] = "grey"
+    self.test3202Cmd["bg"] = "grey"
+    self.test3203Cmd["bg"] = "grey"
+
+    self.test33Cmd["bg"] = "grey"
+    self.test3301Cmd["bg"] = "grey"
+    self.test3302Cmd["bg"] = "grey"
+
+    self.test34Cmd["bg"] = "grey"
+    self.test3401Cmd["bg"] = "grey"
+
+    self.test35Cmd["bg"] = "grey"
+    self.test3501Cmd["bg"] = "grey"
+
+    self.test36Cmd["bg"] = "grey"
+    self.test3601Cmd["bg"] = "grey"
+    self.test3602Cmd["bg"] = "grey"
+    self.test3603Cmd["bg"] = "grey"
+    self.test3604Cmd["bg"] = "grey"
+    self.test3605Cmd["bg"] = "grey"
+
+    self.test37Cmd["bg"] = "grey"
+    self.test3701Cmd["bg"] = "grey"
+    self.test3702Cmd["bg"] = "grey"
+
+
     print("Reset cont labels")
 
   # Start/Stop
@@ -989,17 +1151,19 @@ class leakTestWindow(Frame):
       self.testingAll = False
       self.abortSignal = False
       return
-
-
+    self.testingAll = False
+    self.abortSignal = False
 
 
     print("test00")
     #exit()
   def test0001Cmd__click(self):
+    self.resetContLabels()
     print("test0001")
     exit()
   # Test 1
   def test01Cmd__click(self):
+    self.resetContLabels()
     tChip = 0x39
     tPin = 0x04
     rPin = 27
@@ -2058,6 +2222,7 @@ class leakTestWindow(Frame):
 
 
   def station01Cmd__click(self):
+    return
     print("1")
     s = self.station01Text.get()
     if self.station01Text.get() == "":

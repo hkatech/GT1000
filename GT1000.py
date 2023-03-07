@@ -173,10 +173,14 @@ class GT1000:
     print("[call] read_inputs()")
 
     # Get GPIO Information
-    self.GT_Start = (GPIO.input(self.EXT_IN_START) == 0)
-    self.GT_Abort = (GPIO.input(self.EXT_IN_ABORT) == 0)
-    self.GT_PartSelect = (GPIO.input(self.EXT_IN_PART2) == 0)
-    self.GT_CameraOk = (GPIO.input(self.EXT_IN_CAMOK) == 0)
+    #self.GT_Start = (GPIO.input(self.EXT_IN_START) == 0)
+    #self.GT_Abort = (GPIO.input(self.EXT_IN_ABORT) == 0)
+    #self.GT_PartSelect = (GPIO.input(self.EXT_IN_PART2) == 0)
+    #self.GT_CameraOk = (GPIO.input(self.EXT_IN_CAMOK) == 0)
+    self.GT_Start = False
+    self.GT_Abort = False
+    self.GT_PartSelect = False
+    self.GT_CameraOk = False
 
     print(">>Start: ", self.GT_Start, "  Part Select: ", self.GT_PartSelect, "  Abort: ",self.GT_Abort)
 
@@ -185,6 +189,7 @@ class GT1000:
     i = 0
     for b in self.BANKS:
       self.setBankByPin(b)
+      time.sleep(30/1000)
       try:
         print("Index: ", i)
         self.GTchip38int[i] = self.__I2C.read_byte(self.CHIP38)
@@ -452,6 +457,7 @@ class GT1000:
     for c in self.BANKS:
       GPIO.output(c,0)
     GPIO.output(val,1)
+    time.sleep(0.1)
 
   def resetAllOutputs(self):
     print("[call] resetAllOutputs()")

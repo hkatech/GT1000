@@ -113,9 +113,10 @@ appLeakTest.periodicUpdate()
 #testRead = bus.read_byte_data(CHIP00, 0x00)
 
 # Register events
-root.after(200, root.update)
+#root.after(200, root.update)
 # Run forever!
-app = Window(root)
+#app = Window(root)
+app = Window(my_leakTest)
 root.title("My GUI")
 
 root.lift()
