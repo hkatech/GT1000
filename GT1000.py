@@ -67,7 +67,7 @@ class GT1000:
   LED_R = [0,0,0,0]
   AFB2 = [0,0,0,0,0,0,0,0,0]
   SNS = [0,0,0]
-  ACM1 = [0,0,0,0,0,0,\
+  ACM = [0,0,0,0,0,0,\
           0,0,0,0,0,0,0,0,0,0,0,0,0,\
           0,0,0,0,0,0,0,0,0,0]
   POSTNEG = 0
@@ -75,12 +75,15 @@ class GT1000:
   POSTACCPOS = 0
   WIPER = [0,0,0,0,0]
   LED_HOOD = [0,0,0,0,0]
-  LED_BUMPER = [0,0,0,0,0]
+  LED_BUMPER = [0,0,0,0,0,0,0]
   LED_ROOF = [0,0,0,0,0,0,0]
   DLC1 = [0,0,0,0,0,0,0]
   DLC2 = [0,0,0,0,0,0,0]
-  KEY_PAD = [0,0,0,0,0,0]
+  KEY_PAD = [0,0,0,0,0,0,0]
   AFB1 = [0,0,0,0,0,0,\
+          0,0,0,0,0,0,\
+          0,0,0,0,0,0,\
+          0,0,0,0,0,0,\
           0,0,0,0,0,0,\
           0,0,0,0,0,0,0]
   GND = [0,0,0,0,0,0,0,0,0]
@@ -88,6 +91,7 @@ class GT1000:
   WASHER = [0,0,0]
   SW_1 = [0,0,0,0,0,0,0,0,0]
   PWR_FLIP = [0,0,0]
+  CHASE_3 = [0,0,0,0,0,0,0]
 
 
   GTchip0int = [0,0,0]
@@ -230,6 +234,193 @@ class GT1000:
         pass
 
 
+    # Bank 0 = 21;  Bank 1 = 20;  Bank 2 = 16
+    ## Posts
+    self.POSTNEG = self.GTchip3Dint[1] & 0x20
+    self.POSTPOS = self.GTchip3Dint[2] & 0x02
+    self.POSTACCPOS = self.GTchip3Dint[2] & 0x01
+
+    # LED_L
+    self.LED_L[1] = self.GTchip3Aint[1] & 0x01
+    self.LED_L[2] = self.GTchip3Aint[1] & 0x02
+    self.LED_L[3] = self.GTchip3Aint[1] & 0x04
+
+    # LED_R
+    self.LED_R[1] = self.GTchip3Dint[0] & 0x01
+    self.LED_R[2] = self.GTchip3Dint[0] & 0x02
+    self.LED_R[3] = self.GTchip3Dint[0] & 0x04
+
+    # AFB2
+    self.AFB2[1] = self.GTchip3Cint[0] & 0x04
+    self.AFB2[2] = self.GTchip3Cint[2] & 0x01
+    self.AFB2[3] = self.GTchip3Cint[0] & 0x08
+    self.AFB2[4] = self.GTchip3Cint[2] & 0x02
+    self.AFB2[5] = self.GTchip3Cint[2] & 0x04
+    self.AFB2[6] = self.GTchip3Cint[0] & 0x10
+    self.AFB2[7] = self.GTchip3Cint[0] & 0x20
+    self.AFB2[8] = self.GTchip3Cint[0] & 0x40
+
+    # WIPER
+    self.WIPER[1] = self.GTchip3Aint[1] & 0x08
+    self.WIPER[2] = self.GTchip3Aint[1] & 0x10
+    self.WIPER[3] = self.GTchip3Aint[1] & 0x20
+    self.WIPER[4] = self.GTchip3Aint[1] & 0x40
+
+    # WASHER
+    self.WASHER[1] = self.GTchip3Fint[1] & 0x01
+    self.WASHER[2] = self.GTchip3Fint[1] & 0x02
+
+    # SNS
+    self.SNS[2] = self.GTchip3Cint[0] & 0x20
+
+    # AFB1
+    self.AFB1[4] = self.GTchip39int[1] & 0x10  #A4
+    self.AFB1[6] = self.GTchip3Bint[1] & 0x02  #A6
+    self.AFB1[10] = self.GTchip39int[1] & 0x08  #B4
+    self.AFB1[11] = self.GTchip3Bint[2] & 0x80  #B5
+    self.AFB1[12] = self.GTchip3Bint[2] & 0x40  #B6
+    self.AFB1[13] = self.GTchip3Bint[2] & 0x02  #C1
+    self.AFB1[14] = self.GTchip3Bint[2] & 0x10  #C2
+    self.AFB1[15] = self.GTchip3Bint[1] & 0x01  #C3
+    self.AFB1[16] = self.GTchip3Bint[2] & 0x08  #C4
+    self.AFB1[18] = self.GTchip39int[1] & 0x04  #C6
+    self.AFB1[19] = self.GTchip3Bint[1] & 0x04  #D1
+    self.AFB1[21] = self.GTchip3Bint[2] & 0x04  #D3
+    self.AFB1[22] = self.GTchip39int[1] & 0x02  #D4
+    self.AFB1[23] = self.GTchip39int[1] & 0x01  #D5
+    self.AFB1[24] = self.GTchip3Bint[2] & 0x02  #D6
+    self.AFB1[25] = self.GTchip3Bint[2] & 0x01  #E1
+    self.AFB1[26] = self.GTchip38int[1] & 0x40  #E2
+    self.AFB1[27] = self.GTchip38int[1] & 0x20  #E3
+    self.AFB1[28] = self.GTchip38int[1] & 0x10  #E4
+    self.AFB1[29] = self.GTchip38int[1] & 0x08  #E5
+    self.AFB1[30] = self.GTchip38int[1] & 0x04  #E6
+    self.AFB1[31] = self.GTchip39int[1] & 0x20  #F1
+    self.AFB1[32] = self.GTchip39int[1] & 0x40  #F2
+    self.AFB1[35] = self.GTchip38int[1] & 0x02  #F5
+    self.AFB1[36] = self.GTchip38int[1] & 0x01  #F6
+
+
+
+    # Bank 0 = 21;  Bank 1 = 20;  Bank 2 = 16
+
+    # ACM
+    self.ACM[1] = self.GTchip39int[2] & 0x04
+    self.ACM[2] = self.GTchip39int[2] & 0x08
+    self.ACM[3] = self.GTchip39int[2] & 0x10
+    self.ACM[4] = self.GTchip39int[2] & 0x80
+    self.ACM[5] = self.GTchip39int[2] & 0x20
+    self.ACM[6] = self.GTchip39int[2] & 0x40
+    self.ACM[7] = self.GTchip39int[2] & 0x01
+    self.ACM[8] = self.GTchip39int[2] & 0x02
+
+    self.ACM[9] = self.GTchip38int[2] & 0x04
+    self.ACM[10] = self.GTchip38int[2] & 0x08
+    self.ACM[11] = self.GTchip38int[2] & 0x10
+    self.ACM[12] = self.GTchip38int[2] & 0x80
+    self.ACM[13] = self.GTchip38int[2] & 0x20
+    self.ACM[14] = self.GTchip38int[2] & 0x40
+    self.ACM[15] = self.GTchip38int[2] & 0x01
+    self.ACM[16] = self.GTchip38int[2] & 0x02
+
+    self.ACM[17] = self.GTchip3Aint[2] & 0x04
+    self.ACM[18] = self.GTchip3Aint[2] & 0x08
+    self.ACM[19] = self.GTchip3Aint[2] & 0x10
+    self.ACM[20] = self.GTchip3Aint[2] & 0x80
+    self.ACM[21] = self.GTchip3Aint[2] & 0x20
+    self.ACM[22] = self.GTchip3Aint[2] & 0x40
+    self.ACM[23] = self.GTchip3Aint[2] & 0x01
+    self.ACM[24] = self.GTchip3Aint[2] & 0x02
+
+    self.ACM[25] = self.GTchip3Cint[2] & 0x08
+    self.ACM[26] = self.GTchip3Cint[2] & 0x10
+    self.ACM[27] = self.GTchip3Cint[2] & 0x20
+    self.ACM[28] = self.GTchip3Cint[2] & 0x40
+
+    # CHASE_3
+    self.CHASE_3[1] = self.GTchip3Eint[1] & 0x01
+    self.CHASE_3[2] = self.GTchip3Eint[1] & 0x02
+    self.CHASE_3[3] = self.GTchip3Eint[1] & 0x04
+    self.CHASE_3[4] = self.GTchip3Eint[1] & 0x08
+    self.CHASE_3[5] = self.GTchip3Eint[1] & 0x10
+    self.CHASE_3[6] = self.GTchip3Eint[1] & 0x20
+
+    # DLC1
+    self.DLC1[1] = self.GTchip3Dint[1] & 0x01
+    self.DLC1[2] = self.GTchip3Dint[1] & 0x02
+    self.DLC1[3] = self.GTchip3Dint[2] & 0x04
+    self.DLC1[4] = self.GTchip3Dint[2] & 0x08
+    self.DLC1[5] = self.GTchip3Dint[2] & 0x10
+    self.DLC1[6] = self.GTchip3Dint[1] & 0x04
+
+    # DLC2
+    self.DLC2[1] = self.GTchip3Cint[1] & 0x04
+    self.DLC2[2] = self.GTchip3Cint[1] & 0x08
+    self.DLC2[3] = self.GTchip3Cint[1] & 0x10
+    self.DLC2[4] = self.GTchip3Cint[1] & 0x20
+    self.DLC2[5] = self.GTchip3Cint[1] & 0x40
+    self.DLC2[6] = self.GTchip3Cint[1] & 0x80
+
+    # KEY_PAD
+    self.KEY_PAD[1] = self.GTchip3Fint[1] & 0x04
+    self.KEY_PAD[2] = self.GTchip3Fint[1] & 0x08
+    self.KEY_PAD[3] = self.GTchip3Fint[1] & 0x10
+    self.KEY_PAD[4] = self.GTchip3Fint[1] & 0x20
+    self.KEY_PAD[5] = self.GTchip3Fint[1] & 0x40
+    self.KEY_PAD[6] = self.GTchip3Fint[1] & 0x80
+
+    # GND
+    self.GND[1] = self.GTchip3Eint[0] & 0x01
+    self.GND[2] = self.GTchip3Eint[0] & 0x02
+    self.GND[3] = self.GTchip3Eint[0] & 0x04
+    self.GND[4] = self.GTchip3Eint[0] & 0x08
+    self.GND[5] = self.GTchip3Eint[0] & 0x10
+    self.GND[6] = self.GTchip3Eint[0] & 0x20
+    self.GND[7] = self.GTchip3Eint[0] & 0x40
+    self.GND[8] = self.GTchip3Eint[0] & 0x80
+
+    # SXX
+    self.SXX[1] = self.GTchip3Fint[0] & 0x01
+    self.SXX[2] = self.GTchip3Fint[0] & 0x02
+    self.SXX[3] = self.GTchip3Fint[0] & 0x04
+    self.SXX[4] = self.GTchip3Fint[0] & 0x08
+    self.SXX[5] = self.GTchip3Fint[0] & 0x10
+    self.SXX[6] = self.GTchip3Fint[0] & 0x20
+    self.SXX[7] = self.GTchip3Fint[0] & 0x40
+    self.SXX[8] = self.GTchip3Fint[0] & 0x80
+
+    # PWR_FLIP
+    self.PWR_FLIP[1] = self.GTchip3Cint[1] & 0x01
+    self.PWR_FLIP[2] = self.GTchip3Cint[1] & 0x02
+
+    # SW_1
+    self.SW_1[1] = self.GTchip39int[0] & 0x01
+    self.SW_1[2] = self.GTchip39int[0] & 0x02
+    self.SW_1[3] = self.GTchip39int[0] & 0x04
+    self.SW_1[7] = self.GTchip39int[0] & 0x20
+    self.SW_1[8] = self.GTchip39int[0] & 0x40
+
+    # LED_ROOF
+    self.LED_ROOF[1] = self.GTchip38int[0] & 0x01
+    self.LED_ROOF[2] = self.GTchip38int[0] & 0x02
+    self.LED_ROOF[3] = self.GTchip38int[0] & 0x04
+    self.LED_ROOF[4] = self.GTchip38int[0] & 0x08
+    self.LED_ROOF[5] = self.GTchip38int[0] & 0x10
+    self.LED_ROOF[6] = self.GTchip38int[0] & 0x20
+
+    # LED_BUMPER
+    self.LED_BUMPER[1] = self.GTchip3Bint[0] & 0x01
+    self.LED_BUMPER[2] = self.GTchip3Bint[0] & 0x02
+    self.LED_BUMPER[3] = self.GTchip3Bint[0] & 0x04
+    self.LED_BUMPER[4] = self.GTchip3Bint[0] & 0x08
+    self.LED_BUMPER[5] = self.GTchip3Bint[0] & 0x10
+    self.LED_BUMPER[6] = self.GTchip3Bint[0] & 0x20
+
+    # LED_HOOD
+    self.LED_HOOD[1] = self.GTchip3Dint[0] & 0x08
+    self.LED_HOOD[2] = self.GTchip3Dint[0] & 0x10
+    self.LED_HOOD[3] = self.GTchip3Dint[0] & 0x20
+    self.LED_HOOD[4] = self.GTchip3Dint[0] & 0x40
 
     # Place read in containers
     self.GT_InTest = self.GTchip0int[0] & 0x01
@@ -244,8 +435,11 @@ class GT1000:
     print("[end call] read_inputs()")
 
   def write_output(self, addy, data):
-    print("Writing ", data, " to ", addy)
-    self.__I2C.write_byte_data(addy, 1, data)
+    try:
+      print("Writing ", data, " to ", addy)
+      self.__I2C.write_byte_data(addy, 1, data)
+    except Exception as e:
+      pass
 
   def setBank(self, val):
     print("Setting bank ", val)
