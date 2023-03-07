@@ -38,37 +38,6 @@ class leakTestWindow(Frame):
     if self.GT1000.GT_Start:
       self.station18Cmd__click()
 
-    # Try exhausting all stations
-    if self.GT1000.GT_Abort:
-      self.GT1000.enableStations([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])
-    self.after(500,self.periodicUpdate)
-
-    # Show camera status
-    if self.testPart == "4569":
-      self.station15Cmd["bg"] = "green"
-      self.station15Cmd["activebackground"] = "green"
-      self.station15Text.set("Press to Release\nIf All OK")
-    else:
-      if self.GT1000.GT_CameraOk:
-        self.station15Cmd["bg"] = "green"
-        self.station15Cmd["activebackground"] = "green"
-        self.station15Text.set("Fuse Box OK\n\nPress to Release\nIf All OK")
-
-      else:
-        self.station15Cmd["bg"] = "red"
-        self.station15Cmd["activebackground"] = "red"
-        if self.GT1000.GT_CameraOP3:
-          self.station15Text.set("Fuses OK")
-        else:
-          self.station15Text.set("Fuses << BAD >>")
-        if self.GT1000.GT_CameraOP2:
-          s = self.station15Text.get()
-          self.station15Text.set(s + "\nRelay OK")
-        else:
-          self.station15Text.set(self.station15Text.get() + "\nRelay << BAD >>")
-        self.station15Text.set(self.station15Text.get() + "\n\nPress to Check")
-
-
 
 
   def updateInputs(self):
@@ -82,6 +51,8 @@ class leakTestWindow(Frame):
     print("<NEW> Initializing leakTestWindow")
     Frame.__init__(self,master)
     self.pack(fill=BOTH, expand=1)
+
+    self.myScroll = Scrollbar(self)
 
     self.GT1000 = GT1000()
     self.testPart = "Nothing"
@@ -154,7 +125,212 @@ class leakTestWindow(Frame):
     self.station19Text.set("Reset")
     self.station20Text.set("")
 
+    self.test00Text = StringVar()
+    self.test01Text = StringVar()
+    self.test0101Text = StringVar()
+    self.test02Text = StringVar()
+    self.test0201Text = StringVar()
+    self.test0202Text = StringVar()
+    self.test0203Text = StringVar()
+    self.test0204Text = StringVar()
+    self.test0205Text = StringVar()
+    self.test0206Text = StringVar()
+    self.test0207Text = StringVar()
+    self.test0208Text = StringVar()
+    self.test0209Text = StringVar()
+    self.test03Text = StringVar()
+    self.test0301Text = StringVar()
+    self.test04Text = StringVar()
+    self.test0401Text = StringVar()
+    self.test0402Text = StringVar()
+    self.test0403Text = StringVar()
+    self.test0404Text = StringVar()
+    self.test0405Text = StringVar()
+    self.test0406Text = StringVar()
+    self.test05Text = StringVar()
+    self.test0501Text = StringVar()
+    self.test06Text = StringVar()
+    self.test0601Text = StringVar()
+    self.test0602Text = StringVar()
+    self.test07Text = StringVar()
+    self.test08Text = StringVar()
+    self.test09Text = StringVar()
+    self.test10Text = StringVar()
+    self.test11Text = StringVar()
+    self.test12Text = StringVar()
+    self.test13Text = StringVar()
+    self.test14Text = StringVar()
+    self.test15Text = StringVar()
+    self.test16Text = StringVar()
+    self.test17Text = StringVar()
+    self.test18Text = StringVar()
+    self.test19Text = StringVar()
+    self.test20Text = StringVar()
+    self.test21Text = StringVar()
+    self.test22Text = StringVar()
+    self.test23Text = StringVar()
+    self.test24Text = StringVar()
+    self.test25Text = StringVar()
+    self.test26Text = StringVar()
+    self.test27Text = StringVar()
+    self.test28Text = StringVar()
+    self.test29Text = StringVar()
+    self.test30Text = StringVar()
+    self.test31Text = StringVar()
+    self.test32Text = StringVar()
+    self.test33Text = StringVar()
+    self.test34Text = StringVar()
+    self.test35Text = StringVar()
+    self.test36Text = StringVar()
+    self.test37Text = StringVar()
+    self.test38Text = StringVar()
+    self.test39Text = StringVar()
+    self.test40Text = StringVar()
+    self.test41Text = StringVar()
+    self.test42Text = StringVar()
 
+
+    self.test00Text.set("ACM1.1")
+    self.test01Text.set("ACM1.1")
+    self.test0101Text.set("AFB1.E3")
+    self.test02Text.set("ACM1.2")
+    self.test0201Text.set("LED_L.A")
+    self.test0202Text.set("LED_R.A")
+    self.test0203Text.set("POST -")
+    self.test0204Text.set("WIPER.1")
+    self.test0205Text.set("SW_1.7")
+    self.test0206Text.set("LED_HOOD.A")
+    self.test0207Text.set("LED_BUMPER.2")
+    self.test0208Text.set("RED_ROOF.1")
+    self.test0209Text.set("LED_ROOF.2")
+    self.test03Text.set("ACM1.3")
+    self.test0301Text.set("PWR_FLIP.1")
+    self.test04Text.set("ACM1.4")
+    self.test0401Text.set("AFB1.C3")
+    self.test0402Text.set("GND 1")
+    self.test0403Text.set("GND 2")
+    self.test0404Text.set("WASHER.1")
+    self.test0405Text.set("AFB1.C6")
+    self.test0406Text.set("AFB1.A6")
+    self.test05Text.set("ACM1.5")
+    self.test0501Text.set("PWR_FLIP.1")
+    self.test06Text.set("ACM1.6")
+    self.test0601Text.set("LED_ROOF.3")
+    self.test0602Text.set("AFB1.D4")
+    self.test07Text.set("ACM1.8")
+    self.test08Text.set("ACM1.9")
+    self.test09Text.set("ACM1.10")
+    self.test10Text.set("ACM1.11")
+    self.test11Text.set("ACM1.12")
+    self.test12Text.set("ACM1.13")
+    self.test13Text.set("ACM1.14")
+    self.test14Text.set("ACM1.15")
+    self.test15Text.set("ACM1.16")
+    self.test16Text.set("ACM1.17")
+    self.test17Text.set("ACM1.18")
+    self.test18Text.set("ACM1.19")
+    self.test19Text.set("ACM1.20")
+    self.test20Text.set("ACM1.22")
+    self.test21Text.set("ACM1.23")
+    self.test22Text.set("ACM1.24")
+    self.test23Text.set("ACM1.25")
+    self.test24Text.set("ACM1.26")
+    self.test25Text.set("ACM1.27")
+    self.test26Text.set("ACM1.28")
+    self.test27Text.set("ACM1.1")
+    self.test28Text.set("ACM1.1")
+    self.test29Text.set("ACM1.1")
+    self.test30Text.set("ACM1.1")
+    self.test31Text.set("ACM1.1")
+    self.test32Text.set("ACM1.1")
+    self.test33Text.set("ACM1.1")
+    self.test34Text.set("ACM1.1")
+    self.test35Text.set("ACM1.1")
+    self.test36Text.set("ACM1.1")
+    self.test37Text.set("ACM1.1")
+    self.test38Text.set("ACM1.1")
+    self.test39Text.set("ACM1.1")
+    self.test40Text.set("ACM1.1")
+    self.test41Text.set("ACM1.1")
+    self.test42Text.set("ACM1.1")
+
+    # Some parameters
+    gridWidth = 11
+    gridHeight = 1
+    rowIndex = 0
+
+    # Test 1
+    self.test01Cmd = Button(self, textvariable=self.test01Text,command=self.test01Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test01Cmd.grid(row=0,column=0,sticky='w')
+    self.test0101Cmd = Button(self, textvariable=self.test0101Text,command=self.test0101Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test0101Cmd.grid(row=0,column=1,sticky='w')
+
+    # Test 2
+    rowIndex += 1
+    self.test02Cmd = Button(self, textvariable=self.test02Text,command=self.test02Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test02Cmd.grid(row=rowIndex,column=0,sticky='w')
+    self.test0201Cmd = Button(self, textvariable=self.test0201Text,command=self.test0201Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test0201Cmd.grid(row=rowIndex,column=1,sticky='w')
+    self.test0202Cmd = Button(self, textvariable=self.test0202Text,command=self.test0202Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test0202Cmd.grid(row=rowIndex,column=2,sticky='w')
+    self.test0203Cmd = Button(self, textvariable=self.test0203Text,command=self.test0203Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test0203Cmd.grid(row=rowIndex,column=3,sticky='w')
+    self.test0204Cmd = Button(self, textvariable=self.test0204Text,command=self.test0204Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test0204Cmd.grid(row=rowIndex,column=4,sticky='w')
+    self.test0205Cmd = Button(self, textvariable=self.test0205Text,command=self.test0205Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test0205Cmd.grid(row=rowIndex,column=5,sticky='w')
+    rowIndex += 1
+    self.test0206Cmd = Button(self, textvariable=self.test0206Text,command=self.test0206Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test0206Cmd.grid(row=rowIndex,column=1,sticky='w')
+    self.test0207Cmd = Button(self, textvariable=self.test0207Text,command=self.test0207Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test0207Cmd.grid(row=rowIndex,column=2,sticky='w')
+    self.test0208Cmd = Button(self, textvariable=self.test0208Text,command=self.test0208Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test0208Cmd.grid(row=rowIndex,column=3,sticky='w')
+    self.test0209Cmd = Button(self, textvariable=self.test0209Text,command=self.test0209Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test0209Cmd.grid(row=rowIndex,column=4,sticky='w')
+
+    # Test 3
+    rowIndex += 1
+    self.test03Cmd = Button(self, textvariable=self.test03Text,command=self.test03Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test03Cmd.grid(row=rowIndex,column=0,sticky='w')
+    self.test0301Cmd = Button(self, textvariable=self.test0301Text,command=self.test0301Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test0301Cmd.grid(row=rowIndex,column=1,sticky='w')
+
+    # Test 4
+    rowIndex += 1
+    self.test04Cmd = Button(self, textvariable=self.test04Text,command=self.test04Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test04Cmd.grid(row=rowIndex,column=0,sticky='w')
+    self.test0401Cmd = Button(self, textvariable=self.test0401Text,command=self.test0401Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test0401Cmd.grid(row=rowIndex,column=1,sticky='w')
+    self.test0402Cmd = Button(self, textvariable=self.test0402Text,command=self.test0402Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test0402Cmd.grid(row=rowIndex,column=2,sticky='w')
+    self.test0403Cmd = Button(self, textvariable=self.test0403Text,command=self.test0403Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test0403Cmd.grid(row=rowIndex,column=3,sticky='w')
+    self.test0404Cmd = Button(self, textvariable=self.test0404Text,command=self.test0404Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test0404Cmd.grid(row=rowIndex,column=4,sticky='w')
+    self.test0405Cmd = Button(self, textvariable=self.test0405Text,command=self.test0405Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test0405Cmd.grid(row=rowIndex,column=5,sticky='w')
+    rowIndex += 1
+    self.test0406Cmd = Button(self, textvariable=self.test0406Text,command=self.test0406Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test0406Cmd.grid(row=rowIndex,column=1,sticky='w')
+
+    # Test 5
+    rowIndex += 1
+    self.test05Cmd = Button(self, textvariable=self.test05Text,command=self.test05Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test05Cmd.grid(row=rowIndex,column=0,sticky='w')
+    self.test0501Cmd = Button(self, textvariable=self.test0501Text,command=self.test0501Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test0501Cmd.grid(row=rowIndex,column=1,sticky='w')
+
+    # Test 6
+    rowIndex += 1
+    self.test06Cmd = Button(self, textvariable=self.test06Text,command=self.test06Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test06Cmd.grid(row=rowIndex,column=0,sticky='w')
+    self.test0601Cmd = Button(self, textvariable=self.test0601Text,command=self.test0601Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test0601Cmd.grid(row=rowIndex,column=1,sticky='w')
+    self.test0602Cmd = Button(self, textvariable=self.test0602Text,command=self.test0602Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",10,"bold"))
+    self.test0602Cmd.grid(row=rowIndex,column=2,sticky='w')
+
+    """
     self.station01Cmd = Button(self,textvariable=self.station01Text,command=self.station01Cmd__click,height=6,width=15,font=("Arial",10,"bold"))
     self.station01Cmd.grid(row=0,column=0,sticky='nsew')
     self.station02Cmd = Button(self,textvariable=self.station02Text,command=self.station02Cmd__click,width=15,font=("Arial",10,"bold"))
@@ -196,8 +372,79 @@ class leakTestWindow(Frame):
     self.station20Cmd = Button(self,textvariable=self.station20Text,command=self.station20Cmd__click,font=("Arial",10,"bold"))
     self.station20Cmd.grid(row=3,column=4,sticky='nsew')
     self.resetButtonColours()
+    """
 
-# TODO: Add case checks for blank stations and ignore
+  # Test 1
+  def test01Cmd__click(self):
+    print("test01")
+    exit()
+  def test0101Cmd__click(self):
+    print("test0101")
+
+  # Test 2
+  def test02Cmd__click(self):
+    print("test02")
+    exit()
+  def test0201Cmd__click(self):
+    print("test0201")
+  def test0202Cmd__click(self):
+    print("test0202")
+  def test0203Cmd__click(self):
+    print("test0203")
+  def test0204Cmd__click(self):
+    print("test0204")
+  def test0205Cmd__click(self):
+    print("test0205")
+  def test0206Cmd__click(self):
+    print("test0206")
+  def test0207Cmd__click(self):
+    print("test0207")
+  def test0208Cmd__click(self):
+    print("test0208")
+  def test0209Cmd__click(self):
+    print("test0209")
+
+  # Test 3
+  def test03Cmd__click(self):
+    print("test03")
+    exit()
+  def test0301Cmd__click(self):
+    print("test0301")
+
+  # Test 4
+  def test04Cmd__click(self):
+    print("test04")
+    exit()
+  def test0401Cmd__click(self):
+    print("test0401")
+  def test0402Cmd__click(self):
+    print("test0402")
+  def test0403Cmd__click(self):
+    print("test0403")
+  def test0404Cmd__click(self):
+    print("test0404")
+  def test0405Cmd__click(self):
+    print("test0405")
+  def test0406Cmd__click(self):
+    print("test0406")
+
+  # Test 5
+  def test05Cmd__click(self):
+    print("test05")
+    exit()
+  def test0501Cmd__click(self):
+    print("test0501")
+
+  # Test 6
+  def test06Cmd__click(self):
+    print("test06")
+    exit()
+  def test0601Cmd__click(self):
+    print("test0601")
+  def test0602Cmd__click(self):
+    print("test0602")
+
+
 
   def station01Cmd__click(self):
     print("1")
@@ -949,6 +1196,7 @@ class leakTestWindow(Frame):
 
   def resetButtonColours(self):
     print("resetButtonColours()")
+    return
     self.station01Cmd["bg"]="grey90"
     self.station02Cmd["bg"]="grey90"
     self.station03Cmd["bg"]="grey90"
