@@ -5,6 +5,7 @@ import RPi.GPIO as GPIO
 import smbus
 import fcntl
 from tkinter import *
+from tkinter.tix import *
 
 import debugWindow
 import leakTestWindow
@@ -42,7 +43,9 @@ class Window(Frame):
     self.master = master
 
     self.pack(fill=BOTH, expand=1)
-
+#    self.frame = Frame()
+#    swin = ScrolledWindow(self.frame)
+#    swin.pack()
 
     # Try a button
     exitCmd =  Button(self, text="Exit", command=self.clickExitCmd,height=2,width=4)
@@ -102,7 +105,7 @@ my_leakTest.geometry("800x480")
 root.geometry("800x480")
 
 # Scheduled updates
-##appDebug.periodicUpdate()
+####appDebug.periodicUpdate()
 appLeakTest.periodicUpdate()
 
 # I2C Bus setup
@@ -120,4 +123,6 @@ root.attributes('-topmost', True)
 root.after_idle(root.attributes, '-topmost', False)
 
 root.mainloop()
+#app = Window(my_leakTest)
+#my_leakTest.mainloop()
 
