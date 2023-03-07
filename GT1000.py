@@ -9,13 +9,21 @@ class GT1000:
   I2C_BUS = 1
   __I2C = smbus.SMBus(I2C_BUS)
   CHIP000 = 0x38
+  CHIP38 = 0x38
   CHIP001 = 0x39
+  CHIP39 = 0x39
   CHIP010 = 0x3a
+  CHIP3A = 0x3a
   CHIP011 = 0x3b
+  CHIP3B = 0x3b
   CHIP100 = 0x3c
+  CHIP3C = 0x3c
   CHIP101 = 0x3d
+  CHIP3D = 0x3d
   CHIP110 = 0x3e
+  CHIP3E = 0x3e
   CHIP111 = 0x3f
+  CHIP3F = 0x3f
   CHIPS = [CHIP000,CHIP001,CHIP010,CHIP011,CHIP100,CHIP101,CHIP110,CHIP111]
   INCHIPS = [CHIP000]
   OUTCHIPS = [CHIP010,CHIP011,CHIP100,CHIP110]
@@ -25,7 +33,7 @@ class GT1000:
   BANK2 = 20
   BANK3 = 16
   BANK4 = 7
-  BANKS = [BANK1,BANK2,BANK3,BANK4]
+  BANKS = [BANK1,BANK2,BANK3]
 
   # GPIO Inputs/Outputs
   EXT_IN_START = 6
@@ -55,6 +63,33 @@ class GT1000:
   GT_CameraOP2 = False
   GT_CameraOP3 = False
 
+  LED_L = [0,0,0,0]
+  LED_R = [0,0,0,0]
+  AFB2 = [0,0,0,0,0,0,0,0,0]
+  SNS = [0,0,0]
+  ACM1 = [0,0,0,0,0,0,\
+          0,0,0,0,0,0,0,0,0,0,0,0,0,\
+          0,0,0,0,0,0,0,0,0,0]
+  POSTNEG = 0
+  POSTPOS = 0
+  POSTACCPOS = 0
+  WIPER = [0,0,0,0,0]
+  LED_HOOD = [0,0,0,0,0]
+  LED_BUMPER = [0,0,0,0,0]
+  LED_ROOF = [0,0,0,0,0,0,0]
+  DLC1 = [0,0,0,0,0,0,0]
+  DLC2 = [0,0,0,0,0,0,0]
+  KEY_PAD = [0,0,0,0,0,0]
+  AFB1 = [0,0,0,0,0,0,\
+          0,0,0,0,0,0,\
+          0,0,0,0,0,0,0]
+  GND = [0,0,0,0,0,0,0,0,0]
+  SXX = [0,0,0,0,0,0,0,0,0,0,0]
+  WASHER = [0,0,0]
+  SW_1 = [0,0,0,0,0,0,0,0,0]
+  PWR_FLIP = [0,0,0]
+
+
   GTchip0int = [0,0,0]
   GTchip1int = [0,0,0]
   GTchip2int = [0,0,0]
@@ -64,6 +99,15 @@ class GT1000:
   GTchip6int = [0,0,0]
   GTchip7int = [0,0,0]
   GTchip8int = [0,0,0]
+
+  GTchip38int = [0,0,0]
+  GTchip39int = [0,0,0]
+  GTchip3Aint = [0,0,0]
+  GTchip3Bint = [0,0,0]
+  GTchip3Cint = [0,0,0]
+  GTchip3Dint = [0,0,0]
+  GTchip3Eint = [0,0,0]
+  GTchip3Fint = [0,0,0]
 
   # Stations
   testStations = [\
@@ -107,7 +151,7 @@ class GT1000:
     GPIO.setup(self.BANKS[0], GPIO.OUT, initial=GPIO.LOW)
     GPIO.setup(self.BANKS[1], GPIO.OUT, initial=GPIO.LOW)
     GPIO.setup(self.BANKS[2], GPIO.OUT, initial=GPIO.LOW)
-    GPIO.setup(self.BANKS[3], GPIO.OUT, initial=GPIO.LOW)
+#    GPIO.setup(self.BANKS[3], GPIO.OUT, initial=GPIO.LOW)
     print("[end call] __GPIO_Setup()")
 
   def getLatchState(self):
@@ -123,37 +167,97 @@ class GT1000:
 
   def read_inputs(self):
     print("[call] read_inputs()")
+
+    # Get GPIO Information
     self.GT_Start = (GPIO.input(self.EXT_IN_START) == 0)
     self.GT_Abort = (GPIO.input(self.EXT_IN_ABORT) == 0)
     self.GT_PartSelect = (GPIO.input(self.EXT_IN_PART2) == 0)
     self.GT_CameraOk = (GPIO.input(self.EXT_IN_CAMOK) == 0)
 
     print(">>Start: ", self.GT_Start, "  Part Select: ", self.GT_PartSelect, "  Abort: ",self.GT_Abort)
-    try:
-      self.GTchip0int[0] = 255 - self.__I2C.read_byte(self.CHIP000)
-      #self.GTchip2int[0] = self.__I2C.read_byte(self.CHIP010)
-      #self.GTchip3int[0] = self.__I2C.read_byte(self.CHIP011)
-      #self.GTchip4int[0] = self.__I2C.read_byte(self.CHIP100)
-      #self.GTchip6int[0] = self.__I2C.read_byte(self.CHIP110)
-    except Exception as e:
-      print("!!! ", str(e), " !!!")
-      pass
+
+
+    # Get PIA data
+    i = 0
+    for b in self.BANKS:
+      self.setBankByPin(b)
+      try:
+        print("Index: ", i)
+        self.GTchip38int[i] = self.__I2C.read_byte(self.CHIP38)
+      except Exception as e:
+        print("!!! ", str(e), " !!!")
+        pass
+      try:
+        self.GTchip39int[i] = self.__I2C.read_byte(self.CHIP39)
+      except Exception as e:
+        print("!!! ", str(e), " !!!")
+        pass
+      try:
+        self.GTchip3Aint[i] = self.__I2C.read_byte(self.CHIP3A)
+      except Exception as e:
+        print("!!! ", str(e), " !!!")
+        pass
+      try:
+        self.GTchip3Bint[i] = self.__I2C.read_byte(self.CHIP3B)
+      except Exception as e:
+        print("!!! ", str(e), " !!!")
+        pass
+      try:
+        self.GTchip3Cint[i] = self.__I2C.read_byte(self.CHIP3C)
+      except Exception as e:
+        print("!!! ", str(e), " !!!")
+        pass
+      try:
+        self.GTchip3Dint[i] = self.__I2C.read_byte(self.CHIP3D)
+      except Exception as e:
+        print("!!! ", str(e), " !!!")
+        pass
+      try:
+        self.GTchip3Eint[i] = self.__I2C.read_byte(self.CHIP3E)
+      except Exception as e:
+        print("!!! ", str(e), " !!!")
+        pass
+      try:
+        self.GTchip3Fint[i] = self.__I2C.read_byte(self.CHIP3F)
+      except Exception as e:
+        print("!!! ", str(e), " !!!")
+        pass
+      try:
+        i += 1
+        print("Index: ", i)
+      except Exception as e:
+        print("!!! ", str(e), " !!!")
+        pass
+
+
+
+    # Place read in containers
     self.GT_InTest = self.GTchip0int[0] & 0x01
     self.GT_Pass = self.GTchip0int[0] & 0x02
     self.GT_Fail = self.GTchip0int[0] & 0x04
     self.GT_CameraOP2 = self.GTchip0int[0] & 0xF0
     self.GT_CameraOP3 = self.GTchip0int[0] & 0x80
+
+
     GPIO.output(self.EXT_OUT_ABORT, self.GT_Abort)
     print(">>In Test: ", self.GT_InTest, "  Pass: ", self.GT_Pass, "  Fail: ", self.GT_Fail)
     print("[end call] read_inputs()")
 
   def write_output(self, addy, data):
+    print("Writing ", data, " to ", addy)
     self.__I2C.write_byte_data(addy, 1, data)
 
   def setBank(self, val):
+    print("Setting bank ", val)
     for c in self.BANKS:
       GPIO.output(c,0)
     GPIO.output(self.CHIPS[val+1],1)
+
+  def setBankByPin(self, val):
+    print("Setting bank ", val)
+    for c in self.BANKS:
+      GPIO.output(c,0)
+    GPIO.output(val,1)
 
   def resetAllOutputs(self):
     print("[call] resetAllOutputs()")
