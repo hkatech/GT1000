@@ -375,9 +375,9 @@ class leakTestWindow(Frame):
     fontHeight = 8
 
 
-    self.canvasScroll = Scrollbar(self, orient=VERTICAL, width=50)
+    self.canvasScroll = Scrollbar(self, orient=VERTICAL, width=50,jump=1)
     self.canvasScroll.pack(fill=Y, side=RIGHT, expand=FALSE)
-    self.mainCanvas = Canvas(self,bd=0,highlightthickness=0,yscrollcommand=self.canvasScroll.set)
+    self.mainCanvas = Canvas(self,bd=0,highlightthickness=0,yscrollcommand=self.canvasScroll.set,yscrollincrement='400')
     self.mainCanvas.pack(side=LEFT, fill=BOTH, expand=TRUE)
     self.canvasScroll.config(command=self.mainCanvas.yview)
     self.mainCanvas.xview_moveto(0)
@@ -562,7 +562,6 @@ class leakTestWindow(Frame):
     self.test1801Cmd.grid(row=rowIndex,column=1,sticky='w')
 
     # Test 19
-    rowIndex = 0
     rowIndex += 1
     self.test19Cmd = Button(self.mainFrame, textvariable=self.test19Text,command=self.test19Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test19Cmd.grid(row=rowIndex,column=0,sticky='w')

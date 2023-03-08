@@ -115,8 +115,8 @@ appLeakTest.periodicUpdate()
 # Register events
 #root.after(200, root.update)
 # Run forever!
-#app = Window(root)
-app = Window(my_leakTest)
+app = Window(root)
+#app = Window(my_leakTest)
 root.title("My GUI")
 
 root.lift()
