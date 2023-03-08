@@ -1159,7 +1159,7 @@ class leakTestWindow(Frame):
   def test0001Cmd__click(self):
     self.resetContLabels()
     print("test0001")
-    exit()
+#    exit()
   # Test 1
   def test01Cmd__click(self):
     self.resetContLabels()
