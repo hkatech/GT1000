@@ -187,6 +187,7 @@ class GT1000:
 
 
     # Get PIA data
+    #  Installed MUX relays are DS2E-M-DC12V-R: Operate time 10ms, release time 5ms
     i = 0
     for b in self.BANKS:
       self.setBankByPin(b)

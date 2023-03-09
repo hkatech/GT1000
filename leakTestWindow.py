@@ -132,8 +132,37 @@ class leakTestWindow(Frame):
     self.station19Text.set("Reset")
     self.station20Text.set("")
 
+
+    # H4569
+    self.test201Text = StringVar()
+    self.test20101Text = StringVar()
+    self.test20102Text = StringVar()
+    self.test20103Text = StringVar()
+    self.test204Text = StringVar()
+    self.test20401Text = StringVar()
+    self.test20402Text = StringVar()
+    self.test20403Text = StringVar()
+    self.test20404Text = StringVar()
+    self.test20405Text = StringVar()
+    self.test20406Text = StringVar()
+
+    self.test201Text.set("ACM2.1")
+    self.test20101Text.set("S201")
+    self.test20102Text.set(" ")
+    self.test20103Text.set(" ")
+    self.test204Text.set("ACM2.4")
+    self.test20401Text.set("HELMET_FAN.A")
+    self.test20402Text.set("PARTICULE.A")
+    self.test20403Text.set("POST -")
+    self.test20404Text.set("LED_CHASE_1.1")
+    self.test20405Text.set("LED_CHASE_2.1")
+    self.test20406Text.set("LED_CHASE_3.1")
+
+    # H4568
     self.test00Text = StringVar()
     self.test0001Text = StringVar()
+    self.test0002Text = StringVar()
+
     self.test01Text = StringVar()
     self.test0101Text = StringVar()
     self.test02Text = StringVar()
@@ -251,6 +280,7 @@ class leakTestWindow(Frame):
 
     self.test00Text.set("Start")
     self.test0001Text.set("Reset")
+    self.test0002Text.set("Test H4569")
     self.test01Text.set("ACM1.1")
     self.test0101Text.set("AFB1.E3")
     self.test02Text.set("ACM1.2")
@@ -379,18 +409,56 @@ class leakTestWindow(Frame):
     self.canvasScroll.pack(fill=Y, side=RIGHT, expand=FALSE)
     self.mainCanvas = Canvas(self,bd=0,highlightthickness=0,yscrollcommand=self.canvasScroll.set,yscrollincrement='400')
     self.mainCanvas.pack(side=LEFT, fill=BOTH, expand=TRUE)
+    self.main2Canvas = Canvas(self,bd=0,highlightthickness=0,yscrollcommand=self.canvasScroll.set,yscrollincrement='400')
+#    self.main2Canvas.pack(side=LEFT, fill=BOTH, expand=TRUE)
     self.canvasScroll.config(command=self.mainCanvas.yview)
     self.mainCanvas.xview_moveto(0)
     self.mainCanvas.yview_moveto(0)
-
+    self.main2Canvas.xview_moveto(0)
+    self.main2Canvas.yview_moveto(0)
     self.mainFrame = Frame(self)
+    self.main2Frame = Frame(self)
+
+    self.main2Canvas.create_window(0,0,window=self.main2Frame,anchor=NW)
+    # Test 1
+    self.test201Cmd = Button(self.main2Frame, textvariable=self.test201Text,command=self.test201Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test201Cmd.grid(row=rowIndex,column=0,sticky='w')
+    self.test20101Cmd = Button(self.main2Frame, textvariable=self.test20101Text,command=self.test20101Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test20101Cmd.grid(row=rowIndex,column=1,sticky='w')
+    self.test20102Cmd = Button(self.main2Frame, textvariable=self.test20102Text,command=self.test20102Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test20102Cmd.grid(row=rowIndex,column=2,sticky='w')
+    self.test20103Cmd = Button(self.main2Frame, textvariable=self.test20103Text,command=self.test20103Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test20103Cmd.grid(row=rowIndex,column=3,sticky='w')
+
+    # Test 4
+    rowIndex += 1
+    self.test204Cmd = Button(self.main2Frame, textvariable=self.test204Text,command=self.test204Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test204Cmd.grid(row=rowIndex,column=0,sticky='w')
+    self.test20401Cmd = Button(self.main2Frame, textvariable=self.test20401Text,command=self.test20401Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test20401Cmd.grid(row=rowIndex,column=1,sticky='w')
+    self.test20402Cmd = Button(self.main2Frame, textvariable=self.test20402Text,command=self.test20402Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test20402Cmd.grid(row=rowIndex,column=2,sticky='w')
+    self.test20403Cmd = Button(self.main2Frame, textvariable=self.test20403Text,command=self.test20403Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test20403Cmd.grid(row=rowIndex,column=3,sticky='w')
+    self.test20404Cmd = Button(self.main2Frame, textvariable=self.test20404Text,command=self.test20404Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test20404Cmd.grid(row=rowIndex,column=4,sticky='w')
+    self.test20405Cmd = Button(self.main2Frame, textvariable=self.test20405Text,command=self.test20405Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test20405Cmd.grid(row=rowIndex,column=5,sticky='w')
+    rowIndex += 1
+    self.test20406Cmd = Button(self.main2Frame, textvariable=self.test20406Text,command=self.test20406Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test20406Cmd.grid(row=rowIndex,column=1,sticky='w')
+
+
+    rowIndex = 0
     self.mainCanvas.create_window(0,0,window=self.mainFrame,anchor=NW)
 
-
-    self.test00Cmd = Button(self.mainFrame, textvariable=self.test00Text,command=self.test00Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
-    self.test00Cmd.grid(row=0,column=7,sticky='w')
-    self.test0001Cmd = Button(self.mainFrame, textvariable=self.test0001Text,command=self.test0001Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
-    self.test0001Cmd.grid(row=1,column=7,sticky='w')
+    # Start/Stop buttons // Add button for H4569 swap
+    self.test00Cmd = Button(self.mainFrame, textvariable=self.test00Text,command=self.test00Cmd__click,height=gridHeight*3,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test00Cmd.grid(row=0,column=7,sticky='w',rowspan=2)
+    self.test0001Cmd = Button(self.mainFrame, textvariable=self.test0001Text,command=self.test0001Cmd__click,height=gridHeight*3,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0001Cmd.grid(row=2,column=7,sticky='w',rowspan=2)
+    self.test0002Cmd = Button(self.mainFrame, textvariable=self.test0002Text,command=self.test0002Cmd__click,height=gridHeight*3,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0002Cmd.grid(row=4,column=7,sticky='w',rowspan=2)
 
     # Test 1
     self.test01Cmd = Button(self.mainFrame, textvariable=self.test01Text,command=self.test01Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
@@ -1159,8 +1227,77 @@ class leakTestWindow(Frame):
   def test0001Cmd__click(self):
     self.resetContLabels()
     print("test0001")
-#    exit()
+    exit()
   # Test 1
+
+  def test0002Cmd__click(self):
+    self.resetContLabels()
+    self.mainCanvas.pack_forget()
+    self.main2Canvas.pack(side=LEFT, fill=BOTH, expand=TRUE)
+    self.canvasScroll.config(command=self.main2Canvas.yview)
+
+    print("test0001")
+
+
+  def test201Cmd__click(self):
+    self.resetContLabels()
+    tChip = 0x39
+    tPin = 0x04
+    rPin = 27
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(15/1000)
+    self.GT1000.write_output(tChip,tPin)
+    if self.GT1000.AFB1[rPin]:
+      self.test20101Cmd["bg"] = "green"
+      self.test20101Cmd["activebackground"] = "green"
+    else:
+      self.test20101Cmd["bg"] = "red"
+      self.test20101Cmd["activebackground"] = "red"
+#    exit()
+
+  def test20101Cmd__click(self):
+    print("test20101")
+
+  def test20102Cmd__click(self):
+    print("test20102")
+
+  def test20103Cmd__click(self):
+    print("test20103")
+
+  def test204Cmd__click(self):
+    self.resetContLabels()
+    tChip = 0x39
+    tPin = 0x04
+    rPin = 27
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(15/1000)
+    self.GT1000.write_output(tChip,tPin)
+    if self.GT1000.AFB1[rPin]:
+      self.test20401Cmd["bg"] = "green"
+      self.test20401Cmd["activebackground"] = "green"
+    else:
+      self.test20401Cmd["bg"] = "red"
+      self.test20401Cmd["activebackground"] = "red"
+#    exit()
+
+  def test20401Cmd__click(self):
+    print("test20401")
+  def test20402Cmd__click(self):
+    print("test20402")
+  def test20403Cmd__click(self):
+    print("tesy20403")
+  def test20404Cmd__click(self):
+    print("test20404")
+  def test20405Cmd__click(self):
+    print("test20405")
+  def test20406Cmd__click(self):
+    print("test20406")
+
+
   def test01Cmd__click(self):
     self.resetContLabels()
     tChip = 0x39
@@ -1178,6 +1315,7 @@ class leakTestWindow(Frame):
       self.test0101Cmd["bg"] = "red"
       self.test0101Cmd["activebackground"] = "red"
 #    exit()
+
   def test0101Cmd__click(self):
     print("test0101")
 
