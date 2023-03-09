@@ -457,8 +457,8 @@ class leakTestWindow(Frame):
     self.test00Cmd.grid(row=0,column=7,sticky='w',rowspan=2)
     self.test0001Cmd = Button(self.mainFrame, textvariable=self.test0001Text,command=self.test0001Cmd__click,height=gridHeight*3,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0001Cmd.grid(row=2,column=7,sticky='w',rowspan=2)
-    self.test0002Cmd = Button(self.mainFrame, textvariable=self.test0002Text,command=self.test0002Cmd__click,height=gridHeight*3,width=gridWidth,font=("Arial",fontHeight,"bold"))
-    self.test0002Cmd.grid(row=4,column=7,sticky='w',rowspan=2)
+    #self.test0002Cmd = Button(self.mainFrame, textvariable=self.test0002Text,command=self.test0002Cmd__click,height=gridHeight*3,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    #self.test0002Cmd.grid(row=4,column=7,sticky='w',rowspan=2)
 
     # Test 1
     self.test01Cmd = Button(self.mainFrame, textvariable=self.test01Text,command=self.test01Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
@@ -1227,7 +1227,7 @@ class leakTestWindow(Frame):
   def test0001Cmd__click(self):
     self.resetContLabels()
     print("test0001")
-    exit()
+    #exit()
   # Test 1
 
   def test0002Cmd__click(self):

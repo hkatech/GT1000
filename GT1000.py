@@ -242,7 +242,7 @@ class GT1000:
 
 
     # Bank 0 = 21;  Bank 1 = 20;  Bank 2 = 16
-    ## Posts  @  .  @
+    ## Posts  @  *  *
     ##        -  +  A+
     self.POSTNEG = self.GTchip3Dint[1] & 0x20
     self.POSTPOS = self.GTchip3Dint[2] & 0x02
@@ -284,13 +284,14 @@ class GT1000:
     self.SNS[1] = self.GTchip3Cint[0] & 0x01
     self.SNS[2] = self.GTchip3Cint[0] & 0x02
 
+
     # AFB1
     self.AFB1[4] = self.GTchip39int[1] & 0x10  #A4
     self.AFB1[6] = self.GTchip3Bint[1] & 0x02  #A6
     self.AFB1[10] = self.GTchip39int[1] & 0x08  #B4
     self.AFB1[11] = self.GTchip3Bint[2] & 0x80  #B5
     self.AFB1[12] = self.GTchip3Bint[2] & 0x40  #B6
-    self.AFB1[13] = self.GTchip3Bint[2] & 0x02  #C1
+    self.AFB1[13] = self.GTchip3Bint[2] & 0x20  #C1
     self.AFB1[14] = self.GTchip3Bint[2] & 0x10  #C2
     self.AFB1[15] = self.GTchip3Bint[1] & 0x01  #C3
     self.AFB1[16] = self.GTchip3Bint[2] & 0x08  #C4
@@ -316,14 +317,14 @@ class GT1000:
     # Bank 0 = 21;  Bank 1 = 20;  Bank 2 = 16
 
     # ACM
-    self.ACM[1] = self.GTchip39int[2] & 0x04
-    self.ACM[2] = self.GTchip39int[2] & 0x08
-    self.ACM[3] = self.GTchip39int[2] & 0x10
-    self.ACM[4] = self.GTchip39int[2] & 0x80
-    self.ACM[5] = self.GTchip39int[2] & 0x20
-    self.ACM[6] = self.GTchip39int[2] & 0x40
-    self.ACM[7] = self.GTchip39int[2] & 0x01
-    self.ACM[8] = self.GTchip39int[2] & 0x02
+    self.ACM[1] = self.GTchip39int[2] & 0x04 # fb
+    self.ACM[2] = self.GTchip39int[2] & 0x08 # f7
+    self.ACM[3] = self.GTchip39int[2] & 0x10 # ef
+    self.ACM[4] = self.GTchip39int[2] & 0x80 # 7f
+    self.ACM[5] = self.GTchip39int[2] & 0x20 # df
+    self.ACM[6] = self.GTchip39int[2] & 0x40 # bf
+    self.ACM[7] = self.GTchip39int[2] & 0x01 # fe
+    self.ACM[8] = self.GTchip39int[2] & 0x02 # fd
 
     self.ACM[9] = self.GTchip38int[2] & 0x04
     self.ACM[10] = self.GTchip38int[2] & 0x08
@@ -332,21 +333,22 @@ class GT1000:
     self.ACM[13] = self.GTchip38int[2] & 0x20
     self.ACM[14] = self.GTchip38int[2] & 0x40
     self.ACM[15] = self.GTchip38int[2] & 0x01
-    self.ACM[16] = self.GTchip38int[2] & 0x02
+#    self.ACM[16] = self.GTchip38int[2] & 0x02 
 
-    self.ACM[17] = self.GTchip3Aint[2] & 0x04
-    self.ACM[18] = self.GTchip3Aint[2] & 0x08
-    self.ACM[19] = self.GTchip3Aint[2] & 0x10
-    self.ACM[20] = self.GTchip3Aint[2] & 0x80
-    self.ACM[21] = self.GTchip3Aint[2] & 0x20
-    self.ACM[22] = self.GTchip3Aint[2] & 0x40
-    self.ACM[23] = self.GTchip3Aint[2] & 0x01
-    self.ACM[24] = self.GTchip3Aint[2] & 0x02
+    self.ACM[16] = self.GTchip3Aint[2] & 0x04
+    self.ACM[17] = self.GTchip3Aint[2] & 0x08
+    self.ACM[18] = self.GTchip3Aint[2] & 0x10
+    self.ACM[19] = self.GTchip3Aint[2] & 0x80
+    self.ACM[20] = self.GTchip3Aint[2] & 0x20
+    self.ACM[21] = self.GTchip3Aint[2] & 0x40
+    self.ACM[22] = self.GTchip3Aint[2] & 0x01
+    self.ACM[23] = self.GTchip3Aint[2] & 0x02
 
-    self.ACM[25] = self.GTchip3Cint[2] & 0x08
-    self.ACM[26] = self.GTchip3Cint[2] & 0x10
-    self.ACM[27] = self.GTchip3Cint[2] & 0x20
-    self.ACM[28] = self.GTchip3Cint[2] & 0x40
+    self.ACM[24] = self.GTchip3Cint[2] & 0x08
+    self.ACM[25] = self.GTchip3Cint[2] & 0x10
+    self.ACM[26] = self.GTchip3Cint[2] & 0x20
+    self.ACM[27] = self.GTchip3Cint[2] & 0x40
+    self.ACM[28] = self.GTchip3Cint[2] & 0x80
 
     # CHASE_3  @@  34
     #          @@  25
@@ -466,7 +468,7 @@ class GT1000:
   def write_output(self, addy, data):
     try:
       print("Writing ", data, " to ", addy)
-      self.__I2C.write_byte_data(addy, 1, data)
+      self.__I2C.write_byte_data(addy, 1, data-255)
     except Exception as e:
       pass
 
