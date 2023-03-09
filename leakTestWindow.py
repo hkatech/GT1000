@@ -1240,14 +1240,14 @@ class leakTestWindow(Frame):
 
 
   def test201Cmd__click(self):
-    self.resetContLabels()
+    self.GT1000.clear_outputs()
     tChip = 0x39
     tPin = 0x04
     rPin = 27
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
     if self.GT1000.AFB1[rPin]:
       self.test20101Cmd["bg"] = "green"
@@ -1267,6 +1267,7 @@ class leakTestWindow(Frame):
     print("test20103")
 
   def test204Cmd__click(self):
+    self.GT1000.clear_outputs()
     self.resetContLabels()
     tChip = 0x39
     tPin = 0x04
@@ -1274,7 +1275,7 @@ class leakTestWindow(Frame):
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
     if self.GT1000.AFB1[rPin]:
       self.test20401Cmd["bg"] = "green"
@@ -1299,15 +1300,16 @@ class leakTestWindow(Frame):
 
 
   def test01Cmd__click(self):
-    self.resetContLabels()
+    self.GT1000.clear_outputs()
     tChip = 0x39
     tPin = 0x04
     rPin = 27
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.AFB1[rPin]:
       self.test0101Cmd["bg"] = "green"
       self.test0101Cmd["activebackground"] = "green"
@@ -1322,14 +1324,16 @@ class leakTestWindow(Frame):
   # Test 2
   def test02Cmd__click(self):
     print("test02")
+    self.GT1000.clear_outputs()
     tChip = 0x39
     tPin = 0x08
     rPin = 1
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.LED_L[1]:
       self.test0201Cmd["bg"] = "green"
       self.test0201Cmd["activebackground"] = "green"
@@ -1411,14 +1415,16 @@ class leakTestWindow(Frame):
   # Test 3
   def test03Cmd__click(self):
     print("test03")
+    self.GT1000.clear_outputs()
     tChip = 0x39
     tPin = 0x10
     rPin = 2
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.PWR_FLIP[2]:
       self.test0301Cmd["bg"] = "green"
       self.test0301Cmd["activebackground"] = "green"
@@ -1432,14 +1438,16 @@ class leakTestWindow(Frame):
   # Test 4
   def test04Cmd__click(self):
     print("test04")
+    self.GT1000.clear_outputs()
     tChip = 0x39
-    tPin = 0x04
+    tPin = 0x80
     rPin = 0
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.AFB1[15]:
       self.test0401Cmd["bg"] = "green"
       self.test0401Cmd["activebackground"] = "green"
@@ -1497,14 +1505,16 @@ class leakTestWindow(Frame):
   # Test 5
   def test05Cmd__click(self):
     print("test05")
+    self.GT1000.clear_outputs()
     tChip = 0x39
-    tPin = 0x80
+    tPin = 0x20
     rPin = 0x01
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.PWR_FLIP[1]:
       self.test0501Cmd["bg"] = "green"
       self.test0501Cmd["activebackground"] = "green"
@@ -1518,14 +1528,16 @@ class leakTestWindow(Frame):
   # Test 6
   def test06Cmd__click(self):
     print("test06")
+    self.GT1000.clear_outputs()
     tChip = 0x39
-    tPin = 0x20
+    tPin = 0x40
     rPin = 0x01
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.LED_ROOF[3]:
       self.test0601Cmd["bg"] = "green"
       self.test0601Cmd["activebackground"] = "green"
@@ -1547,14 +1559,16 @@ class leakTestWindow(Frame):
   # Test 7
   def test07Cmd__click(self):
     print("test07")
+    self.GT1000.clear_outputs()
     tChip = 0x39
-    tPin = 0x40
+    tPin = 0x01
     rPin = 0x01
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.LED_ROOF[6]:
       self.test0701Cmd["bg"] = "green"
       self.test0701Cmd["activebackground"] = "green"
@@ -1568,14 +1582,16 @@ class leakTestWindow(Frame):
   # Test 8
   def test08Cmd__click(self):
     print("test08")
+    self.GT1000.clear_outputs()
     tChip = 0x39
-    tPin = 0x01
+    tPin = 0x02
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.LED_BUMPER[3]:
       self.test0801Cmd["bg"] = "green"
       self.test0801Cmd["activebackground"] = "green"
@@ -1597,14 +1613,16 @@ class leakTestWindow(Frame):
   # Test 9
   def test09Cmd__click(self):
     print("test09")
+    self.GT1000.clear_outputs()
     tChip = 0x38
     tPin = 0x04
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.LED_BUMPER[6]:
       self.test0901Cmd["bg"] = "green"
       self.test0901Cmd["activebackground"] = "green"
@@ -1618,14 +1636,16 @@ class leakTestWindow(Frame):
   # Test 10
   def test10Cmd__click(self):
     print("test10")
+    self.GT1000.clear_outputs()
     tChip = 0x38
     tPin = 0x08
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.LED_HOOD[2]:
       self.test1001Cmd["bg"] = "green"
       self.test1001Cmd["activebackground"] = "green"
@@ -1639,14 +1659,16 @@ class leakTestWindow(Frame):
   # Test 11
   def test11Cmd__click(self):
     print("test11")
+    self.GT1000.clear_outputs()
     tChip = 0x38
     tPin = 0x10
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.DLC1[6]:
       self.test1101Cmd["bg"] = "green"
       self.test1101Cmd["activebackground"] = "green"
@@ -1676,14 +1698,16 @@ class leakTestWindow(Frame):
   # Test 12
   def test12Cmd__click(self):
     print("test12")
+    self.GT1000.clear_outputs()
     tChip = 0x38
     tPin = 0x80
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.SNS[1]:
       self.test1201Cmd["bg"] = "green"
       self.test1201Cmd["activebackground"] = "green"
@@ -1697,14 +1721,16 @@ class leakTestWindow(Frame):
   # Test 13
   def test13Cmd__click(self):
     print("test13")
+    self.GT1000.clear_outputs()
     tChip = 0x38
     tPin = 0x20
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.SNS[2]:
       self.test1301Cmd["bg"] = "green"
       self.test1301Cmd["activebackground"] = "green"
@@ -1718,14 +1744,16 @@ class leakTestWindow(Frame):
   # Test 14
   def test14Cmd__click(self):
     print("test14")
+    self.GT1000.clear_outputs()
     tChip = 0x38
     tPin = 0x40
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.DLC1[1]:
       self.test1401Cmd["bg"] = "green"
       self.test1401Cmd["activebackground"] = "green"
@@ -1755,14 +1783,16 @@ class leakTestWindow(Frame):
   # Test 15
   def test15Cmd__click(self):
     print("test15")
+    self.GT1000.clear_outputs()
     tChip = 0x38
     tPin = 0x01
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.DLC1[2]:
       self.test1501Cmd["bg"] = "green"
       self.test1501Cmd["activebackground"] = "green"
@@ -1793,14 +1823,16 @@ class leakTestWindow(Frame):
   # Test 16
   def test16Cmd__click(self):
     print("test16")
+    self.GT1000.clear_outputs()
     tChip = 0x3A
     tPin = 0x10
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.LED_HOOD[4]:
       self.test1601Cmd["bg"] = "green"
       self.test1601Cmd["activebackground"] = "green"
@@ -1814,14 +1846,16 @@ class leakTestWindow(Frame):
   # Test 17
   def test17Cmd__click(self):
     print("test17")
+    self.GT1000.clear_outputs()
     tChip = 0x3A
     tPin = 0x80
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.SW_1[3]:
       self.test1701Cmd["bg"] = "green"
       self.test1701Cmd["activebackground"] = "green"
@@ -1835,14 +1869,16 @@ class leakTestWindow(Frame):
   # Test 18
   def test18Cmd__click(self):
     print("test18")
+    self.GT1000.clear_outputs()
     tChip = 0x3A
     tPin = 0x20
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.SW_1[1]:
       self.test1801Cmd["bg"] = "green"
       self.test1801Cmd["activebackground"] = "green"
@@ -1856,14 +1892,16 @@ class leakTestWindow(Frame):
   # Test 19
   def test19Cmd__click(self):
     print("test19")
+    self.GT1000.clear_outputs()
     tChip = 0x3A
     tPin = 0x40
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.LED_L[3]:
       self.test1901Cmd["bg"] = "green"
       self.test1901Cmd["activebackground"] = "green"
@@ -1877,14 +1915,16 @@ class leakTestWindow(Frame):
   # Test 20
   def test20Cmd__click(self):
     print("test20")
+    self.GT1000.clear_outputs()
     tChip = 0x3A
     tPin = 0x01
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.LED_R[3]:
       self.test2001Cmd["bg"] = "green"
       self.test2001Cmd["activebackground"] = "green"
@@ -1898,14 +1938,16 @@ class leakTestWindow(Frame):
   # Test 21
   def test21Cmd__click(self):
     print("test21")
+    self.GT1000.clear_outputs()
     tChip = 0x3C
     tPin = 0x10
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.AFB1[19]:
       self.test2101Cmd["bg"] = "green"
       self.test2101Cmd["activebackground"] = "green"
@@ -1919,14 +1961,16 @@ class leakTestWindow(Frame):
   # Test 22
   def test22Cmd__click(self):
     print("test22")
+    self.GT1000.clear_outputs()
     tChip = 0x3C
     tPin = 0x20
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.WASHER[2]:
       self.test2201Cmd["bg"] = "green"
       self.test2201Cmd["activebackground"] = "green"
@@ -1940,14 +1984,16 @@ class leakTestWindow(Frame):
   # Test 23
   def test23Cmd__click(self):
     print("test23")
+    self.GT1000.clear_outputs()
     tChip = 0x3C
     tPin = 0x40
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.SXX[1]:
       self.test2301Cmd["bg"] = "green"
       self.test2301Cmd["activebackground"] = "green"
@@ -1961,14 +2007,16 @@ class leakTestWindow(Frame):
   # Test 24
   def test24Cmd__click(self):
     print("test24")
+    self.GT1000.clear_outputs()
     tChip = 0x3C
     tPin = 0x80
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.SXX[2]:
       self.test2401Cmd["bg"] = "green"
       self.test2401Cmd["activebackground"] = "green"
@@ -1982,14 +2030,16 @@ class leakTestWindow(Frame):
   # Test 25
   def test25Cmd__click(self):
     print("test25")
+    self.GT1000.clear_outputs()
     tChip = 0x3B
     tPin = 0x80
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.AFB1[4]:
       self.test2501Cmd["bg"] = "green"
       self.test2501Cmd["activebackground"] = "green"
@@ -2011,14 +2061,16 @@ class leakTestWindow(Frame):
   # Test 26
   def test26Cmd__click(self):
     print("test26")
+    self.GT1000.clear_outputs()
     tChip = 0x3B
     tPin = 0x40
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.LED_BUMPER[4]:
       self.test2601Cmd["bg"] = "green"
       self.test2601Cmd["activebackground"] = "green"
@@ -2032,14 +2084,16 @@ class leakTestWindow(Frame):
   # Test 27
   def test27Cmd__click(self):
     print("test27")
+    self.GT1000.clear_outputs()
     tChip = 0x3B
     tPin = 0x02
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.AFB1[31]:
       self.test2701Cmd["bg"] = "green"
       self.test2701Cmd["activebackground"] = "green"
@@ -2063,14 +2117,16 @@ class leakTestWindow(Frame):
   # Test 28
   def test28Cmd__click(self):
     print("test28")
+    self.GT1000.clear_outputs()
     tChip = 0x3B
     tPin = 0x10
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.WIPER[2]:
       self.test2801Cmd["bg"] = "green"
       self.test2801Cmd["activebackground"] = "green"
@@ -2086,14 +2142,16 @@ class leakTestWindow(Frame):
   # Test 29
   def test29Cmd__click(self):
     print("test29")
+    self.GT1000.clear_outputs()
     tChip = 0x3B
     tPin = 0x08
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.AFB1[23]:
       self.test2901Cmd["bg"] = "green"
       self.test2901Cmd["activebackground"] = "green"
@@ -2115,14 +2173,16 @@ class leakTestWindow(Frame):
   # Test 30
   def test30Cmd__click(self):
     print("test30")
+    self.GT1000.clear_outputs()
     tChip = 0x3B
     tPin = 0x04
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.WIPER[3]:
       self.test3001Cmd["bg"] = "green"
       self.test3001Cmd["activebackground"] = "green"
@@ -2136,14 +2196,16 @@ class leakTestWindow(Frame):
   # Test 31
   def test31Cmd__click(self):
     print("test31")
+    self.GT1000.clear_outputs()
     tChip = 0x3B
     tPin = 0x02
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.LED_ROOF[4]:
       self.test3101Cmd["bg"] = "green"
       self.test3101Cmd["activebackground"] = "green"
@@ -2165,14 +2227,16 @@ class leakTestWindow(Frame):
   # Test 32
   def test32Cmd__click(self):
     print("test32")
+    self.GT1000.clear_outputs()
     tChip = 0x3B
     tPin = 0x01
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.LED_L[2]:
       self.test3201Cmd["bg"] = "green"
       self.test3201Cmd["activebackground"] = "green"
@@ -2203,14 +2267,16 @@ class leakTestWindow(Frame):
   # Test 33
   def test33Cmd__click(self):
     print("test33")
+    self.GT1000.clear_outputs()
     tChip = 0x3D
     tPin = 0x04
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.DLC2[3]:
       self.test3301Cmd["bg"] = "green"
       self.test3301Cmd["activebackground"] = "green"
@@ -2232,14 +2298,16 @@ class leakTestWindow(Frame):
   # Test 34
   def test34Cmd__click(self):
     print("test34")
+    self.GT1000.clear_outputs()
     tChip = 0x3D
     tPin = 0x08
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.DLC2[4]:
       self.test3401Cmd["bg"] = "green"
       self.test3401Cmd["activebackground"] = "green"
@@ -2253,14 +2321,16 @@ class leakTestWindow(Frame):
   # Test 35
   def test35Cmd__click(self):
     print("test35")
+    self.GT1000.clear_outputs()
     tChip = 0x3D
     tPin = 0x10
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.DLC2[5]:
       self.test3501Cmd["bg"] = "green"
       self.test3501Cmd["activebackground"] = "green"
@@ -2274,14 +2344,16 @@ class leakTestWindow(Frame):
   # Test 36
   def test36Cmd__click(self):
     print("test36")
+    self.GT1000.clear_outputs()
     tChip = 0x3D
     tPin = 0x02
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.AFB1[28]:
       self.test3601Cmd["bg"] = "green"
       self.test3601Cmd["activebackground"] = "green"
@@ -2331,14 +2403,16 @@ class leakTestWindow(Frame):
   # Test 37
   def test37Cmd__click(self):
     print("test37")
+    self.GT1000.clear_outputs()
     tChip = 0x3D
     tPin = 0x01
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
-    time.sleep(15/1000)
+    time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.SW_1[2]:
       self.test3701Cmd["bg"] = "green"
       self.test3701Cmd["activebackground"] = "green"

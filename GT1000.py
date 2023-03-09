@@ -156,6 +156,14 @@ class GT1000:
     GPIO.setup(self.BANKS[0], GPIO.OUT, initial=GPIO.LOW)
     GPIO.setup(self.BANKS[1], GPIO.OUT, initial=GPIO.LOW)
     GPIO.setup(self.BANKS[2], GPIO.OUT, initial=GPIO.LOW)
+    self.setBankByPin(16)
+    time.sleep(30/1000)
+    self.write_output(0x38,0)
+    self.write_output(0x39,0)
+    self.write_output(0x3A,0)
+    self.write_output(0x3B,0)
+    self.write_output(0x3C,0)
+    self.write_output(0x3D,0)
 #    GPIO.setup(self.BANKS[3], GPIO.OUT, initial=GPIO.LOW)
     print("[end call] __GPIO_Setup()")
 
@@ -193,7 +201,6 @@ class GT1000:
       self.setBankByPin(b)
       time.sleep(30/1000)
       try:
-        print("Index: ", i)
         self.GTchip38int[i] = self.__I2C.read_byte(self.CHIP38)
       except Exception as e:
         print("!!! ", str(e), " !!!")
@@ -235,12 +242,18 @@ class GT1000:
         pass
       try:
         i += 1
-        print("Index: ", i)
       except Exception as e:
         print("!!! ", str(e), " !!!")
         pass
 
-
+    print("0x38: ", self.GTchip38int[0], "/", self.GTchip38int[1], "/", self.GTchip38int[2])
+    print("0x39: ", self.GTchip39int[0], "/", self.GTchip39int[1], "/", self.GTchip39int[2])
+    print("0x3A: ", self.GTchip3Aint[0], "/", self.GTchip3Aint[1], "/", self.GTchip3Aint[2])
+    print("0x3B: ", self.GTchip3Bint[0], "/", self.GTchip3Bint[1], "/", self.GTchip3Bint[2])
+    print("0x3C: ", self.GTchip3Cint[0], "/", self.GTchip3Cint[1], "/", self.GTchip3Cint[2])
+    print("0x3D: ", self.GTchip3Dint[0], "/", self.GTchip3Dint[1], "/", self.GTchip3Dint[2])
+    print("0x3E: ", self.GTchip3Eint[0], "/", self.GTchip3Eint[1], "/", self.GTchip3Eint[2])
+    print("0x3F: ", self.GTchip3Fint[0], "/", self.GTchip3Fint[1], "/", self.GTchip3Fint[2])
     # Bank 0 = 21;  Bank 1 = 20;  Bank 2 = 16
     ## Posts  @  *  *
     ##        -  +  A+
@@ -465,10 +478,22 @@ class GT1000:
     print(">>In Test: ", self.GT_InTest, "  Pass: ", self.GT_Pass, "  Fail: ", self.GT_Fail)
     print("[end call] read_inputs()")
 
+  def clear_outputs(self):
+    self.setBankByPin(16)
+    time.sleep(15/1000)
+    self.write_output(0x38,0)
+    self.write_output(0x39,0)
+    self.write_output(0x3A,0)
+    self.write_output(0x3B,0)
+    self.write_output(0x3C,0)
+    self.write_output(0x3D,0)
+
   def write_output(self, addy, data):
     try:
       print("Writing ", data, " to ", addy)
-      self.__I2C.write_byte_data(addy, 1, data-255)
+      self.__I2C.write_byte_data(addy, 1, 255-data)
+      time.sleep(5/1000)
+      self.read_inputs()
     except Exception as e:
       pass
 
@@ -483,7 +508,7 @@ class GT1000:
     for c in self.BANKS:
       GPIO.output(c,0)
     GPIO.output(val,1)
-    time.sleep(0.1)
+    time.sleep(30/1000)
 
   def resetAllOutputs(self):
     print("[call] resetAllOutputs()")
