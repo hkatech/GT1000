@@ -450,7 +450,7 @@ class GT1000:
     self.LED_ROOF[5] = self.GTchip38int[0] & 0x10
     self.LED_ROOF[6] = self.GTchip38int[0] & 0x20
 
-    # LED_BUMPER  @@@  654  TODO: Pin 2 no connection!
+    # LED_BUMPER  @@@  654
     #             @!@  321
     self.LED_BUMPER[1] = self.GTchip3Bint[0] & 0x01
     self.LED_BUMPER[2] = self.GTchip3Bint[0] & 0x02
@@ -459,12 +459,12 @@ class GT1000:
     self.LED_BUMPER[5] = self.GTchip3Bint[0] & 0x10
     self.LED_BUMPER[6] = self.GTchip3Bint[0] & 0x20
 
-    # LED_HOOD    @@  32
-    #             @@  41
+    # LED_HOOD    @@  42
+    #             @@  31
     self.LED_HOOD[1] = self.GTchip3Dint[0] & 0x08
     self.LED_HOOD[2] = self.GTchip3Dint[0] & 0x10
-    self.LED_HOOD[3] = self.GTchip3Dint[0] & 0x40
-    self.LED_HOOD[4] = self.GTchip3Dint[0] & 0x20
+    self.LED_HOOD[4] = self.GTchip3Dint[0] & 0x40
+    self.LED_HOOD[3] = self.GTchip3Dint[0] & 0x20
 
     # Place read in containers
     self.GT_InTest = self.GTchip0int[0] & 0x01

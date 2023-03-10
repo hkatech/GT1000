@@ -1478,7 +1478,7 @@ class leakTestWindow(Frame):
     else:
       self.test0405Cmd["bg"] = "red"
       self.test0405Cmd["activebackground"] = "red"
-    if self.GT1000.AFB1[5]:
+    if self.GT1000.AFB1[6]:
       self.test0406Cmd["bg"] = "green"
       self.test0406Cmd["activebackground"] = "green"
     else:
@@ -1994,7 +1994,7 @@ class leakTestWindow(Frame):
     time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
     time.sleep(30/1000)
-    if self.GT1000.SXX[1]:
+    if self.GT1000.S1X[1]:
       self.test2301Cmd["bg"] = "green"
       self.test2301Cmd["activebackground"] = "green"
     else:
@@ -2017,7 +2017,7 @@ class leakTestWindow(Frame):
     time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
     time.sleep(30/1000)
-    if self.GT1000.SXX[2]:
+    if self.GT1000.S1X[2]:
       self.test2401Cmd["bg"] = "green"
       self.test2401Cmd["activebackground"] = "green"
     else:
@@ -2086,7 +2086,7 @@ class leakTestWindow(Frame):
     print("test27")
     self.GT1000.clear_outputs()
     tChip = 0x3B
-    tPin = 0x02
+    tPin = 0x20
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
