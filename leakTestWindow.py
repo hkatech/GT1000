@@ -1555,7 +1555,11 @@ class leakTestWindow(Frame):
 
     print("test0001")
 
+##  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+##  <<< Start of Frame 2 >>>
+##  @@@@@@@@@@@@@@@@@@@@@@@@@
 
+  # Test 1
   def test201Cmd__click(self):
     self.GT1000.clear_outputs()
     tChip = 0x39
@@ -1566,6 +1570,7 @@ class leakTestWindow(Frame):
     self.GT1000.setBankByPin(16)
     time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
     if self.GT1000.AFB1[rPin]:
       self.test20101Cmd["bg"] = "green"
       self.test20101Cmd["activebackground"] = "green"
@@ -1577,43 +1582,751 @@ class leakTestWindow(Frame):
   def test20101Cmd__click(self):
     print("test20101")
 
-  def test20102Cmd__click(self):
-    print("test20102")
-
-  def test20103Cmd__click(self):
-    print("test20103")
-
-  def test204Cmd__click(self):
+  # Test 2
+  def test202Cmd__click(self):
+    print("test202")
     self.GT1000.clear_outputs()
-    self.resetContLabels()
     tChip = 0x39
-    tPin = 0x04
-    rPin = 27
+    tPin = 0x08
+    rPin = 1
 
     print("Output to ACM1.1, expect AFB1.E3")
     self.GT1000.setBankByPin(16)
     time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
-    if self.GT1000.AFB1[rPin]:
+    time.sleep(30/1000)
+    if self.GT1000.LED_L[1]:
+      self.test20201Cmd["bg"] = "green"
+      self.test20201Cmd["activebackground"] = "green"
+    else:
+      self.test20201Cmd["bg"] = "red"
+      self.test20201Cmd["activebackground"] = "red"
+    if self.GT1000.LED_R[1]:
+      self.test20202Cmd["bg"] = "green"
+      self.test20202Cmd["activebackground"] = "green"
+    else:
+      self.test20202Cmd["bg"] = "red"
+      self.test20202Cmd["activebackground"] = "red"
+    if self.GT1000.POSTNEG:
+      self.test20203Cmd["bg"] = "green"
+      self.test20203Cmd["activebackground"] = "green"
+    else:
+      self.test20203Cmd["bg"] = "red"
+      self.test20203Cmd["activebackground"] = "red"
+    if self.GT1000.WIPER[1]:
+      self.test20204Cmd["bg"] = "green"
+      self.test20204Cmd["activebackground"] = "green"
+    else:
+      self.test20204Cmd["bg"] = "red"
+      self.test20204Cmd["activebackground"] = "red"
+    if self.GT1000.SW_1[7]:
+      self.test20205Cmd["bg"] = "green"
+      self.test20205Cmd["activebackground"] = "green"
+    else:
+      self.test20205Cmd["bg"] = "red"
+      self.test20205Cmd["activebackground"] = "red"
+    if self.GT1000.LED_HOOD[1]:
+      self.test20206Cmd["bg"] = "green"
+      self.test20206Cmd["activebackground"] = "green"
+    else:
+      self.test20206Cmd["bg"] = "red"
+      self.test20206Cmd["activebackground"] = "red"
+    if self.GT1000.LED_BUMPER[2]:
+      self.test20207Cmd["bg"] = "green"
+      self.test20207Cmd["activebackground"] = "green"
+    else:
+      self.test20207Cmd["bg"] = "red"
+      self.test20207Cmd["activebackground"] = "red"
+    if self.GT1000.LED_ROOF[1]:
+      self.test20208Cmd["bg"] = "green"
+      self.test20208Cmd["activebackground"] = "green"
+    else:
+      self.test20208Cmd["bg"] = "red"
+      self.test20208Cmd["activebackground"] = "red"
+
+
+
+
+
+  def test20201Cmd__click(self):
+    print("test20201")
+  def test20202Cmd__click(self):
+    print("test20202")
+  def test20203Cmd__click(self):
+    print("test20203")
+  def test20204Cmd__click(self):
+    print("test20204")
+  def test20205Cmd__click(self):
+    print("test20205")
+  def test20206Cmd__click(self):
+    print("test20206")
+  def test20207Cmd__click(self):
+    print("test20207")
+  def test20208Cmd__click(self):
+    print("test20208")
+
+  # Test 3
+  def test203Cmd__click(self):
+    print("test203")
+    self.GT1000.clear_outputs()
+    tChip = 0x39
+    tPin = 0x10
+    rPin = 2
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.PWR_FLIP[2]:
+      self.test20301Cmd["bg"] = "green"
+      self.test20301Cmd["activebackground"] = "green"
+    else:
+      self.test20301Cmd["bg"] = "red"
+      self.test20301Cmd["activebackground"] = "red"
+    #exit()
+  def test20301Cmd__click(self):
+    print("test20301")
+
+  # Test 4
+  def test204Cmd__click(self):
+    print("test204")
+    self.GT1000.clear_outputs()
+    tChip = 0x39
+    tPin = 0x80
+    rPin = 0
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.AFB1[15]:
       self.test20401Cmd["bg"] = "green"
       self.test20401Cmd["activebackground"] = "green"
     else:
       self.test20401Cmd["bg"] = "red"
       self.test20401Cmd["activebackground"] = "red"
-#    exit()
+    if self.GT1000.GND[1]:
+      self.test20402Cmd["bg"] = "green"
+      self.test20402Cmd["activebackground"] = "green"
+    else:
+      self.test20402Cmd["bg"] = "red"
+      self.test20402Cmd["activebackground"] = "red"
+    if self.GT1000.GND[2]:
+      self.test20403Cmd["bg"] = "green"
+      self.test20403Cmd["activebackground"] = "green"
+    else:
+      self.test20403Cmd["bg"] = "red"
+      self.test20403Cmd["activebackground"] = "red"
+    if self.GT1000.WASHER[1]:
+      self.test20404Cmd["bg"] = "green"
+      self.test20404Cmd["activebackground"] = "green"
+    else:
+      self.test20404Cmd["bg"] = "red"
+      self.test20404Cmd["activebackground"] = "red"
+    if self.GT1000.AFB1[18]:
+      self.test20405Cmd["bg"] = "green"
+      self.test20405Cmd["activebackground"] = "green"
+    else:
+      self.test20405Cmd["bg"] = "red"
+      self.test20405Cmd["activebackground"] = "red"
+    if self.GT1000.AFB1[6]:
+      self.test20406Cmd["bg"] = "green"
+      self.test20406Cmd["activebackground"] = "green"
+    else:
+      self.test20406Cmd["bg"] = "red"
+      self.test20406Cmd["activebackground"] = "red"
 
+
+
+
+    #exit()
   def test20401Cmd__click(self):
     print("test20401")
   def test20402Cmd__click(self):
     print("test20402")
   def test20403Cmd__click(self):
-    print("tesy20403")
+    print("test20403")
   def test20404Cmd__click(self):
     print("test20404")
   def test20405Cmd__click(self):
     print("test20405")
   def test20406Cmd__click(self):
     print("test20406")
+
+  # Test 5
+  def test205Cmd__click(self):
+    print("test205")
+    self.GT1000.clear_outputs()
+    tChip = 0x39
+    tPin = 0x20
+    rPin = 0x01
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.PWR_FLIP[1]:
+      self.test20501Cmd["bg"] = "green"
+      self.test20501Cmd["activebackground"] = "green"
+    else:
+      self.test20501Cmd["bg"] = "red"
+      self.test20501Cmd["activebackground"] = "red"
+    #exit()
+  def test20501Cmd__click(self):
+    print("test20501")
+
+  # Test 6
+  def test206Cmd__click(self):
+    print("test206")
+    self.GT1000.clear_outputs()
+    tChip = 0x39
+    tPin = 0x40
+    rPin = 0x01
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.LED_ROOF[3]:
+      self.test20601Cmd["bg"] = "green"
+      self.test20601Cmd["activebackground"] = "green"
+    else:
+      self.test20601Cmd["bg"] = "red"
+      self.test20601Cmd["activebackground"] = "red"
+    #exit()
+  def test20601Cmd__click(self):
+    print("test20601")
+
+  # Test 7
+  def test207Cmd__click(self):
+    print("test207")
+    self.GT1000.clear_outputs()
+    tChip = 0x39
+    tPin = 0x01
+    rPin = 0x01
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.LED_ROOF[6]:
+      self.test20701Cmd["bg"] = "green"
+      self.test20701Cmd["activebackground"] = "green"
+    else:
+      self.test20701Cmd["bg"] = "red"
+      self.test20701Cmd["activebackground"] = "red"
+    #exit()
+  def test20701Cmd__click(self):
+    print("test20701")
+
+  # Test 8
+  def test208Cmd__click(self):
+    print("test208")
+    self.GT1000.clear_outputs()
+    tChip = 0x39
+    tPin = 0x02
+    rPin = 0x08
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.LED_BUMPER[3]:
+      self.test20801Cmd["bg"] = "green"
+      self.test20801Cmd["activebackground"] = "green"
+    else:
+      self.test20801Cmd["bg"] = "red"
+      self.test20801Cmd["activebackground"] = "red"
+    #exit()
+  def test20801Cmd__click(self):
+    print("test20801")
+
+  # Test 9
+  def test209Cmd__click(self):
+    print("test209")
+    self.GT1000.clear_outputs()
+    tChip = 0x38
+    tPin = 0x04
+    rPin = 0x08
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.LED_BUMPER[6]:
+      self.test20901Cmd["bg"] = "green"
+      self.test20901Cmd["activebackground"] = "green"
+    else:
+      self.test20901Cmd["bg"] = "red"
+      self.test20901Cmd["activebackground"] = "red"
+    #exit()
+  def test20901Cmd__click(self):
+    print("test20901")
+
+  # Test 10
+  def test210Cmd__click(self):
+    print("test210")
+    self.GT1000.clear_outputs()
+    tChip = 0x38
+    tPin = 0x08
+    rPin = 0x08
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.LED_HOOD[2]:
+      self.test21001Cmd["bg"] = "green"
+      self.test21001Cmd["activebackground"] = "green"
+    else:
+      self.test21001Cmd["bg"] = "red"
+      self.test21001Cmd["activebackground"] = "red"
+    #exit()
+  def test21001Cmd__click(self):
+    print("test21001")
+
+  # Test 11
+  def test211Cmd__click(self):
+    print("test211")
+    self.GT1000.clear_outputs()
+    tChip = 0x38
+    tPin = 0x10
+    rPin = 0x08
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.DLC1[6]:
+      self.test21101Cmd["bg"] = "green"
+      self.test21101Cmd["activebackground"] = "green"
+    else:
+      self.test21101Cmd["bg"] = "red"
+      self.test21101Cmd["activebackground"] = "red"
+    if self.GT1000.DLC2[6]:
+      self.test21102Cmd["bg"] = "green"
+      self.test21102Cmd["activebackground"] = "green"
+    else:
+      self.test21102Cmd["bg"] = "red"
+      self.test21102Cmd["activebackground"] = "red"
+    if self.GT1000.KEY_PAD[6]:
+      self.test21103Cmd["bg"] = "green"
+      self.test21103Cmd["activebackground"] = "green"
+    else:
+      self.test21103Cmd["bg"] = "red"
+      self.test21103Cmd["activebackground"] = "red"
+    #exit(
+  def test21101Cmd__click(self):
+    print("test21101")
+  def test21102Cmd__click(self):
+    print("test21102")
+  def test21103Cmd__click(self):
+    print("test21103")
+
+  # Test 12
+  def test212Cmd__click(self):
+    print("test212")
+    self.GT1000.clear_outputs()
+    tChip = 0x38
+    tPin = 0x80
+    rPin = 0x08
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.SNS[1]:
+      self.test21201Cmd["bg"] = "green"
+      self.test21201Cmd["activebackground"] = "green"
+    else:
+      self.test21201Cmd["bg"] = "red"
+      self.test21201Cmd["activebackground"] = "red"
+    #exit()
+  def test21201Cmd__click(self):
+    print("test21201")
+  def test21202Cmd__click(self):
+    print("test21202")
+  def test21203Cmd__click(self):
+    print("test21203")
+
+  # Test 13
+  def test213Cmd__click(self):
+    print("test213")
+    self.GT1000.clear_outputs()
+    tChip = 0x38
+    tPin = 0x20
+    rPin = 0x08
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.SNS[2]:
+      self.test21301Cmd["bg"] = "green"
+      self.test21301Cmd["activebackground"] = "green"
+    else:
+      self.test21301Cmd["bg"] = "red"
+      self.test21301Cmd["activebackground"] = "red"
+    #exit()
+  def test21301Cmd__click(self):
+    print("test21301")
+  def test21302Cmd__click(self):
+    print("test21302")
+  def test21303Cmd__click(self):
+    print("test21303")
+
+  # Test 14
+  def test214Cmd__click(self):
+    print("test214")
+    self.GT1000.clear_outputs()
+    tChip = 0x38
+    tPin = 0x40
+    rPin = 0x08
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.DLC1[1]:
+      self.test21401Cmd["bg"] = "green"
+      self.test21401Cmd["activebackground"] = "green"
+    else:
+      self.test21401Cmd["bg"] = "red"
+      self.test21401Cmd["activebackground"] = "red"
+    if self.GT1000.DLC2[1]:
+      self.test21402Cmd["bg"] = "green"
+      self.test21402Cmd["activebackground"] = "green"
+    else:
+      self.test21402Cmd["bg"] = "red"
+      self.test21402Cmd["activebackground"] = "red"
+    if self.GT1000.KEY_PAD[2]:
+      self.test21403Cmd["bg"] = "green"
+      self.test21403Cmd["activebackground"] = "green"
+    else:
+      self.test21403Cmd["bg"] = "red"
+      self.test21403Cmd["activebackground"] = "red"
+    #exit()
+  def test21401Cmd__click(self):
+    print("test21401")
+  def test21402Cmd__click(self):
+    print("test21402")
+  def test21403Cmd__click(self):
+    print("test21403")
+
+  # Test 15
+  def test215Cmd__click(self):
+    print("test215")
+    self.GT1000.clear_outputs()
+    tChip = 0x38
+    tPin = 0x01
+    rPin = 0x08
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.DLC1[2]:
+      self.test21501Cmd["bg"] = "green"
+      self.test21501Cmd["activebackground"] = "green"
+    else:
+      self.test21501Cmd["bg"] = "red"
+      self.test21501Cmd["activebackground"] = "red"
+
+    #exit()
+  def test21501Cmd__click(self):
+    print("test21501")
+
+  # Test 16
+  def test216Cmd__click(self):
+    print("test216")
+    self.GT1000.clear_outputs()
+    tChip = 0x3A
+    tPin = 0x10
+    rPin = 0x08
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.LED_HOOD[4]:
+      self.test21601Cmd["bg"] = "green"
+      self.test21601Cmd["activebackground"] = "green"
+    else:
+      self.test21601Cmd["bg"] = "red"
+      self.test21601Cmd["activebackground"] = "red"
+    #exit()
+  def test21601Cmd__click(self):
+    print("test21601")
+
+  # Test 17
+  def test217Cmd__click(self):
+    print("test217")
+    self.GT1000.clear_outputs()
+    tChip = 0x3A
+    tPin = 0x80
+    rPin = 0x08
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.SW_1[3]:
+      self.test21701Cmd["bg"] = "green"
+      self.test21701Cmd["activebackground"] = "green"
+    else:
+      self.test21701Cmd["bg"] = "red"
+      self.test21701Cmd["activebackground"] = "red"
+    #exit()
+  def test21701Cmd__click(self):
+    print("test21701")
+
+  # Test 18
+  def test218Cmd__click(self):
+    print("test218")
+    self.GT1000.clear_outputs()
+    tChip = 0x3A
+    tPin = 0x20
+    rPin = 0x08
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.SW_1[1]:
+      self.test21801Cmd["bg"] = "green"
+      self.test21801Cmd["activebackground"] = "green"
+    else:
+      self.test21801Cmd["bg"] = "red"
+      self.test21801Cmd["activebackground"] = "red"
+    #exit()
+  def test21801Cmd__click(self):
+    print("test21801")
+
+  # Test 19
+  def test219Cmd__click(self):
+    print("test219")
+    self.GT1000.clear_outputs()
+    tChip = 0x3A
+    tPin = 0x40
+    rPin = 0x08
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.LED_L[3]:
+      self.test21901Cmd["bg"] = "green"
+      self.test21901Cmd["activebackground"] = "green"
+    else:
+      self.test21901Cmd["bg"] = "red"
+      self.test21901Cmd["activebackground"] = "red"
+    #exit()
+  def test21901Cmd__click(self):
+    print("test21901")
+
+  # Test 20
+  def test220Cmd__click(self):
+    print("test220")
+    self.GT1000.clear_outputs()
+    tChip = 0x3A
+    tPin = 0x01
+    rPin = 0x08
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.LED_R[3]:
+      self.test22001Cmd["bg"] = "green"
+      self.test22001Cmd["activebackground"] = "green"
+    else:
+      self.test22001Cmd["bg"] = "red"
+      self.test22001Cmd["activebackground"] = "red"
+    #exit()
+  def test22001Cmd__click(self):
+    print("test22001")
+  def test22002Cmd__click(self):
+    print("test22002")
+  def test22003Cmd__click(self):
+    print("test22003")
+
+  # Test 21
+  def test221Cmd__click(self):
+    print("test221")
+    self.GT1000.clear_outputs()
+    tChip = 0x3C
+    tPin = 0x10
+    rPin = 0x08
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.AFB1[19]:
+      self.test22101Cmd["bg"] = "green"
+      self.test22101Cmd["activebackground"] = "green"
+    else:
+      self.test22101Cmd["bg"] = "red"
+      self.test22101Cmd["activebackground"] = "red"
+    #exit()
+  def test22101Cmd__click(self):
+    print("test22101")
+
+  # Test 22
+  def test222Cmd__click(self):
+    print("test222")
+    self.GT1000.clear_outputs()
+    tChip = 0x3C
+    tPin = 0x20
+    rPin = 0x08
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.WASHER[2]:
+      self.test22201Cmd["bg"] = "green"
+      self.test22201Cmd["activebackground"] = "green"
+    else:
+      self.test22201Cmd["bg"] = "red"
+      self.test22201Cmd["activebackground"] = "red"
+    #exit()
+  def test22201Cmd__click(self):
+    print("test22201")
+
+  # Test 23
+  def test223Cmd__click(self):
+    print("test223")
+    self.GT1000.clear_outputs()
+    tChip = 0x3C
+    tPin = 0x40
+    rPin = 0x08
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.S1X[1]:
+      self.test22301Cmd["bg"] = "green"
+      self.test22301Cmd["activebackground"] = "green"
+    else:
+      self.test22301Cmd["bg"] = "red"
+      self.test22301Cmd["activebackground"] = "red"
+    #exit()
+  def test22301Cmd__click(self):
+    print("test22301")
+
+  # Test 24
+  def test224Cmd__click(self):
+    print("test224")
+    self.GT1000.clear_outputs()
+    tChip = 0x3C
+    tPin = 0x80
+    rPin = 0x08
+
+    print("Output to ACM1.1, expect AFB1.E3")
+    self.GT1000.setBankByPin(16)
+    time.sleep(30/1000)
+    self.GT1000.write_output(tChip,tPin)
+    time.sleep(30/1000)
+    if self.GT1000.S1X[2]:
+      self.test22401Cmd["bg"] = "green"
+      self.test22401Cmd["activebackground"] = "green"
+    else:
+      self.test22401Cmd["bg"] = "red"
+      self.test22401Cmd["activebackground"] = "red"
+    #exit()
+  def test22401Cmd__click(self):
+    print("test22401")
+  def test22402Cmd__click(self):
+    print("test22402")
+  def test22403Cmd__click(self):
+    print("test22403")
+
+
+#  def test201Cmd__click(self):
+#    self.GT1000.clear_outputs()
+#    tChip = 0x39
+#    tPin = 0x04
+#    rPin = 27
+
+#    print("Output to ACM1.1, expect AFB1.E3")
+#    self.GT1000.setBankByPin(16)
+#    time.sleep(30/1000)
+#    self.GT1000.write_output(tChip,tPin)
+#    if self.GT1000.AFB1[rPin]:
+#      self.test20101Cmd["bg"] = "green"
+#      self.test20101Cmd["activebackground"] = "green"
+#    else:
+#      self.test20101Cmd["bg"] = "red"
+#      self.test20101Cmd["activebackground"] = "red"
+#    exit()
+#
+#  def test20101Cmd__click(self):
+#    print("test20101")#
+#
+#  def test20102Cmd__click(self):
+#    print("test20102")
+#
+#  def test20103Cmd__click(self):
+#    print("test20103")
+#
+#  def test204Cmd__click(self):
+#    self.GT1000.clear_outputs()
+#    self.resetContLabels()
+#    tChip = 0x39
+#    tPin = 0x04
+#    rPin = 27#
+#
+#    print("Output to ACM1.1, expect AFB1.E3")
+#    self.GT1000.setBankByPin(16)
+#    time.sleep(30/1000)
+#    self.GT1000.write_output(tChip,tPin)
+#    if self.GT1000.AFB1[rPin]:
+#      self.test20401Cmd["bg"] = "green"
+#      self.test20401Cmd["activebackground"] = "green"
+#    else:
+#      self.test20401Cmd["bg"] = "red"
+#      self.test20401Cmd["activebackground"] = "red"
+##    exit()#
+#
+#  def test20401Cmd__click(self):
+#    print("test20401")
+#  def test20402Cmd__click(self):
+#    print("test20402")
+#  def test20403Cmd__click(self):
+#    print("tesy20403")
+#  def test20404Cmd__click(self):
+#    print("test20404")
+#  def test20405Cmd__click(self):
+#    print("test20405")
+#  def test20406Cmd__click(self):
+#    print("test20406")#
+
+##   &&&&&&&&&&&&&&&&&&&&&&&
+##  <<< Start of Original >>>
+##   &&&&&&&&&&&&&&&&&&&&&&&
 
 
   def test01Cmd__click(self):
