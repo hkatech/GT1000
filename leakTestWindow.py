@@ -985,9 +985,8 @@ class leakTestWindow(Frame):
       return
 
     # Reset label colours
-    self.station19Cmd__click()
+    self.resetContLabels()
 
-    # TODO: Reset labels
 #    if self.testPart == "4569":
 #      self.station17Cmd__click()
 #    else:

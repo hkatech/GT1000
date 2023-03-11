@@ -294,8 +294,8 @@ class GT1000:
     self.WASHER[2] = self.GTchip3Fint[1] & 0x02
 
     # SNS     @@  12
-    self.SNS[1] = self.GTchip3Cint[0] & 0x01
-    self.SNS[2] = self.GTchip3Cint[0] & 0x02
+    self.SNS[2] = self.GTchip3Cint[0] & 0x01
+    self.SNS[1] = self.GTchip3Cint[0] & 0x02
 
 
     # AFB1
