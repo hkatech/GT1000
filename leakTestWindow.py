@@ -279,7 +279,7 @@ class leakTestWindow(Frame):
     self.test22001Text.set("LED_CHASE_1.2")
     self.test22002Text.set("LED_CHASE_2.2")
     self.test22003Text.set("LED_CHASE_3.2")
-    self.test22003Text.set("AFB2.G")
+    self.test22004Text.set("AFB2.G")
     self.test221Text.set("AFB2.D")
     self.test22101Text.set("HELMET_FAN.B")
     self.test222Text.set("AFB2.E")
@@ -295,6 +295,7 @@ class leakTestWindow(Frame):
     self.test00Text = StringVar()
     self.test0001Text = StringVar()
     self.test0002Text = StringVar()
+    self.test0003Text = StringVar()
 
     self.test01Text = StringVar()
     self.test0101Text = StringVar()
@@ -414,6 +415,7 @@ class leakTestWindow(Frame):
     self.test00Text.set("Start")
     self.test0001Text.set("Reset")
     self.test0002Text.set("Test H4569")
+    self.test0003Text.set("Shut Down")
     self.test01Text.set("ACM1.1")
     self.test0101Text.set("AFB1.E3")
     self.test02Text.set("ACM1.2")
@@ -747,7 +749,7 @@ class leakTestWindow(Frame):
     self.test22003Cmd = Button(self.main2Frame, textvariable=self.test22003Text,command=self.test22003Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test22003Cmd.grid(row=rowIndex,column=3,sticky='w')
     self.test22004Cmd = Button(self.main2Frame, textvariable=self.test22004Text,command=self.test22004Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
-    self.test22004Cmd.grid(row=rowIndex,column=3,sticky='w')
+    self.test22004Cmd.grid(row=rowIndex,column=4,sticky='w')
 
     # Test 21
     rowIndex += 1
@@ -797,6 +799,8 @@ class leakTestWindow(Frame):
     self.test0001Cmd.grid(row=2,column=7,sticky='w',rowspan=2)
     self.test0002Cmd = Button(self.mainFrame, textvariable=self.test0002Text,command=self.test0002Cmd__click,height=gridHeight*3,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0002Cmd.grid(row=4,column=7,sticky='w',rowspan=2)
+    self.test0003Cmd = Button(self.mainFrame, textvariable=self.test0003Text,command=self.test0003Cmd__click,height=gridHeight*3,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0003Cmd.grid(row=10,column=7,sticky='w',rowspan=2)
 
     # Test 1
     self.test01Cmd = Button(self.mainFrame, textvariable=self.test01Text,command=self.test01Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
@@ -1313,6 +1317,104 @@ class leakTestWindow(Frame):
     self.test3701Cmd["bg"] = "grey"
     self.test3702Cmd["bg"] = "grey"
 
+    # Frame 2
+    self.test201Cmd["bg"] = "grey"
+    self.test20101Cmd["bg"] = "grey"
+
+    self.test202Cmd["bg"] = "grey"
+    self.test20201Cmd["bg"] = "grey"
+    self.test20202Cmd["bg"] = "grey"
+    self.test20203Cmd["bg"] = "grey"
+    self.test20204Cmd["bg"] = "grey"
+    self.test20205Cmd["bg"] = "grey"
+    self.test20206Cmd["bg"] = "grey"
+    self.test20207Cmd["bg"] = "grey"
+    self.test20208Cmd["bg"] = "grey"
+
+    self.test203Cmd["bg"] = "grey"
+    self.test20301Cmd["bg"] = "grey"
+
+    self.test204Cmd["bg"] = "grey"
+    self.test20401Cmd["bg"] = "grey"
+    self.test20402Cmd["bg"] = "grey"
+    self.test20403Cmd["bg"] = "grey"
+    self.test20404Cmd["bg"] = "grey"
+    self.test20405Cmd["bg"] = "grey"
+    self.test20406Cmd["bg"] = "grey"
+
+    self.test205Cmd["bg"] = "grey"
+    self.test20501Cmd["bg"] = "grey"
+
+    self.test206Cmd["bg"] = "grey"
+    self.test20601Cmd["bg"] = "grey"
+
+    self.test207Cmd["bg"] = "grey"
+    self.test20701Cmd["bg"] = "grey"
+
+    self.test208Cmd["bg"] = "grey"
+    self.test20801Cmd["bg"] = "grey"
+
+    self.test209Cmd["bg"] = "grey"
+    self.test20901Cmd["bg"] = "grey"
+
+    self.test210Cmd["bg"] = "grey"
+    self.test21001Cmd["bg"] = "grey"
+
+    self.test211Cmd["bg"] = "grey"
+    self.test21101Cmd["bg"] = "grey"
+    self.test21102Cmd["bg"] = "grey"
+    self.test21103Cmd["bg"] = "grey"
+
+    self.test212Cmd["bg"] = "grey"
+    self.test21201Cmd["bg"] = "grey"
+    self.test21202Cmd["bg"] = "grey"
+    self.test21203Cmd["bg"] = "grey"
+
+    self.test213Cmd["bg"] = "grey"
+    self.test21301Cmd["bg"] = "grey"
+    self.test21302Cmd["bg"] = "grey"
+    self.test21303Cmd["bg"] = "grey"
+
+    self.test214Cmd["bg"] = "grey"
+    self.test21401Cmd["bg"] = "grey"
+    self.test21402Cmd["bg"] = "grey"
+    self.test21403Cmd["bg"] = "grey"
+
+    self.test215Cmd["bg"] = "grey"
+    self.test21501Cmd["bg"] = "grey"
+
+    self.test216Cmd["bg"] = "grey"
+    self.test21601Cmd["bg"] = "grey"
+
+    self.test217Cmd["bg"] = "grey"
+    self.test21701Cmd["bg"] = "grey"
+
+    self.test218Cmd["bg"] = "grey"
+    self.test21801Cmd["bg"] = "grey"
+
+    self.test219Cmd["bg"] = "grey"
+    self.test21901Cmd["bg"] = "grey"
+
+    self.test220Cmd["bg"] = "grey"
+    self.test22001Cmd["bg"] = "grey"
+    self.test22002Cmd["bg"] = "grey"
+    self.test22003Cmd["bg"] = "grey"
+    self.test22004Cmd["bg"] = "grey"
+
+    self.test221Cmd["bg"] = "grey"
+    self.test22101Cmd["bg"] = "grey"
+
+    self.test222Cmd["bg"] = "grey"
+    self.test22201Cmd["bg"] = "grey"
+
+    self.test223Cmd["bg"] = "grey"
+    self.test22301Cmd["bg"] = "grey"
+
+    self.test224Cmd["bg"] = "grey"
+    self.test22401Cmd["bg"] = "grey"
+    self.test22402Cmd["bg"] = "grey"
+    self.test22403Cmd["bg"] = "grey"
+
 
     print("Reset cont labels")
 
@@ -1563,16 +1665,24 @@ class leakTestWindow(Frame):
     #exit()
 
   def test0001Cmd__click(self):
+    self.abortSignal = True
+    if self.testingAll:
+      return
     self.resetContLabels()
     print("test0001")
     #exit()
   # Test 1
 
   def test0002Cmd__click(self):
+    if self.testingAll:
+      return
     self.resetContLabels()
     self.mainCanvas.pack_forget()
     self.main2Canvas.pack(side=LEFT, fill=BOTH, expand=TRUE)
     self.canvasScroll.config(command=self.main2Canvas.yview)
+
+  def test0003Cmd__click(self):
+    os.system("sudo shutdown now")
 
     print("test0001")
 
@@ -1741,6 +1851,8 @@ class leakTestWindow(Frame):
 
 
   def test20002Cmd__click(self):
+    if self.testingAll:
+      return
     self.resetContLabels()
     self.main2Canvas.pack_forget()
     self.mainCanvas.pack(side=LEFT, fill=BOTH, expand=TRUE)
@@ -1748,6 +1860,9 @@ class leakTestWindow(Frame):
 
 
   def test20001Cmd__click(self):
+    self.abortSignal = True
+    if self.testingAll:
+      return
     self.resetContLabels()
     print("test0001")
     #exit()
