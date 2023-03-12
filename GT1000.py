@@ -64,7 +64,9 @@ class GT1000:
   GT_CameraOP3 = False
 
   LED_L = [0,0,0,0]
+  HELMET = [0,0,0,0]
   LED_R = [0,0,0,0]
+  PARTICULE = [0,0,0,0]
   AFB2 = [0,0,0,0,0,0,0,0,0]
   SNS = [0,0,0]
   ACM = [0,0,0,0,0,0,\
@@ -79,7 +81,9 @@ class GT1000:
   LED_ROOF = [0,0,0,0,0,0,0]
   DLC1 = [0,0,0,0,0,0,0]
   DLC2 = [0,0,0,0,0,0,0]
+  CHASE_1 = [0,0,0,0,0,0,0]
   KEY_PAD = [0,0,0,0,0,0,0]
+  CHASE_2 = [0,0,0,0,0,0,0]
   AFB1 = [0,0,0,0,0,0,\
           0,0,0,0,0,0,\
           0,0,0,0,0,0,\
@@ -262,14 +266,22 @@ class GT1000:
     self.POSTACCPOS = self.GTchip3Dint[2] & 0x01
 
     # LED_L    @@@
+    # (Shares connector with HELMET_FAN)
     self.LED_L[1] = self.GTchip3Aint[1] & 0x01
     self.LED_L[2] = self.GTchip3Aint[1] & 0x02
     self.LED_L[3] = self.GTchip3Aint[1] & 0x04
+    self.HELMET[1] = self.GTchip3Aint[1] & 0x01
+    self.HELMET[2] = self.GTchip3Aint[1] & 0x02
+    self.HELMET[3] = self.GTchip3Aint[1] & 0x04
 
     # LED_R    @@@
+    # (Shares connector with PARTICULE)
     self.LED_R[1] = self.GTchip3Dint[0] & 0x01
     self.LED_R[2] = self.GTchip3Dint[0] & 0x02
     self.LED_R[3] = self.GTchip3Dint[0] & 0x04
+    self.PARTICULE[1] = self.GTchip3Dint[0] & 0x01
+    self.PARTICULE[2] = self.GTchip3Dint[0] & 0x02
+    self.PARTICULE[3] = self.GTchip3Dint[0] & 0x04
 
     # AFB2    @@@*  8765
     #         @*@*  1234
@@ -386,22 +398,36 @@ class GT1000:
     # DLC2      @@  34
     #           @@  25
     #           @@  16
+    # (Shares with CHASE_1)
     self.DLC2[1] = self.GTchip3Cint[1] & 0x04
     self.DLC2[2] = self.GTchip3Cint[1] & 0x08
     self.DLC2[3] = self.GTchip3Cint[1] & 0x10
     self.DLC2[4] = self.GTchip3Cint[1] & 0x20
     self.DLC2[5] = self.GTchip3Cint[1] & 0x40
     self.DLC2[6] = self.GTchip3Cint[1] & 0x80
+    self.CHASE_1[1] = self.GTchip3Cint[1] & 0x04
+    self.CHASE_1[2] = self.GTchip3Cint[1] & 0x08
+    self.CHASE_1[3] = self.GTchip3Cint[1] & 0x10
+    self.CHASE_1[4] = self.GTchip3Cint[1] & 0x20
+    self.CHASE_1[5] = self.GTchip3Cint[1] & 0x40
+    self.CHASE_1[6] = self.GTchip3Cint[1] & 0x80
 
     # KEY_PAD   34
     #           25
     #           16
+    # (Shares with CHASE_2)
     self.KEY_PAD[1] = self.GTchip3Fint[1] & 0x04
     self.KEY_PAD[2] = self.GTchip3Fint[1] & 0x08
     self.KEY_PAD[3] = self.GTchip3Fint[1] & 0x10
     self.KEY_PAD[4] = self.GTchip3Fint[1] & 0x20
     self.KEY_PAD[5] = self.GTchip3Fint[1] & 0x40
     self.KEY_PAD[6] = self.GTchip3Fint[1] & 0x80
+    self.CHASE_2[1] = self.GTchip3Fint[1] & 0x04
+    self.CHASE_2[2] = self.GTchip3Fint[1] & 0x08
+    self.CHASE_2[3] = self.GTchip3Fint[1] & 0x10
+    self.CHASE_2[4] = self.GTchip3Fint[1] & 0x20
+    self.CHASE_2[5] = self.GTchip3Fint[1] & 0x40
+    self.CHASE_2[6] = self.GTchip3Fint[1] & 0x80
 
     # GND  @@ @@@@  12  3456
     #          @@        87
