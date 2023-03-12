@@ -283,14 +283,27 @@ class GT1000:
     self.PARTICULE[2] = self.GTchip3Dint[0] & 0x02
     self.PARTICULE[3] = self.GTchip3Dint[0] & 0x04
 
-    # AFB2    @@@*  8765  HGFE
-    #         @*@*  1234  ABCD
-    self.AFB2[1] = self.GTchip3Cint[0] & 0x04
-    self.AFB2[2] = self.GTchip3Cint[2] & 0x01
-    self.AFB2[3] = self.GTchip3Cint[0] & 0x08
-    self.AFB2[4] = self.GTchip3Cint[2] & 0x02
-    self.AFB2[5] = self.GTchip3Cint[2] & 0x04
-    self.AFB2[6] = self.GTchip3Cint[0] & 0x10
+    # AFB2    @@@*  8765  HGFE   TODO: NEED @@*@
+    #         @*@*  1234  ABCD              *@*@
+    # Planned repin:
+    #  8 -> 8    7 -> 7    6 -> 5    5 -> 6  (swap 5/6)
+    #
+    #  1 -> 2    2 -> 1    3 -> 4    4 -> 3  (swap 1/2, 3/4)
+    #
+    #self.AFB2[1] = self.GTchip3Cint[0] & 0x04
+    #self.AFB2[2] = self.GTchip3Cint[2] & 0x01
+    #self.AFB2[3] = self.GTchip3Cint[0] & 0x08
+    #self.AFB2[4] = self.GTchip3Cint[2] & 0x02
+    #self.AFB2[5] = self.GTchip3Cint[2] & 0x04
+    #self.AFB2[6] = self.GTchip3Cint[0] & 0x10
+    #self.AFB2[7] = self.GTchip3Cint[0] & 0x20
+    #self.AFB2[8] = self.GTchip3Cint[0] & 0x40
+    self.AFB2[2] = self.GTchip3Cint[0] & 0x04
+    self.AFB2[1] = self.GTchip3Cint[2] & 0x01
+    self.AFB2[4] = self.GTchip3Cint[0] & 0x08
+    self.AFB2[3] = self.GTchip3Cint[2] & 0x02
+    self.AFB2[6] = self.GTchip3Cint[2] & 0x04
+    self.AFB2[5] = self.GTchip3Cint[0] & 0x10
     self.AFB2[7] = self.GTchip3Cint[0] & 0x20
     self.AFB2[8] = self.GTchip3Cint[0] & 0x40
 
