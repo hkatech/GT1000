@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import *
 from GT1000 import GT1000
 import time
+import os
 
 class leakTestWindow(Frame):
 
