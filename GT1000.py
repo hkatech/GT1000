@@ -283,8 +283,8 @@ class GT1000:
     self.PARTICULE[2] = self.GTchip3Dint[0] & 0x02
     self.PARTICULE[3] = self.GTchip3Dint[0] & 0x04
 
-    # AFB2    @@@*  8765
-    #         @*@*  1234
+    # AFB2    @@@*  8765  HGFE
+    #         @*@*  1234  ABCD
     self.AFB2[1] = self.GTchip3Cint[0] & 0x04
     self.AFB2[2] = self.GTchip3Cint[2] & 0x01
     self.AFB2[3] = self.GTchip3Cint[0] & 0x08
