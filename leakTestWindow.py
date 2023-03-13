@@ -538,7 +538,7 @@ class leakTestWindow(Frame):
 
     # Some parameters
     gridWidth = 11
-    gridHeight = 1
+    gridHeight = 3
     rowIndex = 0
     fontHeight = 8
 
@@ -805,7 +805,7 @@ class leakTestWindow(Frame):
     self.test0002Cmd = Button(self.mainFrame, textvariable=self.test0002Text,command=self.test0002Cmd__click,height=gridHeight*3,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0002Cmd.grid(row=4,column=7,sticky='w',rowspan=2)
     self.test0003Cmd = Button(self.mainFrame, textvariable=self.test0003Text,command=self.test0003Cmd__click,height=gridHeight*3,width=gridWidth,font=("Arial",fontHeight,"bold"))
-    self.test0003Cmd.grid(row=10,column=7,sticky='w',rowspan=2)
+    self.test0003Cmd.grid(row=12,column=7,sticky='w',rowspan=2)
 
     # Test 1
     self.test01Cmd = Button(self.mainFrame, textvariable=self.test01Text,command=self.test01Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
