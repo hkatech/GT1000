@@ -204,6 +204,7 @@ class leakTestWindow(Frame):
     self.test22002Text = StringVar()
     self.test22003Text = StringVar()
     self.test22004Text = StringVar()
+    self.test22005Text = StringVar()
     self.test221Text = StringVar()
     self.test22101Text = StringVar()
     self.test222Text = StringVar()
@@ -276,11 +277,12 @@ class leakTestWindow(Frame):
     self.test21801Text.set("S227")
     self.test219Text.set("ACM2.28")
     self.test21901Text.set("S228")
-    self.test220Text.set("AFB2.B")
-    self.test22001Text.set("LED_CHASE_1.2")
-    self.test22002Text.set("LED_CHASE_2.2")
-    self.test22003Text.set("LED_CHASE_3.2")
-    self.test22004Text.set("AFB2.G")
+    self.test220Text.set("POST +")
+    self.test22001Text.set("LED_CHASE_1.1")
+    self.test22002Text.set("LED_CHASE_2.1")
+    self.test22003Text.set("LED_CHASE_3.1")
+    self.test22004Text.set("AFB2.A")
+    self.test22005Text.set("AFB2.G")
     self.test221Text.set("AFB2.D")
     self.test22101Text.set("HELMET_FAN.B")
     self.test222Text.set("AFB2.E")
@@ -751,6 +753,8 @@ class leakTestWindow(Frame):
     self.test22003Cmd.grid(row=rowIndex,column=3,sticky='w')
     self.test22004Cmd = Button(self.main2Frame, textvariable=self.test22004Text,command=self.test22004Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test22004Cmd.grid(row=rowIndex,column=4,sticky='w')
+    self.test22005Cmd = Button(self.main2Frame, textvariable=self.test22005Text,command=self.test22005Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test22005Cmd.grid(row=rowIndex,column=4,sticky='w')
 
     # Test 21
     rowIndex += 1
@@ -1401,6 +1405,7 @@ class leakTestWindow(Frame):
     self.test22002Cmd["bg"] = "grey"
     self.test22003Cmd["bg"] = "grey"
     self.test22004Cmd["bg"] = "grey"
+    self.test22005Cmd["bg"] = "grey"
 
     self.test221Cmd["bg"] = "grey"
     self.test22101Cmd["bg"] = "grey"
@@ -2478,8 +2483,8 @@ class leakTestWindow(Frame):
   def test220Cmd__click(self):
     print("test220")
     self.GT1000.clear_outputs()
-    tChip = 0x3C
-    tPin = 0x01
+    tChip = 0x3D
+    tPin = 0x02
     rPin = 0x08
 
     print("Output to ACM1.1, expect AFB1.E3")
@@ -2487,30 +2492,36 @@ class leakTestWindow(Frame):
     time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
     time.sleep(30/1000)
-    if self.GT1000.CHASE_1[2]:
+    if self.GT1000.CHASE_1[1]:
       self.test22001Cmd["bg"] = "green"
       self.test22001Cmd["activebackground"] = "green"
     else:
       self.test22001Cmd["bg"] = "red"
       self.test22001Cmd["activebackground"] = "red"
-    if self.GT1000.CHASE_2[2]:
+    if self.GT1000.CHASE_2[1]:
       self.test22002Cmd["bg"] = "green"
       self.test22002Cmd["activebackground"] = "green"
     else:
       self.test22002Cmd["bg"] = "red"
       self.test22002Cmd["activebackground"] = "red"
-    if self.GT1000.CHASE_3[2]:
+    if self.GT1000.CHASE_3[1]:
       self.test22003Cmd["bg"] = "green"
       self.test22003Cmd["activebackground"] = "green"
     else:
       self.test22003Cmd["bg"] = "red"
       self.test22003Cmd["activebackground"] = "red"
-    if self.GT1000.AFB2[7]:
+    if self.GT1000.AFB2[1]:
       self.test22004Cmd["bg"] = "green"
       self.test22004Cmd["activebackground"] = "green"
     else:
       self.test22004Cmd["bg"] = "red"
       self.test22004Cmd["activebackground"] = "red"
+    if self.GT1000.AFB2[7]:
+      self.test22005Cmd["bg"] = "green"
+      self.test22005Cmd["activebackground"] = "green"
+    else:
+      self.test22005Cmd["bg"] = "red"
+      self.test22005Cmd["activebackground"] = "red"
     #exit()
   def test22001Cmd__click(self):
     print("test22001")
@@ -2520,6 +2531,8 @@ class leakTestWindow(Frame):
     print("test22003")
   def test22004Cmd__click(self):
     print("test22004")
+  def test22005Cmd__click(self):
+    print("test22005")
 
   # Test 21
   def test221Cmd__click(self):
