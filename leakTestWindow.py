@@ -37,10 +37,22 @@ class leakTestWindow(Frame):
 #        self.station16Cmd__click()
 #    else:
 #      self.station17Cmd__click()
+    if self.testPart == "4568":
+      if self.GT1000.GT_PartSelect:
+        self.test0002Cmd__click()
+    elif self.testPart == "4569":
+      if not self.GT1000.GT_PartSelect:
+        self.test20002Cmd__click()
+    else:
+      self.test20002Cmd__click()
 
     # Handle the start push
     if self.GT1000.GT_Start:
-      self.station18Cmd__click()
+      #self.station18Cmd__click()
+      if self.testPart == "4569":
+        self.test200Cmd__click()
+      else:
+        self.test00Cmd__click()
 
     # Keep the updates coming
     self.after(500,self.periodicUpdate)
@@ -63,7 +75,7 @@ class leakTestWindow(Frame):
  #   self.myScroll.grid(row=0,column=0)
 
     self.GT1000 = GT1000()
-    self.testPart = "Nothing"
+    self.testPart = "4568"
     self.abortSignal = False
     self.testingAll = False
 
@@ -1683,6 +1695,7 @@ class leakTestWindow(Frame):
     if self.testingAll:
       return
     self.resetContLabels()
+    self.testPart = "4569"
     self.mainCanvas.pack_forget()
     self.main2Canvas.pack(side=LEFT, fill=BOTH, expand=TRUE)
     self.canvasScroll.config(command=self.main2Canvas.yview)
@@ -1859,6 +1872,7 @@ class leakTestWindow(Frame):
   def test20002Cmd__click(self):
     if self.testingAll:
       return
+    self.testPart = "4568"
     self.resetContLabels()
     self.main2Canvas.pack_forget()
     self.mainCanvas.pack(side=LEFT, fill=BOTH, expand=TRUE)
@@ -2315,7 +2329,7 @@ class leakTestWindow(Frame):
       self.test21303Cmd["activebackground"] = "green"
     else:
       self.test21303Cmd["bg"] = "red"
-      self.test21303.Cmd["activebackground"] = "red"
+      self.test21303Cmd["activebackground"] = "red"
     #exit()
   def test21301Cmd__click(self):
     print("test21301")

@@ -186,14 +186,14 @@ class GT1000:
     print("[call] read_inputs()")
 
     # Get GPIO Information
-    #self.GT_Start = (GPIO.input(self.EXT_IN_START) == 0)
-    #self.GT_Abort = (GPIO.input(self.EXT_IN_ABORT) == 0)
-    #self.GT_PartSelect = (GPIO.input(self.EXT_IN_PART2) == 0)
-    #self.GT_CameraOk = (GPIO.input(self.EXT_IN_CAMOK) == 0)
-    self.GT_Start = False
-    self.GT_Abort = False
-    self.GT_PartSelect = False
-    self.GT_CameraOk = False
+    self.GT_Start = (GPIO.input(self.EXT_IN_START) == 0)
+    self.GT_Abort = (GPIO.input(self.EXT_IN_ABORT) == 0)
+    self.GT_PartSelect = (GPIO.input(self.EXT_IN_PART2) == 0)
+    self.GT_CameraOk = (GPIO.input(self.EXT_IN_CAMOK) == 0)
+#    self.GT_Start = False
+#    self.GT_Abort = False
+#    self.GT_PartSelect = False
+#    self.GT_CameraOk = False
 
     print(">>Start: ", self.GT_Start, "  Part Select: ", self.GT_PartSelect, "  Abort: ",self.GT_Abort)
 
