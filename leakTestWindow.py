@@ -25,14 +25,19 @@ class leakTestWindow(Frame):
       self.GT1000.latchReleaseDis()
 
     # Update part number based on selector switch
-    if self.testPart == "4568":
-      if self.GT1000.GT_PartSelect:
-        self.station17Cmd__click()
-    elif self.testPart == "4569":
-      if not self.GT1000.GT_PartSelect:
-        self.station16Cmd__click()
-    else:
-      self.station17Cmd__click()
+    # Removed with branch PartSelect
+    # Original plan was to refactor into pages, instead opted to use existing
+    # TODO: Would be nicer to include monitoring for switching
+    #if self.testPart == "4568":
+    #  if self.GT1000.GT_PartSelect:
+    #    self.station17Cmd__click()
+    #elif self.testPart == "4569":
+    #  if not self.GT1000.GT_PartSelect:
+    #    self.station16Cmd__click()
+    #else:
+    #  self.station17Cmd__click()
+    if self.testPart == "NOTHING":
+      self.station16Cmd__click()
 
     # Handle the start push
     if self.GT1000.GT_Start:
@@ -45,6 +50,10 @@ class leakTestWindow(Frame):
 
     # Show camera status
     if self.testPart == "4569":
+      self.station15Cmd["bg"] = "green"
+      self.station15Cmd["activebackground"] = "green"
+      self.station15Text.set("Press to Release\nIf All OK")
+    elif self.testPart =="4570":
       self.station15Cmd["bg"] = "green"
       self.station15Cmd["activebackground"] = "green"
       self.station15Text.set("Press to Release\nIf All OK")
@@ -84,7 +93,7 @@ class leakTestWindow(Frame):
     self.pack(fill=BOTH, expand=1)
 
     self.GT1000 = GT1000()
-    self.testPart = "Nothing"
+    self.testPart = "NOTHING"
     self.abortSignal = False
     self.testingAll = False
 
@@ -152,7 +161,7 @@ class leakTestWindow(Frame):
     self.station17Text.set("Load H4569")
     self.station18Text.set("Test All")
     self.station19Text.set("Reset")
-    self.station20Text.set("")
+    self.station20Text.set("Load H4570")
 
 
     self.station01Cmd = Button(self,textvariable=self.station01Text,command=self.station01Cmd__click,height=6,width=15,font=("Arial",10,"bold"))
@@ -775,6 +784,8 @@ class leakTestWindow(Frame):
     # Reset labels
     if self.testPart == "4569":
       self.station17Cmd__click()
+    elif self.testPart == "4570":
+      self.station20Cmd__click()
     else:
       self.station16Cmd__click()
     self.abortSignal = False
@@ -923,7 +934,7 @@ class leakTestWindow(Frame):
        (self.station12Cmd["bg"] == "green") and \
        (self.station13Cmd["bg"] == "green") and \
        (self.station14Cmd["bg"] == "green") and \
-       ((self.station15Cmd["bg"] == "green") or (self.testPart == "4569")):
+       ((self.station15Cmd["bg"] == "green") or (self.testPart == "4569") or (self.testPart =="4570")):
       print("*** All Tests PASSED ***")
       self.GT1000.pulseRelease()
     if self.testPart == "4568":
@@ -939,12 +950,31 @@ class leakTestWindow(Frame):
     self.resetButtonColours()
     if self.testPart == "4569":
       self.station17Cmd__click()
+    elif self.testPart == "4570":
+      self.station20Cmd__click()
     else:
       self.station16Cmd__click()
     self.resetButtonColours()
 
   def station20Cmd__click(self):
-    print("<NOTHING>")
+    print("<LOAD 4570>")
+    self.testPart = "4570"
+    self.resetButtonColours()
+    self.station01Text.set("")
+    self.station02Text.set("")
+    self.station03Text.set("")
+    self.station04Text.set("")
+    self.station05Text.set("Press to Test\nACM 1")
+    self.station06Text.set("Press to Test\nDLC 1")
+    self.station07Text.set("Press to Test\nDLC 2")
+    self.station08Text.set("")
+    self.station09Text.set("")
+    self.station10Text.set("Press to Test\nKEY_PAD")
+    self.station11Text.set("")
+    self.station12Text.set("")
+    self.station13Text.set("")
+    self.station14Text.set("")
+    self.station15Text.set("Camera")
 
 
   def resetButtonColours(self):
