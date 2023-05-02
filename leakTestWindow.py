@@ -242,6 +242,25 @@ class leakTestWindow(Frame):
           self.station01Cmd["activebackground"] = "green"
           self.station01Text.set(s +"\n << PASSED >>")
           return
+      self.GT1000.read_inputs()
+      if self.GT1000.GT_Abort:
+        print("{Test Abort}")
+        self.station01Cmd["bg"] = "red"
+        self.station01Cmd["activebackground"] = "red"
+        self.station01Text.set(s + "\nTest Aborted")
+        return
+      if self.GT1000.GT_Fail:
+        print("{Test FAILED}")
+        self.station01Cmd["bg"] = "red"
+        self.station01Cmd["activebackground"] = "red"
+        self.station01Text.set(s + "\nTest FAILED")
+        return
+      if self.GT1000.GT_Pass:
+        print("{Test PASSED}")
+        self.station01Cmd["bg"] = "green"
+        self.station01Cmd["activebackground"] = "green"
+        self.station01Text.set(s +"\n << PASSED >>")
+        return
       self.station01Cmd["bg"] = "red"
       self.station01Cmd["activebackground"] = "red"
       self.station01Text.set(s + "\nAbnormal Completion")
@@ -263,24 +282,25 @@ class leakTestWindow(Frame):
     if self.GT1000.startTest() >= 1:
       while self.GT1000.GT_InTest:
         self.GT1000.read_inputs()
-        if self.GT1000.GT_Abort:
-          print("{Test Abort}")
-          self.station02Cmd["bg"] = "red"
-          self.station02Cmd["activebackground"] = "red"
-          self.station02Text.set(s + "\nTest Aborted")
-          return
-        if self.GT1000.GT_Fail:
-          print("{Test FAILED}")
-          self.station02Cmd["bg"] = "red"
-          self.station02Cmd["activebackground"] = "red"
-          self.station02Text.set(s + "\nTest FAILED")
-          return
-        if self.GT1000.GT_Pass:
-          print("{Test PASSED}")
-          self.station02Cmd["bg"] = "green"
-          self.station02Cmd["activebackground"] = "green"
-          self.station02Text.set(s +"\n << PASSED >>")
-          return
+      self.GT1000.read_inputs()
+      if self.GT1000.GT_Abort:
+        print("{Test Abort}")
+        self.station02Cmd["bg"] = "red"
+        self.station02Cmd["activebackground"] = "red"
+        self.station02Text.set(s + "\nTest Aborted")
+        return
+      if self.GT1000.GT_Fail:
+        print("{Test FAILED}")
+        self.station02Cmd["bg"] = "red"
+        self.station02Cmd["activebackground"] = "red"
+        self.station02Text.set(s + "\nTest FAILED")
+        return
+      if self.GT1000.GT_Pass:
+        print("{Test PASSED}")
+        self.station02Cmd["bg"] = "green"
+        self.station02Cmd["activebackground"] = "green"
+        self.station02Text.set(s +"\n << PASSED >>")
+        return
       self.station02Cmd["bg"] = "red"
       self.station02Cmd["activebackground"] = "red"
       self.station02Text.set(s + "\nAbnormal Completion")
@@ -299,24 +319,25 @@ class leakTestWindow(Frame):
     if self.GT1000.startTest() >= 1:
       while self.GT1000.GT_InTest:
         self.GT1000.read_inputs()
-        if self.GT1000.GT_Abort:
-          print("{Test Abort}")
-          self.station03Cmd["bg"] = "red"
-          self.station03Cmd["activebackground"] = "red"
-          self.station03Text.set(s + "\nTest Aborted")
-          return
-        if self.GT1000.GT_Fail:
-          print("{Test FAILED}")
-          self.station03Cmd["bg"] = "red"
-          self.station03Cmd["activebackground"] = "red"
-          self.station03Text.set(s + "\nTest FAILED")
-          return
-        if self.GT1000.GT_Pass:
-          print("{Test PASSED}")
-          self.station03Cmd["bg"] = "green"
-          self.station03Cmd["activebackground"] = "green"
-          self.station03Text.set(s +"\n << PASSED >>")
-          return
+      self.GT1000.read_inputs()
+      if self.GT1000.GT_Abort:
+        print("{Test Abort}")
+        self.station03Cmd["bg"] = "red"
+        self.station03Cmd["activebackground"] = "red"
+        self.station03Text.set(s + "\nTest Aborted")
+        return
+      if self.GT1000.GT_Fail:
+        print("{Test FAILED}")
+        self.station03Cmd["bg"] = "red"
+        self.station03Cmd["activebackground"] = "red"
+        self.station03Text.set(s + "\nTest FAILED")
+        return
+      if self.GT1000.GT_Pass:
+        print("{Test PASSED}")
+        self.station03Cmd["bg"] = "green"
+        self.station03Cmd["activebackground"] = "green"
+        self.station03Text.set(s +"\n << PASSED >>")
+        return
       self.station03Cmd["bg"] = "red"
       self.station03Cmd["activebackground"] = "red"
       self.station03Text.set(s + "\nAbnormal Completion")
@@ -335,24 +356,25 @@ class leakTestWindow(Frame):
     if self.GT1000.startTest() >= 1:
       while self.GT1000.GT_InTest:
         self.GT1000.read_inputs()
-        if self.GT1000.GT_Abort:
-          print("{Test Abort}")
-          self.station04Cmd["bg"] = "red"
-          self.station04Cmd["activebackground"] = "red"
-          self.station04Text.set(s + "\nTest Aborted")
-          return
-        if self.GT1000.GT_Fail:
-          print("{Test FAILED}")
-          self.station04Cmd["bg"] = "red"
-          self.station04Cmd["activebackground"] = "red"
-          self.station04Text.set(s + "\nTest FAILED")
-          return
-        if self.GT1000.GT_Pass:
-          print("{Test PASSED}")
-          self.station04Cmd["bg"] = "green"
-          self.station04Cmd["activebackground"] = "green"
-          self.station04Text.set(s +"\n << PASSED >>")
-          return
+      self.GT1000.read_inputs()
+      if self.GT1000.GT_Abort:
+        print("{Test Abort}")
+        self.station04Cmd["bg"] = "red"
+        self.station04Cmd["activebackground"] = "red"
+        self.station04Text.set(s + "\nTest Aborted")
+        return
+      if self.GT1000.GT_Fail:
+        print("{Test FAILED}")
+        self.station04Cmd["bg"] = "red"
+        self.station04Cmd["activebackground"] = "red"
+        self.station04Text.set(s + "\nTest FAILED")
+        return
+      if self.GT1000.GT_Pass:
+        print("{Test PASSED}")
+        self.station04Cmd["bg"] = "green"
+        self.station04Cmd["activebackground"] = "green"
+        self.station04Text.set(s +"\n << PASSED >>")
+        return
       self.station04Cmd["bg"] = "red"
       self.station04Cmd["activebackground"] = self.station04Cmd["bg"]
       self.station04Text.set(s + "\nAbnormal Completion")
@@ -371,24 +393,25 @@ class leakTestWindow(Frame):
     if self.GT1000.startTest() >= 1:
       while self.GT1000.GT_InTest:
         self.GT1000.read_inputs()
-        if self.GT1000.GT_Abort:
-          print("{Test Abort}")
-          self.station05Cmd["bg"] = "red"
-          self.station05Cmd["activebackground"] = "red"
-          self.station05Text.set(s + "\nTest Aborted")
-          return
-        if self.GT1000.GT_Fail:
-          print("{Test FAILED}")
-          self.station05Cmd["bg"] = "red"
-          self.station05Cmd["activebackground"] = "red"
-          self.station05Text.set(s + "\nTest FAILED")
-          return
-        if self.GT1000.GT_Pass:
-          print("{Test PASSED}")
-          self.station05Cmd["bg"] = "green"
-          self.station05Cmd["activebackground"] = "green"
-          self.station05Text.set(s +"\n << PASSED >>")
-          return
+      self.GT1000.read_inputs()
+      if self.GT1000.GT_Abort:
+        print("{Test Abort}")
+        self.station05Cmd["bg"] = "red"
+        self.station05Cmd["activebackground"] = "red"
+        self.station05Text.set(s + "\nTest Aborted")
+        return
+      if self.GT1000.GT_Fail:
+        print("{Test FAILED}")
+        self.station05Cmd["bg"] = "red"
+        self.station05Cmd["activebackground"] = "red"
+        self.station05Text.set(s + "\nTest FAILED")
+        return
+      if self.GT1000.GT_Pass:
+        print("{Test PASSED}")
+        self.station05Cmd["bg"] = "green"
+        self.station05Cmd["activebackground"] = "green"
+        self.station05Text.set(s +"\n << PASSED >>")
+        return
       self.station05Cmd["bg"] = "red"
       self.station05Cmd["activebackground"] = "red"
       self.station05Text.set(s + "\nAbnormal Completion")
@@ -407,24 +430,25 @@ class leakTestWindow(Frame):
     if self.GT1000.startTest() >= 1:
       while self.GT1000.GT_InTest:
         self.GT1000.read_inputs()
-        if self.GT1000.GT_Abort:
-          print("{Test Abort}")
-          self.station06Cmd["bg"] = "red"
-          self.station06Cmd["activebackground"] = "red"
-          self.station06Text.set(s + "\nTest Aborted")
-          return
-        if self.GT1000.GT_Fail:
-          print("{Test FAILED}")
-          self.station06Cmd["bg"] = "red"
-          self.station06Cmd["activebackground"] = "red"
-          self.station06Text.set(s + "\nTest FAILED")
-          return
-        if self.GT1000.GT_Pass:
-          print("{Test PASSED}")
-          self.station06Cmd["bg"] = "green"
-          self.station06Cmd["activebackground"] = "green"
-          self.station06Text.set(s +"\n << PASSED >>")
-          return
+      self.GT1000.read_inputs()
+      if self.GT1000.GT_Abort:
+        print("{Test Abort}")
+        self.station06Cmd["bg"] = "red"
+        self.station06Cmd["activebackground"] = "red"
+        self.station06Text.set(s + "\nTest Aborted")
+        return
+      if self.GT1000.GT_Fail:
+        print("{Test FAILED}")
+        self.station06Cmd["bg"] = "red"
+        self.station06Cmd["activebackground"] = "red"
+        self.station06Text.set(s + "\nTest FAILED")
+        return
+      if self.GT1000.GT_Pass:
+        print("{Test PASSED}")
+        self.station06Cmd["bg"] = "green"
+        self.station06Cmd["activebackground"] = "green"
+        self.station06Text.set(s +"\n << PASSED >>")
+        return
       self.station06Cmd["bg"] = "red"
       self.station06Cmd["activebackground"] = "red"
       self.station06Text.set(s + "\nAbnormal Completion")
@@ -443,24 +467,25 @@ class leakTestWindow(Frame):
     if self.GT1000.startTest() >= 1:
       while self.GT1000.GT_InTest:
         self.GT1000.read_inputs()
-        if self.GT1000.GT_Abort:
-          print("{Test Abort}")
-          self.station07Cmd["bg"] = "red"
-          self.station07Cmd["activebackground"] = "red"
-          self.station07Text.set(s + "\nTest Aborted")
-          return
-        if self.GT1000.GT_Fail:
-          print("{Test FAILED}")
-          self.station07Cmd["bg"] = "red"
-          self.station07Cmd["activebackground"] = "red"
-          self.station07Text.set(s + "\nTest FAILED")
-          return
-        if self.GT1000.GT_Pass:
-          print("{Test PASSED}")
-          self.station07Cmd["bg"] = "green"
-          self.station07Cmd["activebackground"] = "green"
-          self.station07Text.set(s +"\n << PASSED >>")
-          return
+      self.GT1000.read_inputs()
+      if self.GT1000.GT_Abort:
+        print("{Test Abort}")
+        self.station07Cmd["bg"] = "red"
+        self.station07Cmd["activebackground"] = "red"
+        self.station07Text.set(s + "\nTest Aborted")
+        return
+      if self.GT1000.GT_Fail:
+        print("{Test FAILED}")
+        self.station07Cmd["bg"] = "red"
+        self.station07Cmd["activebackground"] = "red"
+        self.station07Text.set(s + "\nTest FAILED")
+        return
+      if self.GT1000.GT_Pass:
+        print("{Test PASSED}")
+        self.station07Cmd["bg"] = "green"
+        self.station07Cmd["activebackground"] = "green"
+        self.station07Text.set(s +"\n << PASSED >>")
+        return
       self.station07Cmd["bg"] = "red"
       self.station07Cmd["activebackground"] = "red"
       self.station07Text.set(s + "\nAbnormal Completion")
@@ -482,24 +507,25 @@ class leakTestWindow(Frame):
     if self.GT1000.startTest() >= 1:
       while self.GT1000.GT_InTest:
         self.GT1000.read_inputs()
-        if self.GT1000.GT_Abort:
-          print("{Test Abort}")
-          self.station08Cmd["bg"] = "red"
-          self.station08Cmd["activebackground"] = "red"
-          self.station08Text.set(s + "\nTest Aborted")
-          return
-        if self.GT1000.GT_Fail:
-          print("{Test FAILED}")
-          self.station08Cmd["bg"] = "red"
-          self.station08Cmd["activebackground"] = "red"
-          self.station08Text.set(s + "\nTest FAILED")
-          return
-        if self.GT1000.GT_Pass:
-          print("{Test PASSED}")
-          self.station08Cmd["bg"] = "green"
-          self.station08Cmd["activebackground"] = "green"
-          self.station08Text.set(s +"\n << PASSED >>")
-          return
+      self.GT1000.read_inputs()
+      if self.GT1000.GT_Abort:
+        print("{Test Abort}")
+        self.station08Cmd["bg"] = "red"
+        self.station08Cmd["activebackground"] = "red"
+        self.station08Text.set(s + "\nTest Aborted")
+        return
+      if self.GT1000.GT_Fail:
+        print("{Test FAILED}")
+        self.station08Cmd["bg"] = "red"
+        self.station08Cmd["activebackground"] = "red"
+        self.station08Text.set(s + "\nTest FAILED")
+        return
+      if self.GT1000.GT_Pass:
+        print("{Test PASSED}")
+        self.station08Cmd["bg"] = "green"
+        self.station08Cmd["activebackground"] = "green"
+        self.station08Text.set(s +"\n << PASSED >>")
+        return
       self.station08Cmd["bg"] = "red"
       self.station08Cmd["activebackground"] = "red"
       self.station08Text.set(s + "\nAbnormal Completion")
@@ -518,24 +544,25 @@ class leakTestWindow(Frame):
     if self.GT1000.startTest() >= 1:
       while self.GT1000.GT_InTest:
         self.GT1000.read_inputs()
-        if self.GT1000.GT_Abort:
-          print("{Test Abort}")
-          self.station09Cmd["bg"] = "red"
-          self.station09Cmd["activebackground"] = "red"
-          self.station09Text.set(s + "\nTest Aborted")
-          return
-        if self.GT1000.GT_Fail:
-          print("{Test FAILED}")
-          self.station09Cmd["bg"] = "red"
-          self.station09Cmd["activebackground"] = "red"
-          self.station09Text.set(s + "\nTest FAILED")
-          return
-        if self.GT1000.GT_Pass:
-          print("{Test PASSED}")
-          self.station09Cmd["bg"] = "green"
-          self.station09Cmd["activebackground"] = "green"
-          self.station09Text.set(s +"\n << PASSED >>")
-          return
+      self.GT1000.read_inputs()
+      if self.GT1000.GT_Abort:
+        print("{Test Abort}")
+        self.station09Cmd["bg"] = "red"
+        self.station09Cmd["activebackground"] = "red"
+        self.station09Text.set(s + "\nTest Aborted")
+        return
+      if self.GT1000.GT_Fail:
+        print("{Test FAILED}")
+        self.station09Cmd["bg"] = "red"
+        self.station09Cmd["activebackground"] = "red"
+        self.station09Text.set(s + "\nTest FAILED")
+        return
+      if self.GT1000.GT_Pass:
+        print("{Test PASSED}")
+        self.station09Cmd["bg"] = "green"
+        self.station09Cmd["activebackground"] = "green"
+        self.station09Text.set(s +"\n << PASSED >>")
+        return
       self.station09Cmd["bg"] = "red"
       self.station09Cmd["activebackground"] = "red"
       self.station09Text.set(s + "\nAbnormal Completion")
@@ -554,24 +581,25 @@ class leakTestWindow(Frame):
     if self.GT1000.startTest() >= 1:
       while self.GT1000.GT_InTest:
         self.GT1000.read_inputs()
-        if self.GT1000.GT_Abort:
-          print("{Test Abort}")
-          self.station10Cmd["bg"] = "red"
-          self.station10Cmd["activebackground"] = "red"
-          self.station10Text.set(s + "\nTest Aborted")
-          return
-        if self.GT1000.GT_Fail:
-          print("{Test FAILED}")
-          self.station10Cmd["bg"] = "red"
-          self.station10Cmd["activebackground"] = "red"
-          self.station10Text.set(s + "\nTest FAILED")
-          return
-        if self.GT1000.GT_Pass:
-          print("{Test PASSED}")
-          self.station10Cmd["bg"] = "green"
-          self.station10Cmd["activebackground"] = "green"
-          self.station10Text.set(s +"\n << PASSED >>")
-          return
+      self.GT1000.read_inputs()
+      if self.GT1000.GT_Abort:
+        print("{Test Abort}")
+        self.station10Cmd["bg"] = "red"
+        self.station10Cmd["activebackground"] = "red"
+        self.station10Text.set(s + "\nTest Aborted")
+        return
+      if self.GT1000.GT_Fail:
+        print("{Test FAILED}")
+        self.station10Cmd["bg"] = "red"
+        self.station10Cmd["activebackground"] = "red"
+        self.station10Text.set(s + "\nTest FAILED")
+        return
+      if self.GT1000.GT_Pass:
+        print("{Test PASSED}")
+        self.station10Cmd["bg"] = "green"
+        self.station10Cmd["activebackground"] = "green"
+        self.station10Text.set(s +"\n << PASSED >>")
+        return
       self.station10Cmd["bg"] = "red"
       self.station10Cmd["activebackground"] = "red"
       self.station10Text.set(s + "\nAbnormal Completion")
@@ -590,24 +618,25 @@ class leakTestWindow(Frame):
     if self.GT1000.startTest() >= 1:
       while self.GT1000.GT_InTest:
         self.GT1000.read_inputs()
-        if self.GT1000.GT_Abort:
-          print("{Test Abort}")
-          self.station11Cmd["bg"] = "red"
-          self.station11Cmd["activebackground"] = "red"
-          self.station11Text.set(s + "\nTest Aborted")
-          return
-        if self.GT1000.GT_Fail:
-          print("{Test FAILED}")
-          self.station11Cmd["bg"] = "red"
-          self.station11Cmd["activebackground"] = "red"
-          self.station11Text.set(s + "\nTest FAILED")
-          return
-        if self.GT1000.GT_Pass:
-          print("{Test PASSED}")
-          self.station11Cmd["bg"] = "green"
-          self.station11Cmd["activebackground"] = "green"
-          self.station11Text.set(s +"\n << PASSED >>")
-          return
+      self.GT1000.read_inputs()
+      if self.GT1000.GT_Abort:
+        print("{Test Abort}")
+        self.station11Cmd["bg"] = "red"
+        self.station11Cmd["activebackground"] = "red"
+        self.station11Text.set(s + "\nTest Aborted")
+        return
+      if self.GT1000.GT_Fail:
+        print("{Test FAILED}")
+        self.station11Cmd["bg"] = "red"
+        self.station11Cmd["activebackground"] = "red"
+        self.station11Text.set(s + "\nTest FAILED")
+        return
+      if self.GT1000.GT_Pass:
+        print("{Test PASSED}")
+        self.station11Cmd["bg"] = "green"
+        self.station11Cmd["activebackground"] = "green"
+        self.station11Text.set(s +"\n << PASSED >>")
+        return
       self.station11Cmd["bg"] = "red"
       self.station11Cmd["activebackground"] = "red"
       self.station11Text.set(s + "\nAbnormal Completion")
@@ -626,24 +655,25 @@ class leakTestWindow(Frame):
     if self.GT1000.startTest() >= 1:
       while self.GT1000.GT_InTest:
         self.GT1000.read_inputs()
-        if self.GT1000.GT_Abort:
-          print("{Test Abort}")
-          self.station12Cmd["bg"] = "red"
-          self.station12Cmd["activebackground"] = "red"
-          self.station12Text.set(s + "\nTest Aborted")
-          return
-        if self.GT1000.GT_Fail:
-          print("{Test FAILED}")
-          self.station12Cmd["bg"] = "red"
-          self.station12Cmd["activebackground"] = "red"
-          self.station12Text.set(s + "\nTest FAILED")
-          return
-        if self.GT1000.GT_Pass:
-          print("{Test PASSED}")
-          self.station12Cmd["bg"] = "green"
-          self.station12Cmd["activebackground"] = "green"
-          self.station12Text.set(s +"\n << PASSED >>")
-          return
+      self.GT1000.read_inputs()
+      if self.GT1000.GT_Abort:
+        print("{Test Abort}")
+        self.station12Cmd["bg"] = "red"
+        self.station12Cmd["activebackground"] = "red"
+        self.station12Text.set(s + "\nTest Aborted")
+        return
+      if self.GT1000.GT_Fail:
+        print("{Test FAILED}")
+        self.station12Cmd["bg"] = "red"
+        self.station12Cmd["activebackground"] = "red"
+        self.station12Text.set(s + "\nTest FAILED")
+        return
+      if self.GT1000.GT_Pass:
+        print("{Test PASSED}")
+        self.station12Cmd["bg"] = "green"
+        self.station12Cmd["activebackground"] = "green"
+        self.station12Text.set(s +"\n << PASSED >>")
+        return
       self.station12Cmd["bg"] = "red"
       self.station12Cmd["activebackground"] = "red"
       self.station12Text.set(s + "\nAbnormal Completion")
@@ -662,24 +692,25 @@ class leakTestWindow(Frame):
     if self.GT1000.startTest() >= 1:
       while self.GT1000.GT_InTest:
         self.GT1000.read_inputs()
-        if self.GT1000.GT_Abort:
-          print("{Test Abort}")
-          self.station13Cmd["bg"] = "red"
-          self.station13Cmd["activebackground"] = "red"
-          self.station13Text.set(s + "\nTest Aborted")
-          return
-        if self.GT1000.GT_Fail:
-          print("{Test FAILED}")
-          self.station13Cmd["bg"] = "red"
-          self.station13Cmd["activebackground"] = "red"
-          self.station13Text.set(s + "\nTest FAILED")
-          return
-        if self.GT1000.GT_Pass:
-          print("{Test PASSED}")
-          self.station13Cmd["bg"] = "green"
-          self.station13Cmd["activebackground"] = "green"
-          self.station13Text.set(s +"\n << PASSED >>")
-          return
+      self.GT1000.read_inputs()
+      if self.GT1000.GT_Abort:
+        print("{Test Abort}")
+        self.station13Cmd["bg"] = "red"
+        self.station13Cmd["activebackground"] = "red"
+        self.station13Text.set(s + "\nTest Aborted")
+        return
+      if self.GT1000.GT_Fail:
+        print("{Test FAILED}")
+        self.station13Cmd["bg"] = "red"
+        self.station13Cmd["activebackground"] = "red"
+        self.station13Text.set(s + "\nTest FAILED")
+        return
+      if self.GT1000.GT_Pass:
+        print("{Test PASSED}")
+        self.station13Cmd["bg"] = "green"
+        self.station13Cmd["activebackground"] = "green"
+        self.station13Text.set(s +"\n << PASSED >>")
+        return
       self.station13Cmd["bg"] = "red"
       self.station13Cmd["activebackground"] = "red"
       self.station13Text.set(s + "\nAbnormal Completion")
@@ -698,24 +729,25 @@ class leakTestWindow(Frame):
     if self.GT1000.startTest() >= 1:
       while self.GT1000.GT_InTest:
         self.GT1000.read_inputs()
-        if self.GT1000.GT_Abort:
-          print("{Test Abort}")
-          self.station14Cmd["bg"] = "red"
-          self.station14Cmd["activebackground"] = "red"
-          self.station14Text.set(s + "\nTest Aborted")
-          return
-        if self.GT1000.GT_Fail:
-          print("{Test FAILED}")
-          self.station14Cmd["bg"] = "red"
-          self.station14Cmd["activebackground"] = "red"
-          self.station14Text.set(s + "\nTest FAILED")
-          return
-        if self.GT1000.GT_Pass:
-          print("{Test PASSED}")
-          self.station14Cmd["bg"] = "green"
-          self.station14Cmd["activebackground"] = "green"
-          self.station14Text.set(s +"\n << PASSED >>")
-          return
+      self.GT1000.read_inputs()
+      if self.GT1000.GT_Abort:
+        print("{Test Abort}")
+        self.station14Cmd["bg"] = "red"
+        self.station14Cmd["activebackground"] = "red"
+        self.station14Text.set(s + "\nTest Aborted")
+        return
+      if self.GT1000.GT_Fail:
+        print("{Test FAILED}")
+        self.station14Cmd["bg"] = "red"
+        self.station14Cmd["activebackground"] = "red"
+        self.station14Text.set(s + "\nTest FAILED")
+        return
+      if self.GT1000.GT_Pass:
+        print("{Test PASSED}")
+        self.station14Cmd["bg"] = "green"
+        self.station14Cmd["activebackground"] = "green"
+        self.station14Text.set(s +"\n << PASSED >>")
+        return
       self.station14Cmd["bg"] = "red"
       self.station14Cmd["activebackground"] = "red"
       self.station14Text.set(s + "\nAbnormal Completion")
