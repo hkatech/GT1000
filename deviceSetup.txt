@@ -1,0 +1,25 @@
+1. Splash Screen setup
+ > Ensure plymouth is installed
+ # sudo apt -y install rpd-plym-splash
+ 
+ > copy image to 'splash' to /usr/share/plymouth/theme/pix/
+ # sudo cp ./splash.png /usr/share/plymouth/theme/pix
+
+ > enable splash screen in raspi-config
+ # sudo raspi-config
+
+2. Install video manager
+
+3. Run window manager at start
+ >
+
+4. Run program at WM start
+ > in ~/ edit and add .xinitrc
+ # echo 'python3 /home/hkatech/GT1000/test.py' > ~/.xinitrc
+
+5. Prevent screen blanking
+ > Update boot cmdline.txt
+ # sudo nano /boot/cmdline.txt
+  --> find '...rootwait' then add afterwards 'consoleblank=0'
+
+
