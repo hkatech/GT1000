@@ -21,5 +21,10 @@
  > Update boot cmdline.txt
  # sudo nano /boot/cmdline.txt
   --> find '...rootwait' then add afterwards 'consoleblank=0'
+ > install X11 utilities
+ # sudo apt install -y x11-xserver-utils
+ > add lines to ~/.xinitrc
+  #? xset -dpms
+  #? xset s off
 
 
