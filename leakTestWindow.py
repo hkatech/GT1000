@@ -78,6 +78,8 @@ class leakTestWindow(Frame):
     self.testPart = "4568"
     self.abortSignal = False
     self.testingAll = False
+    self.GT1000.GT_CycleInTest = False
+
 
     self.station01Result = StringVar()
     self.station02Result = StringVar()
@@ -1451,215 +1453,251 @@ class leakTestWindow(Frame):
 #      self.station16Cmd__click()
     self.abortSignal = False
     self.testingAll = True
+    self.GT1000.GT_CycleInTest = True
 
 
     self.test01Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test02Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test03Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test04Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test05Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test06Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test07Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test08Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test09Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test10Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test11Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test12Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test13Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test14Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test15Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test16Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test17Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test18Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test19Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test20Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test21Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test22Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test23Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test24Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test25Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test26Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test27Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test28Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test29Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test30Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test31Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test32Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test33Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test34Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test35Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
+      self.GT1000.GT_CycleInTest = False
       self.testingAll = False
       self.abortSignal = False
       return
@@ -1667,15 +1705,18 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test37Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.testingAll = False
+    self.GT1000.GT_CycleInTest = False
     self.abortSignal = False
 
 
@@ -1718,11 +1759,13 @@ class leakTestWindow(Frame):
     self.resetContLabels()
     self.abortSignal = False
     self.testingAll = True
+    self.GT1000.GT_CycleInTest = True
 
 
     self.test201Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
+      self.GT1000.GT_CycleInTest = False
       self.testingAll = False
       self.abortSignal = False
       return
@@ -1730,142 +1773,166 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test203Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test204Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test205Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test206Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test207Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test208Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test209Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test210Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test211Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test212Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test213Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test214Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test215Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test216Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test217Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test218Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test219Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test220Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test221Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test222Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test223Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test224Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
 
     self.testingAll = False
+    self.GT1000.GT_CycleInTest = False
     self.abortSignal = False
 
 
@@ -4423,6 +4490,7 @@ class leakTestWindow(Frame):
       self.station16Cmd__click()
     self.abortSignal = False
     self.testingAll = True
+    self.GT1000.GT_CycleInTest = True
     self.station01Cmd__click()
     self.GT1000.waitForIdle()
 #    time.sleep(1)
@@ -4430,6 +4498,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station02Cmd__click()
@@ -4439,6 +4508,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station03Cmd__click()
@@ -4448,6 +4518,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station04Cmd__click()
@@ -4457,6 +4528,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station05Cmd__click()
@@ -4466,6 +4538,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station06Cmd__click()
@@ -4475,6 +4548,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station07Cmd__click()
@@ -4484,6 +4558,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station08Cmd__click()
@@ -4493,6 +4568,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station09Cmd__click()
@@ -4502,6 +4578,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station10Cmd__click()
@@ -4511,6 +4588,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station11Cmd__click()
@@ -4520,6 +4598,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station12Cmd__click()
@@ -4529,6 +4608,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station13Cmd__click()
@@ -4538,6 +4618,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station14Cmd__click()
@@ -4551,6 +4632,8 @@ class leakTestWindow(Frame):
 
     self.checkForPass()
     self.testingAll = False
+    self.GT1000.GT_CycleInTest = False
+
 
   def checkForPass(self):
     if (self.station01Cmd["bg"] == "green") and \
