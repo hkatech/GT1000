@@ -1977,6 +1977,8 @@ class leakTestWindow(Frame):
     else:
       self.test20101Cmd["bg"] = "red"
       self.test20101Cmd["activebackground"] = "red"
+      self.test201Cmd["bg"] = "red"
+      self.test201Cmd["activebackground"] = "red"
 #    exit()
 
   def test20101Cmd__click(self):
@@ -2045,6 +2047,21 @@ class leakTestWindow(Frame):
       self.test20208Cmd["activebackground"] = "red"
 
 
+    if (self.test20201Cmd["bg"] == "green") and \
+       (self.test20202Cmd["bg"] == "green") and \
+       (self.test20203Cmd["bg"] == "green") and \
+       (self.test20204Cmd["bg"] == "green") and \
+       (self.test20205Cmd["bg"] == "green") and \
+       (self.test20206Cmd["bg"] == "green") and \
+       (self.test20207Cmd["bg"] == "green") and \
+       (self.test20208Cmd["bg"] == "green"):
+       self.test202Cmd["bg"] = "green"
+       self.test202Cmd["activebackground"] = "green"
+    else:
+       self.test202Cmd["bg"] = "red"
+       self.test202Cmd["activebackground"] = "red"
+
+
 
 
 
@@ -2081,9 +2098,13 @@ class leakTestWindow(Frame):
     if self.GT1000.S1X[2]:
       self.test20301Cmd["bg"] = "green"
       self.test20301Cmd["activebackground"] = "green"
+      self.test203Cmd["bg"] = "green"
+      self.test203Cmd["activebackground"] = "green"
     else:
       self.test20301Cmd["bg"] = "red"
       self.test20301Cmd["activebackground"] = "red"
+      self.test203Cmd["bg"] = "red"
+      self.test203Cmd["activebackground"] = "red"
     #exit()
   def test20301Cmd__click(self):
     print("test20301")
@@ -2138,6 +2159,17 @@ class leakTestWindow(Frame):
       self.test20406Cmd["bg"] = "red"
       self.test20406Cmd["activebackground"] = "red"
 
+    if (self.test20401Cmd["bg"] == "green") and \
+       (self.test20402Cmd["bg"] == "green") and \
+       (self.test20403Cmd["bg"] == "green") and \
+       (self.test20404Cmd["bg"] == "green") and \
+       (self.test20405Cmd["bg"] == "green") and \
+       (self.test20406Cmd["bg"] == "green"):
+      self.test204Cmd["bg"] = "green"
+      self.test204Cmd["activebackground"] = "green"
+    else:
+      self.test204Cmd["bg"] = "red"
+      self.test204Cmd["activebackground"] = "red"
 
 
 
@@ -2171,9 +2203,13 @@ class leakTestWindow(Frame):
     if self.GT1000.AFB2[8]:
       self.test20501Cmd["bg"] = "green"
       self.test20501Cmd["activebackground"] = "green"
+      self.test205Cmd["bg"] = "green"
+      self.test205Cmd["activebackground"] = "green"
     else:
       self.test20501Cmd["bg"] = "red"
       self.test20501Cmd["activebackground"] = "red"
+      self.test205Cmd["bg"] = "red"
+      self.test205Cmd["activebackground"] = "red"
     #exit()
   def test20501Cmd__click(self):
     print("test20501")
@@ -2194,9 +2230,13 @@ class leakTestWindow(Frame):
     if self.GT1000.SXX[1]:
       self.test20601Cmd["bg"] = "green"
       self.test20601Cmd["activebackground"] = "green"
+      self.test206Cmd["bg"] = "green"
+      self.test206Cmd["activebackground"] = "green"
     else:
       self.test20601Cmd["bg"] = "red"
       self.test20601Cmd["activebackground"] = "red"
+      self.test206Cmd["bg"] = "red"
+      self.test206Cmd["activebackground"] = "red"
     #exit()
   def test20601Cmd__click(self):
     print("test20601")
@@ -2217,9 +2257,13 @@ class leakTestWindow(Frame):
     if self.GT1000.SXX[2]:
       self.test20701Cmd["bg"] = "green"
       self.test20701Cmd["activebackground"] = "green"
+      self.test207Cmd["bg"] = "green"
+      self.test207Cmd["activebackground"] = "green"
     else:
       self.test20701Cmd["bg"] = "red"
       self.test20701Cmd["activebackground"] = "red"
+      self.test207Cmd["bg"] = "red"
+      self.test207Cmd["activebackground"] = "red"
     #exit()
   def test20701Cmd__click(self):
     print("test20701")
@@ -2240,9 +2284,13 @@ class leakTestWindow(Frame):
     if self.GT1000.SXX[3]:
       self.test20801Cmd["bg"] = "green"
       self.test20801Cmd["activebackground"] = "green"
+      self.test208Cmd["bg"] = "green"
+      self.test208Cmd["activebackground"] = "green"
     else:
       self.test20801Cmd["bg"] = "red"
       self.test20801Cmd["activebackground"] = "red"
+      self.test208Cmd["bg"] = "red"
+      self.test208Cmd["activebackground"] = "red"
     #exit()
   def test20801Cmd__click(self):
     print("test20801")
@@ -2263,9 +2311,13 @@ class leakTestWindow(Frame):
     if self.GT1000.PARTICULE[3]:
       self.test20901Cmd["bg"] = "green"
       self.test20901Cmd["activebackground"] = "green"
+      self.test209Cmd["bg"] = "green"
+      self.test209Cmd["activebackground"] = "green"
     else:
       self.test20901Cmd["bg"] = "red"
       self.test20901Cmd["activebackground"] = "red"
+      self.test209Cmd["bg"] = "red"
+      self.test209Cmd["activebackground"] = "red"
     #exit()
   def test20901Cmd__click(self):
     print("test20901")
@@ -2286,9 +2338,13 @@ class leakTestWindow(Frame):
     if self.GT1000.HELMET[3]:
       self.test21001Cmd["bg"] = "green"
       self.test21001Cmd["activebackground"] = "green"
+      self.test210Cmd["bg"] = "green"
+      self.test210Cmd["activebackground"] = "green"
     else:
       self.test21001Cmd["bg"] = "red"
       self.test21001Cmd["activebackground"] = "red"
+      self.test210Cmd["bg"] = "red"
+      self.test210Cmd["activebackground"] = "red"
     #exit()
   def test21001Cmd__click(self):
     print("test21001")
@@ -2325,6 +2381,16 @@ class leakTestWindow(Frame):
       self.test21103Cmd["bg"] = "red"
       self.test21103Cmd["activebackground"] = "red"
     #exit(
+    if (self.test21101Cmd["bg"] == "green") and \
+       (self.test21102Cmd["bg"] == "green") and \
+       (self.test21103Cmd["bg"] == "green"):
+      self.test211Cmd["bg"] = "green"
+      self.test211Cmd["activebackground"] = "green"
+    else:
+      self.test211Cmd["bg"] = "red"
+      self.test211Cmd["activebackground"] = "red"
+
+
   def test21101Cmd__click(self):
     print("test21101")
   def test21102Cmd__click(self):
@@ -2364,6 +2430,16 @@ class leakTestWindow(Frame):
       self.test21203Cmd["bg"] = "red"
       self.test21203Cmd["activebackground"] = "red"
     #exit()
+    if (self.test21201Cmd["bg"] == "green") and \
+       (self.test21201Cmd["bg"] == "green") and \
+       (self.test21201Cmd["bg"] == "green"):
+      self.test212Cmd["bg"] = "green"
+      self.test212Cmd["activebackground"] = "green"
+    else:
+      self.test212Cmd["bg"] = "red"
+      self.test212Cmd["activebackground"] = "red"
+
+
   def test21201Cmd__click(self):
     print("test21201")
   def test21202Cmd__click(self):
@@ -2403,6 +2479,16 @@ class leakTestWindow(Frame):
       self.test21303Cmd["bg"] = "red"
       self.test21303Cmd["activebackground"] = "red"
     #exit()
+    if (self.test21301Cmd["bg"] == "green") and\
+       (self.test21301Cmd["bg"] == "green") and \
+       (self.test21301Cmd["bg"] == "green"):
+      self.test213Cmd["bg"] = "green"
+      self.test213Cmd["activebackground"] = "green"
+    else:
+      self.test213Cmd["bg"] = "red"
+      self.test213Cmd["activebackground"] = "red"
+
+
   def test21301Cmd__click(self):
     print("test21301")
   def test21302Cmd__click(self):
@@ -2442,6 +2528,16 @@ class leakTestWindow(Frame):
       self.test21403Cmd["bg"] = "red"
       self.test21403Cmd["activebackground"] = "red"
     #exit()
+    if (self.test21401Cmd["bg"] == "green") and \
+       (self.test21401Cmd["bg"] == "green") and \
+       (self.test21401Cmd["bg"] == "green"):
+      self.test214Cmd["bg"] = "green"
+      self.test214Cmd["activebackground"] = "green"
+    else:
+      self.test214Cmd["bg"] = "red"
+      self.test214Cmd["activebackground"] = "red"
+
+
   def test21401Cmd__click(self):
     print("test21401")
   def test21402Cmd__click(self):
@@ -2465,9 +2561,13 @@ class leakTestWindow(Frame):
     if self.GT1000.SXX[4]:
       self.test21501Cmd["bg"] = "green"
       self.test21501Cmd["activebackground"] = "green"
+      self.test215Cmd["bg"] = "green"
+      self.test215Cmd["activebackground"] = "green"
     else:
       self.test21501Cmd["bg"] = "red"
       self.test21501Cmd["activebackground"] = "red"
+      self.test215Cmd["bg"] = "red"
+      self.test215Cmd["activebackground"] = "red"
 
     #exit()
   def test21501Cmd__click(self):
@@ -2489,9 +2589,13 @@ class leakTestWindow(Frame):
     if self.GT1000.SXX[5]:
       self.test21601Cmd["bg"] = "green"
       self.test21601Cmd["activebackground"] = "green"
+      self.test216Cmd["bg"] = "green"
+      self.test216Cmd["activebackground"] = "green"
     else:
       self.test21601Cmd["bg"] = "red"
       self.test21601Cmd["activebackground"] = "red"
+      self.test216Cmd["bg"] = "red"
+      self.test216Cmd["activebackground"] = "red"
     #exit()
   def test21601Cmd__click(self):
     print("test21601")
@@ -2512,9 +2616,13 @@ class leakTestWindow(Frame):
     if self.GT1000.SXX[6]:
       self.test21701Cmd["bg"] = "green"
       self.test21701Cmd["activebackground"] = "green"
+      self.test217Cmd["bg"] = "green"
+      self.test217Cmd["activebackground"] = "green"
     else:
       self.test21701Cmd["bg"] = "red"
       self.test21701Cmd["activebackground"] = "red"
+      self.test217Cmd["bg"] = "red"
+      self.test217Cmd["activebackground"] = "red"
     #exit()
   def test21701Cmd__click(self):
     print("test21701")
@@ -2535,9 +2643,13 @@ class leakTestWindow(Frame):
     if self.GT1000.SXX[7]:
       self.test21801Cmd["bg"] = "green"
       self.test21801Cmd["activebackground"] = "green"
+      self.test218Cmd["bg"] = "green"
+      self.test218Cmd["activebackground"] = "green"
     else:
       self.test21801Cmd["bg"] = "red"
       self.test21801Cmd["activebackground"] = "red"
+      self.test218Cmd["bg"] = "red"
+      self.test218Cmd["activebackground"] = "red"
     #exit()
   def test21801Cmd__click(self):
     print("test21801")
@@ -2558,9 +2670,13 @@ class leakTestWindow(Frame):
     if self.GT1000.SXX[8]:
       self.test21901Cmd["bg"] = "green"
       self.test21901Cmd["activebackground"] = "green"
+      self.test219Cmd["bg"] = "green"
+      self.test219Cmd["activebackground"] = "green"
     else:
       self.test21901Cmd["bg"] = "red"
       self.test21901Cmd["activebackground"] = "red"
+      self.test219Cmd["bg"] = "red"
+      self.test219Cmd["activebackground"] = "red"
     #exit()
   def test21901Cmd__click(self):
     print("test21901")
@@ -2597,6 +2713,16 @@ class leakTestWindow(Frame):
       self.test22003Cmd["bg"] = "red"
       self.test22003Cmd["activebackground"] = "red"
     #exit()
+    if (self.test22001Cmd["bg"] == "green") and \
+       (self.test22002Cmd["bg"] == "green") and \
+       (self.test22003Cmd["bg"] == "green"):
+      self.test220Cmd["bg"] = "green"
+      self.test220Cmd["activebackground"] = "green"
+    else:
+      self.test220Cmd["bg"] = "red"
+      self.test220Cmd["activebackground"] = "red"
+
+
   def test22001Cmd__click(self):
     print("test22001")
   def test22002Cmd__click(self):
@@ -2624,9 +2750,13 @@ class leakTestWindow(Frame):
     if self.GT1000.HELMET[2]:
       self.test22101Cmd["bg"] = "green"
       self.test22101Cmd["activebackground"] = "green"
+      self.test221Cmd["bg"] = "green"
+      self.test221Cmd["activebackground"] = "green"
     else:
       self.test22101Cmd["bg"] = "red"
       self.test22101Cmd["activebackground"] = "red"
+      self.test221Cmd["bg"] = "red"
+      self.test221Cmd["activebackground"] = "red"
     #exit()
   def test22101Cmd__click(self):
     print("test22101")
@@ -2647,9 +2777,13 @@ class leakTestWindow(Frame):
     if self.GT1000.PARTICULE[2]:
       self.test22201Cmd["bg"] = "green"
       self.test22201Cmd["activebackground"] = "green"
+      self.test222Cmd["bg"] = "green"
+      self.test222Cmd["activebackground"] = "green"
     else:
       self.test22201Cmd["bg"] = "red"
       self.test22201Cmd["activebackground"] = "red"
+      self.test222Cmd["bg"] = "red"
+      self.test222Cmd["activebackground"] = "red"
     #exit()
   def test22201Cmd__click(self):
     print("test22201")
@@ -2670,9 +2804,13 @@ class leakTestWindow(Frame):
     if self.GT1000.AFB2[7]:
       self.test22301Cmd["bg"] = "green"
       self.test22301Cmd["activebackground"] = "green"
+      self.test223Cmd["bg"] = "green"
+      self.test223Cmd["activebackground"] = "green"
     else:
       self.test22301Cmd["bg"] = "red"
       self.test22301Cmd["activebackground"] = "red"
+      self.test223Cmd["bg"] = "red"
+      self.test223Cmd["activebackground"] = "red"
     #exit()
   def test22301Cmd__click(self):
     print("test22301")
@@ -2709,6 +2847,16 @@ class leakTestWindow(Frame):
       self.test22403Cmd["bg"] = "red"
       self.test22403Cmd["activebackground"] = "red"
     #exit()
+    if (self.test22401Cmd["bg"] == "green") and \
+       (self.test22401Cmd["bg"] == "green") and \
+       (self.test22401Cmd["bg"] == "green"):
+      self.test224Cmd["bg"] = "green"
+      self.test224Cmd["activebackground"] = "green"
+    else:
+      self.test224Cmd["bg"] = "red"
+      self.test224Cmd["activebackground"] = "red"
+
+
   def test22401Cmd__click(self):
     print("test22401")
   def test22402Cmd__click(self):
