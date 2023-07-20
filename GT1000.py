@@ -62,6 +62,7 @@ class GT1000:
   GT_CameraOk = False
   GT_CameraOP2 = False
   GT_CameraOP3 = False
+  GT_CycleInTest = False
 
   LED_L = [0,0,0,0]
   HELMET = [0,0,0,0]
@@ -168,6 +169,7 @@ class GT1000:
     self.write_output(0x3B,0)
     self.write_output(0x3C,0)
     self.write_output(0x3D,0)
+    self.GT_CycleInTest = False
 #    GPIO.setup(self.BANKS[3], GPIO.OUT, initial=GPIO.LOW)
     print("[end call] __GPIO_Setup()")
 
@@ -200,10 +202,12 @@ class GT1000:
 
     # Get PIA data
     #  Installed MUX relays are DS2E-M-DC12V-R: Operate time 10ms, release time 5ms
+    if not self.GT_CycleInTest:
+      return
     i = 0
     for b in self.BANKS:
       self.setBankByPin(b)
-      time.sleep(30/1000)
+      #time.sleep(30/1000)
       try:
         self.GTchip38int[i] = self.__I2C.read_byte(self.CHIP38)
       except Exception as e:
@@ -528,11 +532,14 @@ class GT1000:
     self.write_output(0x3D,0)
 
   def write_output(self, addy, data):
+    tempIT = self.GT_CycleInTest
     try:
       print("Writing ", data, " to ", addy)
       self.__I2C.write_byte_data(addy, 1, 255-data)
       time.sleep(5/1000)
+      self.GT_CycleInTest = True
       self.read_inputs()
+      self.GT_CycleInTest = tempIT
     except Exception as e:
       pass
 

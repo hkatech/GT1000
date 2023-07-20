@@ -6,12 +6,14 @@ import os
 
 class leakTestWindow(Frame):
 
+  passPulsed = False
   #def periodicUpdate(self):
   #  print("[call] periodicUpdate()")
   #  self.update
   def periodicUpdate(self):
     print("--- Periodic Call ---")
     self.updateInputs()
+    self.checkForPass()
 
     # This section manually releases the latches after 5seconds
     try:
@@ -78,6 +80,8 @@ class leakTestWindow(Frame):
     self.testPart = "4568"
     self.abortSignal = False
     self.testingAll = False
+    self.GT1000.GT_CycleInTest = False
+
 
     self.station01Result = StringVar()
     self.station02Result = StringVar()
@@ -1189,6 +1193,7 @@ class leakTestWindow(Frame):
     self.resetButtonColours()
     """
   def resetContLabels(self):
+    self.passPulsed = False
     self.test01Cmd["bg"] = "grey"
     self.test0101Cmd["bg"] = "grey"
 
@@ -1451,215 +1456,251 @@ class leakTestWindow(Frame):
 #      self.station16Cmd__click()
     self.abortSignal = False
     self.testingAll = True
+    self.GT1000.GT_CycleInTest = True
 
 
     self.test01Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test02Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test03Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test04Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test05Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test06Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test07Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test08Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test09Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test10Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test11Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test12Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test13Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test14Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test15Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test16Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test17Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test18Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test19Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test20Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test21Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test22Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test23Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test24Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test25Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test26Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test27Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test28Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test29Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test30Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test31Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test32Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test33Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test34Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test35Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
+      self.GT1000.GT_CycleInTest = False
       self.testingAll = False
       self.abortSignal = False
       return
@@ -1667,15 +1708,18 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test37Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.testingAll = False
+    self.GT1000.GT_CycleInTest = False
     self.abortSignal = False
 
 
@@ -1718,11 +1762,13 @@ class leakTestWindow(Frame):
     self.resetContLabels()
     self.abortSignal = False
     self.testingAll = True
+    self.GT1000.GT_CycleInTest = True
 
 
     self.test201Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
+      self.GT1000.GT_CycleInTest = False
       self.testingAll = False
       self.abortSignal = False
       return
@@ -1730,142 +1776,166 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test203Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test204Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test205Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test206Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test207Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test208Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test209Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test210Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test211Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test212Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test213Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test214Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test215Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test216Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test217Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test218Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test219Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test220Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test221Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test222Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test223Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.test224Cmd__click()
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
 
     self.testingAll = False
+    self.GT1000.GT_CycleInTest = False
     self.abortSignal = False
 
 
@@ -1902,9 +1972,13 @@ class leakTestWindow(Frame):
     if self.GT1000.S1X[rPin]:
       self.test20101Cmd["bg"] = "green"
       self.test20101Cmd["activebackground"] = "green"
+      self.test201Cmd["bg"] = "green"
+      self.test201Cmd["activebackground"] = "green"
     else:
       self.test20101Cmd["bg"] = "red"
       self.test20101Cmd["activebackground"] = "red"
+      self.test201Cmd["bg"] = "red"
+      self.test201Cmd["activebackground"] = "red"
 #    exit()
 
   def test20101Cmd__click(self):
@@ -1973,6 +2047,21 @@ class leakTestWindow(Frame):
       self.test20208Cmd["activebackground"] = "red"
 
 
+    if (self.test20201Cmd["bg"] == "green") and \
+       (self.test20202Cmd["bg"] == "green") and \
+       (self.test20203Cmd["bg"] == "green") and \
+       (self.test20204Cmd["bg"] == "green") and \
+       (self.test20205Cmd["bg"] == "green") and \
+       (self.test20206Cmd["bg"] == "green") and \
+       (self.test20207Cmd["bg"] == "green") and \
+       (self.test20208Cmd["bg"] == "green"):
+       self.test202Cmd["bg"] = "green"
+       self.test202Cmd["activebackground"] = "green"
+    else:
+       self.test202Cmd["bg"] = "red"
+       self.test202Cmd["activebackground"] = "red"
+
+
 
 
 
@@ -2009,9 +2098,13 @@ class leakTestWindow(Frame):
     if self.GT1000.S1X[2]:
       self.test20301Cmd["bg"] = "green"
       self.test20301Cmd["activebackground"] = "green"
+      self.test203Cmd["bg"] = "green"
+      self.test203Cmd["activebackground"] = "green"
     else:
       self.test20301Cmd["bg"] = "red"
       self.test20301Cmd["activebackground"] = "red"
+      self.test203Cmd["bg"] = "red"
+      self.test203Cmd["activebackground"] = "red"
     #exit()
   def test20301Cmd__click(self):
     print("test20301")
@@ -2066,6 +2159,17 @@ class leakTestWindow(Frame):
       self.test20406Cmd["bg"] = "red"
       self.test20406Cmd["activebackground"] = "red"
 
+    if (self.test20401Cmd["bg"] == "green") and \
+       (self.test20402Cmd["bg"] == "green") and \
+       (self.test20403Cmd["bg"] == "green") and \
+       (self.test20404Cmd["bg"] == "green") and \
+       (self.test20405Cmd["bg"] == "green") and \
+       (self.test20406Cmd["bg"] == "green"):
+      self.test204Cmd["bg"] = "green"
+      self.test204Cmd["activebackground"] = "green"
+    else:
+      self.test204Cmd["bg"] = "red"
+      self.test204Cmd["activebackground"] = "red"
 
 
 
@@ -2099,9 +2203,13 @@ class leakTestWindow(Frame):
     if self.GT1000.AFB2[8]:
       self.test20501Cmd["bg"] = "green"
       self.test20501Cmd["activebackground"] = "green"
+      self.test205Cmd["bg"] = "green"
+      self.test205Cmd["activebackground"] = "green"
     else:
       self.test20501Cmd["bg"] = "red"
       self.test20501Cmd["activebackground"] = "red"
+      self.test205Cmd["bg"] = "red"
+      self.test205Cmd["activebackground"] = "red"
     #exit()
   def test20501Cmd__click(self):
     print("test20501")
@@ -2122,9 +2230,13 @@ class leakTestWindow(Frame):
     if self.GT1000.SXX[1]:
       self.test20601Cmd["bg"] = "green"
       self.test20601Cmd["activebackground"] = "green"
+      self.test206Cmd["bg"] = "green"
+      self.test206Cmd["activebackground"] = "green"
     else:
       self.test20601Cmd["bg"] = "red"
       self.test20601Cmd["activebackground"] = "red"
+      self.test206Cmd["bg"] = "red"
+      self.test206Cmd["activebackground"] = "red"
     #exit()
   def test20601Cmd__click(self):
     print("test20601")
@@ -2145,9 +2257,13 @@ class leakTestWindow(Frame):
     if self.GT1000.SXX[2]:
       self.test20701Cmd["bg"] = "green"
       self.test20701Cmd["activebackground"] = "green"
+      self.test207Cmd["bg"] = "green"
+      self.test207Cmd["activebackground"] = "green"
     else:
       self.test20701Cmd["bg"] = "red"
       self.test20701Cmd["activebackground"] = "red"
+      self.test207Cmd["bg"] = "red"
+      self.test207Cmd["activebackground"] = "red"
     #exit()
   def test20701Cmd__click(self):
     print("test20701")
@@ -2168,9 +2284,13 @@ class leakTestWindow(Frame):
     if self.GT1000.SXX[3]:
       self.test20801Cmd["bg"] = "green"
       self.test20801Cmd["activebackground"] = "green"
+      self.test208Cmd["bg"] = "green"
+      self.test208Cmd["activebackground"] = "green"
     else:
       self.test20801Cmd["bg"] = "red"
       self.test20801Cmd["activebackground"] = "red"
+      self.test208Cmd["bg"] = "red"
+      self.test208Cmd["activebackground"] = "red"
     #exit()
   def test20801Cmd__click(self):
     print("test20801")
@@ -2191,9 +2311,13 @@ class leakTestWindow(Frame):
     if self.GT1000.PARTICULE[3]:
       self.test20901Cmd["bg"] = "green"
       self.test20901Cmd["activebackground"] = "green"
+      self.test209Cmd["bg"] = "green"
+      self.test209Cmd["activebackground"] = "green"
     else:
       self.test20901Cmd["bg"] = "red"
       self.test20901Cmd["activebackground"] = "red"
+      self.test209Cmd["bg"] = "red"
+      self.test209Cmd["activebackground"] = "red"
     #exit()
   def test20901Cmd__click(self):
     print("test20901")
@@ -2214,9 +2338,13 @@ class leakTestWindow(Frame):
     if self.GT1000.HELMET[3]:
       self.test21001Cmd["bg"] = "green"
       self.test21001Cmd["activebackground"] = "green"
+      self.test210Cmd["bg"] = "green"
+      self.test210Cmd["activebackground"] = "green"
     else:
       self.test21001Cmd["bg"] = "red"
       self.test21001Cmd["activebackground"] = "red"
+      self.test210Cmd["bg"] = "red"
+      self.test210Cmd["activebackground"] = "red"
     #exit()
   def test21001Cmd__click(self):
     print("test21001")
@@ -2253,6 +2381,16 @@ class leakTestWindow(Frame):
       self.test21103Cmd["bg"] = "red"
       self.test21103Cmd["activebackground"] = "red"
     #exit(
+    if (self.test21101Cmd["bg"] == "green") and \
+       (self.test21102Cmd["bg"] == "green") and \
+       (self.test21103Cmd["bg"] == "green"):
+      self.test211Cmd["bg"] = "green"
+      self.test211Cmd["activebackground"] = "green"
+    else:
+      self.test211Cmd["bg"] = "red"
+      self.test211Cmd["activebackground"] = "red"
+
+
   def test21101Cmd__click(self):
     print("test21101")
   def test21102Cmd__click(self):
@@ -2292,6 +2430,16 @@ class leakTestWindow(Frame):
       self.test21203Cmd["bg"] = "red"
       self.test21203Cmd["activebackground"] = "red"
     #exit()
+    if (self.test21201Cmd["bg"] == "green") and \
+       (self.test21201Cmd["bg"] == "green") and \
+       (self.test21201Cmd["bg"] == "green"):
+      self.test212Cmd["bg"] = "green"
+      self.test212Cmd["activebackground"] = "green"
+    else:
+      self.test212Cmd["bg"] = "red"
+      self.test212Cmd["activebackground"] = "red"
+
+
   def test21201Cmd__click(self):
     print("test21201")
   def test21202Cmd__click(self):
@@ -2331,6 +2479,16 @@ class leakTestWindow(Frame):
       self.test21303Cmd["bg"] = "red"
       self.test21303Cmd["activebackground"] = "red"
     #exit()
+    if (self.test21301Cmd["bg"] == "green") and\
+       (self.test21301Cmd["bg"] == "green") and \
+       (self.test21301Cmd["bg"] == "green"):
+      self.test213Cmd["bg"] = "green"
+      self.test213Cmd["activebackground"] = "green"
+    else:
+      self.test213Cmd["bg"] = "red"
+      self.test213Cmd["activebackground"] = "red"
+
+
   def test21301Cmd__click(self):
     print("test21301")
   def test21302Cmd__click(self):
@@ -2370,6 +2528,16 @@ class leakTestWindow(Frame):
       self.test21403Cmd["bg"] = "red"
       self.test21403Cmd["activebackground"] = "red"
     #exit()
+    if (self.test21401Cmd["bg"] == "green") and \
+       (self.test21401Cmd["bg"] == "green") and \
+       (self.test21401Cmd["bg"] == "green"):
+      self.test214Cmd["bg"] = "green"
+      self.test214Cmd["activebackground"] = "green"
+    else:
+      self.test214Cmd["bg"] = "red"
+      self.test214Cmd["activebackground"] = "red"
+
+
   def test21401Cmd__click(self):
     print("test21401")
   def test21402Cmd__click(self):
@@ -2393,9 +2561,13 @@ class leakTestWindow(Frame):
     if self.GT1000.SXX[4]:
       self.test21501Cmd["bg"] = "green"
       self.test21501Cmd["activebackground"] = "green"
+      self.test215Cmd["bg"] = "green"
+      self.test215Cmd["activebackground"] = "green"
     else:
       self.test21501Cmd["bg"] = "red"
       self.test21501Cmd["activebackground"] = "red"
+      self.test215Cmd["bg"] = "red"
+      self.test215Cmd["activebackground"] = "red"
 
     #exit()
   def test21501Cmd__click(self):
@@ -2417,9 +2589,13 @@ class leakTestWindow(Frame):
     if self.GT1000.SXX[5]:
       self.test21601Cmd["bg"] = "green"
       self.test21601Cmd["activebackground"] = "green"
+      self.test216Cmd["bg"] = "green"
+      self.test216Cmd["activebackground"] = "green"
     else:
       self.test21601Cmd["bg"] = "red"
       self.test21601Cmd["activebackground"] = "red"
+      self.test216Cmd["bg"] = "red"
+      self.test216Cmd["activebackground"] = "red"
     #exit()
   def test21601Cmd__click(self):
     print("test21601")
@@ -2440,9 +2616,13 @@ class leakTestWindow(Frame):
     if self.GT1000.SXX[6]:
       self.test21701Cmd["bg"] = "green"
       self.test21701Cmd["activebackground"] = "green"
+      self.test217Cmd["bg"] = "green"
+      self.test217Cmd["activebackground"] = "green"
     else:
       self.test21701Cmd["bg"] = "red"
       self.test21701Cmd["activebackground"] = "red"
+      self.test217Cmd["bg"] = "red"
+      self.test217Cmd["activebackground"] = "red"
     #exit()
   def test21701Cmd__click(self):
     print("test21701")
@@ -2463,9 +2643,13 @@ class leakTestWindow(Frame):
     if self.GT1000.SXX[7]:
       self.test21801Cmd["bg"] = "green"
       self.test21801Cmd["activebackground"] = "green"
+      self.test218Cmd["bg"] = "green"
+      self.test218Cmd["activebackground"] = "green"
     else:
       self.test21801Cmd["bg"] = "red"
       self.test21801Cmd["activebackground"] = "red"
+      self.test218Cmd["bg"] = "red"
+      self.test218Cmd["activebackground"] = "red"
     #exit()
   def test21801Cmd__click(self):
     print("test21801")
@@ -2486,9 +2670,13 @@ class leakTestWindow(Frame):
     if self.GT1000.SXX[8]:
       self.test21901Cmd["bg"] = "green"
       self.test21901Cmd["activebackground"] = "green"
+      self.test219Cmd["bg"] = "green"
+      self.test219Cmd["activebackground"] = "green"
     else:
       self.test21901Cmd["bg"] = "red"
       self.test21901Cmd["activebackground"] = "red"
+      self.test219Cmd["bg"] = "red"
+      self.test219Cmd["activebackground"] = "red"
     #exit()
   def test21901Cmd__click(self):
     print("test21901")
@@ -2525,6 +2713,16 @@ class leakTestWindow(Frame):
       self.test22003Cmd["bg"] = "red"
       self.test22003Cmd["activebackground"] = "red"
     #exit()
+    if (self.test22001Cmd["bg"] == "green") and \
+       (self.test22002Cmd["bg"] == "green") and \
+       (self.test22003Cmd["bg"] == "green"):
+      self.test220Cmd["bg"] = "green"
+      self.test220Cmd["activebackground"] = "green"
+    else:
+      self.test220Cmd["bg"] = "red"
+      self.test220Cmd["activebackground"] = "red"
+
+
   def test22001Cmd__click(self):
     print("test22001")
   def test22002Cmd__click(self):
@@ -2552,9 +2750,13 @@ class leakTestWindow(Frame):
     if self.GT1000.HELMET[2]:
       self.test22101Cmd["bg"] = "green"
       self.test22101Cmd["activebackground"] = "green"
+      self.test221Cmd["bg"] = "green"
+      self.test221Cmd["activebackground"] = "green"
     else:
       self.test22101Cmd["bg"] = "red"
       self.test22101Cmd["activebackground"] = "red"
+      self.test221Cmd["bg"] = "red"
+      self.test221Cmd["activebackground"] = "red"
     #exit()
   def test22101Cmd__click(self):
     print("test22101")
@@ -2575,9 +2777,13 @@ class leakTestWindow(Frame):
     if self.GT1000.PARTICULE[2]:
       self.test22201Cmd["bg"] = "green"
       self.test22201Cmd["activebackground"] = "green"
+      self.test222Cmd["bg"] = "green"
+      self.test222Cmd["activebackground"] = "green"
     else:
       self.test22201Cmd["bg"] = "red"
       self.test22201Cmd["activebackground"] = "red"
+      self.test222Cmd["bg"] = "red"
+      self.test222Cmd["activebackground"] = "red"
     #exit()
   def test22201Cmd__click(self):
     print("test22201")
@@ -2598,9 +2804,13 @@ class leakTestWindow(Frame):
     if self.GT1000.AFB2[7]:
       self.test22301Cmd["bg"] = "green"
       self.test22301Cmd["activebackground"] = "green"
+      self.test223Cmd["bg"] = "green"
+      self.test223Cmd["activebackground"] = "green"
     else:
       self.test22301Cmd["bg"] = "red"
       self.test22301Cmd["activebackground"] = "red"
+      self.test223Cmd["bg"] = "red"
+      self.test223Cmd["activebackground"] = "red"
     #exit()
   def test22301Cmd__click(self):
     print("test22301")
@@ -2637,6 +2847,16 @@ class leakTestWindow(Frame):
       self.test22403Cmd["bg"] = "red"
       self.test22403Cmd["activebackground"] = "red"
     #exit()
+    if (self.test22401Cmd["bg"] == "green") and \
+       (self.test22401Cmd["bg"] == "green") and \
+       (self.test22401Cmd["bg"] == "green"):
+      self.test224Cmd["bg"] = "green"
+      self.test224Cmd["activebackground"] = "green"
+    else:
+      self.test224Cmd["bg"] = "red"
+      self.test224Cmd["activebackground"] = "red"
+
+
   def test22401Cmd__click(self):
     print("test22401")
   def test22402Cmd__click(self):
@@ -2723,9 +2943,13 @@ class leakTestWindow(Frame):
     if self.GT1000.AFB1[rPin]:
       self.test0101Cmd["bg"] = "green"
       self.test0101Cmd["activebackground"] = "green"
+      self.test01Cmd["bg"] = "green"
+      self.test01Cmd["activebackground"] = "green"
     else:
       self.test0101Cmd["bg"] = "red"
       self.test0101Cmd["activebackground"] = "red"
+      self.test01Cmd["bg"] = "red"
+      self.test01Cmd["activebackground"] = "red"
 #    exit()
 
   def test0101Cmd__click(self):
@@ -2799,6 +3023,20 @@ class leakTestWindow(Frame):
       self.test0209Cmd["bg"] = "red"
       self.test0209Cmd["activebackground"] = "red"
 
+    if (self.test0201Cmd["bg"] == "green") and \
+       (self.test0202Cmd["bg"] == "green") and \
+       (self.test0203Cmd["bg"] == "green") and \
+       (self.test0204Cmd["bg"] == "green") and \
+       (self.test0205Cmd["bg"] == "green") and \
+       (self.test0206Cmd["bg"] == "green") and \
+       (self.test0207Cmd["bg"] == "green") and \
+       (self.test0208Cmd["bg"] == "green") and \
+       (self.test0209Cmd["bg"] == "green"):
+      self.test02Cmd["bg"] = "green"
+      self.test02Cmd["activebackground"] = "green"
+    else:
+      self.test02Cmd["bg"] = "red"
+      self.test02Cmd["activebackground"] = "red"
 
 
 
@@ -2838,9 +3076,13 @@ class leakTestWindow(Frame):
     if self.GT1000.PWR_FLIP[2]:
       self.test0301Cmd["bg"] = "green"
       self.test0301Cmd["activebackground"] = "green"
+      self.test03Cmd["bg"] = "green"
+      self.test03Cmd["activebackground"] = "green"
     else:
       self.test0301Cmd["bg"] = "red"
       self.test0301Cmd["activebackground"] = "red"
+      self.test03Cmd["bg"] = "red"
+      self.test03Cmd["activebackground"] = "red"
     #exit()
   def test0301Cmd__click(self):
     print("test0301")
@@ -2895,7 +3137,17 @@ class leakTestWindow(Frame):
       self.test0406Cmd["bg"] = "red"
       self.test0406Cmd["activebackground"] = "red"
 
-
+    if (self.test0401Cmd["bg"] == "green") and \
+       (self.test0402Cmd["bg"] == "green") and \
+       (self.test0403Cmd["bg"] == "green") and \
+       (self.test0404Cmd["bg"] == "green") and \
+       (self.test0405Cmd["bg"] == "green") and \
+       (self.test0406Cmd["bg"] == "green"):
+      self.test04Cmd["bg"] = "green"
+      self.test04Cmd["activebackground"] = "green"
+    else:
+      self.test04Cmd["bg"] = "red"
+      self.test04Cmd["activebackground"] = "red"
 
 
     #exit()
@@ -2928,9 +3180,13 @@ class leakTestWindow(Frame):
     if self.GT1000.PWR_FLIP[1]:
       self.test0501Cmd["bg"] = "green"
       self.test0501Cmd["activebackground"] = "green"
+      self.test05Cmd["bg"] = "green"
+      self.test05Cmd["activebackground"] = "green"
     else:
       self.test0501Cmd["bg"] = "red"
       self.test0501Cmd["activebackground"] = "red"
+      self.test05Cmd["bg"] = "red"
+      self.test05Cmd["activebackground"] = "red"
     #exit()
   def test0501Cmd__click(self):
     print("test0501")
@@ -2961,6 +3217,15 @@ class leakTestWindow(Frame):
       self.test0602Cmd["bg"] = "red"
       self.test0602Cmd["activebackground"] = "red"
     #exit()
+    if (self.test0601Cmd["bg"] == "green") and \
+       (self.test0602Cmd["bg"] == "green"):
+      self.test06Cmd["bg"] = "green"
+      self.test06Cmd["activebackground"] = "green"
+    else:
+      self.test06Cmd["bg"] = "red"
+      self.test06Cmd["activebackground"] = "red"
+
+
   def test0601Cmd__click(self):
     print("test0601")
   def test0602Cmd__click(self):
@@ -2982,9 +3247,13 @@ class leakTestWindow(Frame):
     if self.GT1000.LED_ROOF[6]:
       self.test0701Cmd["bg"] = "green"
       self.test0701Cmd["activebackground"] = "green"
+      self.test07Cmd["bg"] = "green"
+      self.test07Cmd["activebackground"] = "green"
     else:
       self.test0701Cmd["bg"] = "red"
       self.test0701Cmd["activebackground"] = "red"
+      self.test07Cmd["bg"] = "red"
+      self.test07Cmd["activebackground"] = "red"
     #exit()
   def test0701Cmd__click(self):
     print("test0701")
@@ -3015,6 +3284,14 @@ class leakTestWindow(Frame):
       self.test0802Cmd["bg"] = "red"
       self.test0802Cmd["activebackground"] = "red"
     #exit()
+    if (self.test0801Cmd["bg"] == "green") and \
+       (self.test0802Cmd["bg"] == "green"):
+      self.test08Cmd["bg"] = "green"
+      self.test08Cmd["activebackground"] = "green"
+    else:
+      self.test08Cmd["bg"] = "red"
+      self.test08Cmd["activebackground"] = "red"
+
   def test0801Cmd__click(self):
     print("test0801")
   def test0802Cmd__click(self):
@@ -3036,9 +3313,13 @@ class leakTestWindow(Frame):
     if self.GT1000.LED_BUMPER[6]:
       self.test0901Cmd["bg"] = "green"
       self.test0901Cmd["activebackground"] = "green"
+      self.test09Cmd["bg"] = "green"
+      self.test09Cmd["activebackground"] = "green"
     else:
       self.test0901Cmd["bg"] = "red"
       self.test0901Cmd["activebackground"] = "red"
+      self.test09Cmd["bg"] = "red"
+      self.test09Cmd["activebackground"] = "red"
     #exit()
   def test0901Cmd__click(self):
     print("test0901")
@@ -3059,9 +3340,13 @@ class leakTestWindow(Frame):
     if self.GT1000.LED_HOOD[2]:
       self.test1001Cmd["bg"] = "green"
       self.test1001Cmd["activebackground"] = "green"
+      self.test10Cmd["bg"] = "green"
+      self.test10Cmd["activebackground"] = "green"
     else:
       self.test1001Cmd["bg"] = "red"
       self.test1001Cmd["activebackground"] = "red"
+      self.test10Cmd["bg"] = "red"
+      self.test10Cmd["activebackground"] = "red"
     #exit()
   def test1001Cmd__click(self):
     print("test1001")
@@ -3098,6 +3383,16 @@ class leakTestWindow(Frame):
       self.test1103Cmd["bg"] = "red"
       self.test1103Cmd["activebackground"] = "red"
     #exit(
+    if (self.test1101Cmd["bg"] == "green") and \
+       (self.test1102Cmd["bg"] == "green") and \
+       (self.test1103Cmd["bg"] == "green"):
+      self.test11Cmd["bg"] = "green"
+      self.test11Cmd["activebackground"] = "green"
+    else:
+      self.test11Cmd["bg"] = "red"
+      self.test11Cmd["activebackground"] = "red"
+
+
   def test1101Cmd__click(self):
     print("test1101")
   def test1102Cmd__click(self):
@@ -3121,9 +3416,13 @@ class leakTestWindow(Frame):
     if self.GT1000.SNS[1]:
       self.test1201Cmd["bg"] = "green"
       self.test1201Cmd["activebackground"] = "green"
+      self.test12Cmd["bg"] = "green"
+      self.test12Cmd["activebackground"] = "green"
     else:
       self.test1201Cmd["bg"] = "red"
       self.test1201Cmd["activebackground"] = "red"
+      self.test12Cmd["bg"] = "red"
+      self.test12Cmd["activebackground"] = "red"
     #exit()
   def test1201Cmd__click(self):
     print("test1201")
@@ -3144,9 +3443,13 @@ class leakTestWindow(Frame):
     if self.GT1000.SNS[2]:
       self.test1301Cmd["bg"] = "green"
       self.test1301Cmd["activebackground"] = "green"
+      self.test13Cmd["bg"] = "green"
+      self.test13Cmd["activebackground"] = "green"
     else:
       self.test1301Cmd["bg"] = "red"
       self.test1301Cmd["activebackground"] = "red"
+      self.test13Cmd["bg"] = "red"
+      self.test13Cmd["activebackground"] = "red"
     #exit()
   def test1301Cmd__click(self):
     print("test1301")
@@ -3183,6 +3486,16 @@ class leakTestWindow(Frame):
       self.test1403Cmd["bg"] = "red"
       self.test1403Cmd["activebackground"] = "red"
     #exit()
+    if (self.test1401Cmd["bg"] == "green") and \
+       (self.test1402Cmd["bg"] == "green") and \
+       (self.test1403Cmd["bg"] == "green"):
+      self.test14Cmd["bg"] = "green"
+      self.test14Cmd["activebackground"] = "green"
+    else:
+      self.test14Cmd["bg"] = "red"
+      self.test14Cmd["activebackground"] = "red"
+
+
   def test1401Cmd__click(self):
     print("test1401")
   def test1402Cmd__click(self):
@@ -3223,6 +3536,16 @@ class leakTestWindow(Frame):
       self.test1503Cmd["activebackground"] = "red"
 
     #exit()
+    if (self.test1501Cmd["bg"] == "green") and \
+       (self.test1502Cmd["bg"] == "green") and \
+       (self.test1503Cmd["bg"] == "green"):
+      self.test15Cmd["bg"] = "green"
+      self.test15Cmd["activebackground"] = "green"
+    else:
+      self.test15Cmd["bg"] = "red"
+      self.test15Cmd["activebackground"] = "red"
+
+
   def test1501Cmd__click(self):
     print("test1501")
   def test1502Cmd__click(self):
@@ -3246,9 +3569,13 @@ class leakTestWindow(Frame):
     if self.GT1000.LED_HOOD[4]:
       self.test1601Cmd["bg"] = "green"
       self.test1601Cmd["activebackground"] = "green"
+      self.test16Cmd["bg"] = "green"
+      self.test16Cmd["activebackground"] = "green"
     else:
       self.test1601Cmd["bg"] = "red"
       self.test1601Cmd["activebackground"] = "red"
+      self.test16Cmd["bg"] = "red"
+      self.test16Cmd["activebackground"] = "red"
     #exit()
   def test1601Cmd__click(self):
     print("test1601")
@@ -3269,9 +3596,13 @@ class leakTestWindow(Frame):
     if self.GT1000.SW_1[3]:
       self.test1701Cmd["bg"] = "green"
       self.test1701Cmd["activebackground"] = "green"
+      self.test17Cmd["bg"] = "green"
+      self.test17Cmd["activebackground"] = "green"
     else:
       self.test1701Cmd["bg"] = "red"
       self.test1701Cmd["activebackground"] = "red"
+      self.test17Cmd["bg"] = "red"
+      self.test17Cmd["activebackground"] = "red"
     #exit()
   def test1701Cmd__click(self):
     print("test1701")
@@ -3292,9 +3623,13 @@ class leakTestWindow(Frame):
     if self.GT1000.SW_1[1]:
       self.test1801Cmd["bg"] = "green"
       self.test1801Cmd["activebackground"] = "green"
+      self.test18Cmd["bg"] = "green"
+      self.test18Cmd["activebackground"] = "green"
     else:
       self.test1801Cmd["bg"] = "red"
       self.test1801Cmd["activebackground"] = "red"
+      self.test18Cmd["bg"] = "red"
+      self.test18Cmd["activebackground"] = "red"
     #exit()
   def test1801Cmd__click(self):
     print("test1801")
@@ -3315,9 +3650,13 @@ class leakTestWindow(Frame):
     if self.GT1000.LED_L[3]:
       self.test1901Cmd["bg"] = "green"
       self.test1901Cmd["activebackground"] = "green"
+      self.test19Cmd["bg"] = "green"
+      self.test19Cmd["activebackground"] = "green"
     else:
       self.test1901Cmd["bg"] = "red"
       self.test1901Cmd["activebackground"] = "red"
+      self.test19Cmd["bg"] = "red"
+      self.test19Cmd["activebackground"] = "red"
     #exit()
   def test1901Cmd__click(self):
     print("test1901")
@@ -3338,9 +3677,13 @@ class leakTestWindow(Frame):
     if self.GT1000.LED_R[3]:
       self.test2001Cmd["bg"] = "green"
       self.test2001Cmd["activebackground"] = "green"
+      self.test20Cmd["bg"] = "green"
+      self.test20Cmd["activebackground"] = "green"
     else:
       self.test2001Cmd["bg"] = "red"
       self.test2001Cmd["activebackground"] = "red"
+      self.test20Cmd["bg"] = "red"
+      self.test20Cmd["activebackground"] = "red"
     #exit()
   def test2001Cmd__click(self):
     print("test2001")
@@ -3361,9 +3704,13 @@ class leakTestWindow(Frame):
     if self.GT1000.AFB1[19]:
       self.test2101Cmd["bg"] = "green"
       self.test2101Cmd["activebackground"] = "green"
+      self.test21Cmd["bg"] = "green"
+      self.test21Cmd["activebackground"] = "green"
     else:
       self.test2101Cmd["bg"] = "red"
       self.test2101Cmd["activebackground"] = "red"
+      self.test21Cmd["bg"] = "red"
+      self.test21Cmd["activebackground"] = "red"
     #exit()
   def test2101Cmd__click(self):
     print("test2101")
@@ -3384,9 +3731,13 @@ class leakTestWindow(Frame):
     if self.GT1000.WASHER[2]:
       self.test2201Cmd["bg"] = "green"
       self.test2201Cmd["activebackground"] = "green"
+      self.test22Cmd["bg"] = "green"
+      self.test22Cmd["activebackground"] = "green"
     else:
       self.test2201Cmd["bg"] = "red"
       self.test2201Cmd["activebackground"] = "red"
+      self.test22Cmd["bg"] = "red"
+      self.test22Cmd["activebackground"] = "red"
     #exit()
   def test2201Cmd__click(self):
     print("test2201")
@@ -3407,9 +3758,13 @@ class leakTestWindow(Frame):
     if self.GT1000.S1X[1]:
       self.test2301Cmd["bg"] = "green"
       self.test2301Cmd["activebackground"] = "green"
+      self.test23Cmd["bg"] = "green"
+      self.test23Cmd["activebackground"] = "green"
     else:
       self.test2301Cmd["bg"] = "red"
       self.test2301Cmd["activebackground"] = "red"
+      self.test23Cmd["bg"] = "red"
+      self.test23Cmd["activebackground"] = "red"
     #exit()
   def test2301Cmd__click(self):
     print("test2301")
@@ -3430,9 +3785,13 @@ class leakTestWindow(Frame):
     if self.GT1000.S1X[2]:
       self.test2401Cmd["bg"] = "green"
       self.test2401Cmd["activebackground"] = "green"
+      self.test24Cmd["bg"] = "green"
+      self.test24Cmd["activebackground"] = "green"
     else:
       self.test2401Cmd["bg"] = "red"
       self.test2401Cmd["activebackground"] = "red"
+      self.test24Cmd["bg"] = "red"
+      self.test24Cmd["activebackground"] = "red"
     #exit()
   def test2401Cmd__click(self):
     print("test2401")
@@ -3463,6 +3822,16 @@ class leakTestWindow(Frame):
       self.test2502Cmd["bg"] = "red"
       self.test2502Cmd["activebackground"] = "red"
     #exit()
+    if (self.test2501Cmd["bg"] == "green") and \
+       (self.test2502Cmd["bg"] == "green"):
+      self.test25Cmd["bg"] = "green"
+      self.test25Cmd["activebackground"] = "green"
+    else:
+      self.test25Cmd["bg"] = "red"
+      self.test25Cmd["activebackground"] = "red"
+
+
+
   def test2501Cmd__click(self):
     print("test2501")
   def test2502Cmd__click(self):
@@ -3484,9 +3853,13 @@ class leakTestWindow(Frame):
     if self.GT1000.LED_BUMPER[5]:
       self.test2601Cmd["bg"] = "green"
       self.test2601Cmd["activebackground"] = "green"
+      self.test26Cmd["bg"] = "green"
+      self.test26Cmd["activebackground"] = "green"
     else:
       self.test2601Cmd["bg"] = "red"
       self.test2601Cmd["activebackground"] = "red"
+      self.test26Cmd["bg"] = "red"
+      self.test26Cmd["activebackground"] = "red"
     #exit()
   def test2601Cmd__click(self):
     print("test2601")
@@ -3517,6 +3890,16 @@ class leakTestWindow(Frame):
       self.test2702Cmd["bg"] = "red"
       self.test2702Cmd["activebackground"] = "red"
     #exit()
+    if (self.test2701Cmd["bg"] == "green") and \
+       (self.test2702Cmd["bg"] == "green"):
+      self.test27Cmd["bg"] = "green"
+      self.test27Cmd["activebackground"] = "green"
+    else:
+      self.test27Cmd["bg"] = "red"
+      self.test27Cmd["activebackground"] = "red"
+
+
+
   def test2701Cmd__click(self):
     print("test2701")
   def test2702Cmd__click(self):
@@ -3540,9 +3923,13 @@ class leakTestWindow(Frame):
     if self.GT1000.WIPER[2]:
       self.test2801Cmd["bg"] = "green"
       self.test2801Cmd["activebackground"] = "green"
+      self.test28Cmd["bg"] = "green"
+      self.test28Cmd["activebackground"] = "green"
     else:
       self.test2801Cmd["bg"] = "red"
       self.test2801Cmd["activebackground"] = "red"
+      self.test28Cmd["bg"] = "red"
+      self.test28Cmd["activebackground"] = "red"
     #exit()
   def test2801Cmd__click(self):
     print("test2801")
@@ -3575,6 +3962,15 @@ class leakTestWindow(Frame):
       self.test2902Cmd["bg"] = "red"
       self.test2902Cmd["activebackground"] = "red"
     #exit()
+    if (self.test2901Cmd["bg"] == "green") and \
+       (self.test2902Cmd["bg"] == "green"):
+      self.test29Cmd["bg"] = "green"
+      self.test29Cmd["activebackground"] = "green"
+    else:
+      self.test29Cmd["bg"] = "red"
+      self.test29Cmd["activebackground"] = "red"
+
+
   def test2901Cmd__click(self):
     print("test2901")
   def test2902Cmd__click(self):
@@ -3596,9 +3992,13 @@ class leakTestWindow(Frame):
     if self.GT1000.WIPER[3]:
       self.test3001Cmd["bg"] = "green"
       self.test3001Cmd["activebackground"] = "green"
+      self.test30Cmd["bg"] = "green"
+      self.test30Cmd["activebackground"] = "green"
     else:
       self.test3001Cmd["bg"] = "red"
       self.test3001Cmd["activebackground"] = "red"
+      self.test30Cmd["bg"] = "red"
+      self.test30Cmd["activebackground"] = "red"
     #exit()
   def test3001Cmd__click(self):
     print("test3001")
@@ -3629,6 +4029,16 @@ class leakTestWindow(Frame):
       self.test3102Cmd["bg"] = "red"
       self.test3102Cmd["activebackground"] = "red"
     #exit()
+    if (self.test3101Cmd["bg"] == "green") and \
+       (self.test3102Cmd["bg"] == "green"):
+      self.test31Cmd["bg"] = "green"
+      self.test31Cmd["activebackground"] = "green"
+    else:
+      self.test31Cmd["bg"] = "red"
+      self.test31Cmd["activebackground"] = "red"
+
+
+
   def test3101Cmd__click(self):
     print("test3101")
   def test3102Cmd__click(self):
@@ -3667,6 +4077,16 @@ class leakTestWindow(Frame):
       self.test3203Cmd["activebackground"] = "red"
 
     #exit()
+    if (self.test3201Cmd["bg"] == "green") and \
+       (self.test3202Cmd["bg"] == "green") and \
+       (self.test3203Cmd["bg"] == "green"):
+      self.test32Cmd["bg"] = "green"
+      self.test32Cmd["activebackground"] = "green"
+    else:
+      self.test32Cmd["bg"] = "red"
+      self.test32Cmd["activebackground"] = "red"
+
+
   def test3201Cmd__click(self):
     print("test3201")
   def test3202Cmd__click(self):
@@ -3700,6 +4120,16 @@ class leakTestWindow(Frame):
       self.test3302Cmd["bg"] = "red"
       self.test3302Cmd["activebackground"] = "red"
     #exit()
+    if (self.test3301Cmd["bg"] == "green") and \
+       (self.test3302Cmd["bg"] == "green"):
+      self.test33Cmd["bg"] = "green"
+      self.test33Cmd["activebackground"] = "green"
+    else:
+      self.test33Cmd["bg"] = "red"
+      self.test33Cmd["activebackground"] = "red"
+
+
+
   def test3301Cmd__click(self):
     print("test3301")
   def test3302Cmd__click(self):
@@ -3721,9 +4151,13 @@ class leakTestWindow(Frame):
     if self.GT1000.DLC2[4]:
       self.test3401Cmd["bg"] = "green"
       self.test3401Cmd["activebackground"] = "green"
+      self.test34Cmd["bg"] = "green"
+      self.test34Cmd["activebackground"] = "green"
     else:
       self.test3401Cmd["bg"] = "red"
       self.test3401Cmd["activebackground"] = "red"
+      self.test34Cmd["bg"] = "red"
+      self.test34Cmd["activebackground"] = "red"
     #exit()
   def test3401Cmd__click(self):
     print("test3401")
@@ -3744,9 +4178,13 @@ class leakTestWindow(Frame):
     if self.GT1000.DLC2[5]:
       self.test3501Cmd["bg"] = "green"
       self.test3501Cmd["activebackground"] = "green"
+      self.test35Cmd["bg"] = "green"
+      self.test35Cmd["activebackground"] = "green"
     else:
       self.test3501Cmd["bg"] = "red"
       self.test3501Cmd["activebackground"] = "red"
+      self.test35Cmd["bg"] = "red"
+      self.test35Cmd["activebackground"] = "red"
     #exit()
   def test3501Cmd__click(self):
     print("test3501")
@@ -3795,6 +4233,16 @@ class leakTestWindow(Frame):
       self.test3605Cmd["bg"] = "red"
       self.test3605Cmd["activebackground"] = "red"
 
+    if (self.test3601Cmd["bg"] == "green") and\
+       (self.test3602Cmd["bg"] == "green") and \
+       (self.test3603Cmd["bg"] == "green") and \
+       (self.test3604Cmd["bg"] == "green") and \
+       (self.test3605Cmd["bg"] == "green"):
+      self.test36Cmd["bg"] = "green"
+      self.test36Cmd["activebackground"] = "green"
+    else:
+      self.test36Cmd["bg"] = "red"
+      self.test36Cmd["activebackground"] = "red"
 
 
     #exit()
@@ -3836,6 +4284,14 @@ class leakTestWindow(Frame):
       self.test3702Cmd["bg"] = "red"
       self.test3702Cmd["activebackground"] = "red"
     #exit()
+    if (self.test3701Cmd["bg"] == "green") and \
+       (self.test3702Cmd["bg"] == "green"):
+      self.test37Cmd["bg"] = "green"
+      self.test37Cmd["activebackground"] = "green"
+    else:
+      self.test37Cmd["bg"] = "red"
+      self.test37Cmd["activebackground"] = "red"
+
   def test3701Cmd__click(self):
     print("test3701")
   def test3702Cmd__click(self):
@@ -4423,6 +4879,7 @@ class leakTestWindow(Frame):
       self.station16Cmd__click()
     self.abortSignal = False
     self.testingAll = True
+    self.GT1000.GT_CycleInTest = True
     self.station01Cmd__click()
     self.GT1000.waitForIdle()
 #    time.sleep(1)
@@ -4430,6 +4887,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station02Cmd__click()
@@ -4439,6 +4897,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station03Cmd__click()
@@ -4448,6 +4907,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station04Cmd__click()
@@ -4457,6 +4917,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station05Cmd__click()
@@ -4466,6 +4927,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station06Cmd__click()
@@ -4475,6 +4937,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station07Cmd__click()
@@ -4484,6 +4947,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station08Cmd__click()
@@ -4493,6 +4957,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station09Cmd__click()
@@ -4502,6 +4967,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station10Cmd__click()
@@ -4511,6 +4977,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station11Cmd__click()
@@ -4520,6 +4987,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station12Cmd__click()
@@ -4529,6 +4997,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station13Cmd__click()
@@ -4538,6 +5007,7 @@ class leakTestWindow(Frame):
     self.update()
     if self.abortSignal or self.GT1000.GT_Abort:
       self.testingAll = False
+      self.GT1000.GT_CycleInTest = False
       self.abortSignal = False
       return
     self.station14Cmd__click()
@@ -4551,29 +5021,56 @@ class leakTestWindow(Frame):
 
     self.checkForPass()
     self.testingAll = False
+    self.GT1000.GT_CycleInTest = False
+
 
   def checkForPass(self):
-    if (self.station01Cmd["bg"] == "green") and \
-       (self.station02Cmd["bg"] == "green") and \
-       (self.station03Cmd["bg"] == "green") and \
-       (self.station04Cmd["bg"] == "green") and \
-       (self.station05Cmd["bg"] == "green") and \
-       (self.station06Cmd["bg"] == "green") and \
-       (self.station07Cmd["bg"] == "green") and \
-       (self.station08Cmd["bg"] == "green") and \
-       (self.station09Cmd["bg"] == "green") and \
-       (self.station10Cmd["bg"] == "green") and \
-       (self.station11Cmd["bg"] == "green") and \
-       (self.station12Cmd["bg"] == "green") and \
-       (self.station13Cmd["bg"] == "green") and \
-       (self.station14Cmd["bg"] == "green") and \
-       ((self.station15Cmd["bg"] == "green") or (self.testPart == "4569")):
+    if (self.test01Cmd["bg"] == "green") and \
+       (self.test02Cmd["bg"] == "green") and \
+       (self.test03Cmd["bg"] == "green") and \
+       (self.test04Cmd["bg"] == "green") and \
+       (self.test05Cmd["bg"] == "green") and \
+       (self.test06Cmd["bg"] == "green") and \
+       (self.test07Cmd["bg"] == "green") and \
+       (self.test08Cmd["bg"] == "green") and \
+       (self.test09Cmd["bg"] == "green") and \
+       (self.test10Cmd["bg"] == "green") and \
+       (self.test11Cmd["bg"] == "green") and \
+       (self.test12Cmd["bg"] == "green") and \
+       (self.test13Cmd["bg"] == "green") and \
+       (self.test14Cmd["bg"] == "green") and \
+       (self.test15Cmd["bg"] == "green") and \
+       (self.test16Cmd["bg"] == "green") and \
+       (self.test17Cmd["bg"] == "green") and \
+       (self.test18Cmd["bg"] == "green") and \
+       (self.test19Cmd["bg"] == "green") and \
+       (self.test20Cmd["bg"] == "green") and \
+       (self.test21Cmd["bg"] == "green") and \
+       (self.test22Cmd["bg"] == "green") and \
+       (self.test23Cmd["bg"] == "green") and \
+       (self.test24Cmd["bg"] == "green") and \
+       (self.test25Cmd["bg"] == "green") and \
+       (self.test26Cmd["bg"] == "green") and \
+       (self.test27Cmd["bg"] == "green") and \
+       (self.test28Cmd["bg"] == "green") and \
+       (self.test29Cmd["bg"] == "green") and \
+       (self.test30Cmd["bg"] == "green") and \
+       (self.test31Cmd["bg"] == "green") and \
+       (self.test32Cmd["bg"] == "green") and \
+       (self.test33Cmd["bg"] == "green") and \
+       (self.test34Cmd["bg"] == "green") and \
+       (self.test35Cmd["bg"] == "green") and \
+       (self.test36Cmd["bg"] == "green") and \
+       (self.test37Cmd["bg"] == "green"):
+
       print("*** All Tests PASSED ***")
-      self.GT1000.pulseRelease()
-    if self.testPart == "4568":
-      self.GT1000.enableStations([7])
-    else:
-      self.GT1000.enableStations([6])
+      if not self.passPulsed:
+        self.GT1000.pulseRelease()
+        self.passPulsed = True
+#    if self.testPart == "4568":
+#      self.GT1000.enableStations([7])
+#    else:
+#      self.GT1000.enableStations([6])
 
   def station19Cmd__click(self):
     print("<RESET>")
