@@ -508,7 +508,7 @@ class leakTestWindow(Frame):
     self.test2501Text.set("AFB1.A4")
     self.test2502Text.set("AFB1.E5")
     self.test26Text.set("AFB1.B6")
-    self.test2601Text.set("LED_BUMPER.4")
+    self.test2601Text.set("LED_BUMPER.5")
     self.test27Text.set("AFB1.C1")
     self.test2701Text.set("AFB1.F1")
     self.test2702Text.set("WIPER.4")
@@ -3850,7 +3850,7 @@ class leakTestWindow(Frame):
     time.sleep(30/1000)
     self.GT1000.write_output(tChip,tPin)
     time.sleep(30/1000)
-    if self.GT1000.LED_BUMPER[4]:
+    if self.GT1000.LED_BUMPER[5]:
       self.test2601Cmd["bg"] = "green"
       self.test2601Cmd["activebackground"] = "green"
       self.test26Cmd["bg"] = "green"
