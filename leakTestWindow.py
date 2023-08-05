@@ -841,8 +841,6 @@ class leakTestWindow(Frame):
     self.test0203Cmd.grid(row=rowIndex,column=3,sticky='w')
     self.test0204Cmd = Button(self.mainFrame, textvariable=self.test0204Text,command=self.test0204Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0204Cmd.grid(row=rowIndex,column=4,sticky='w')
-    self.test0205Cmd = Button(self.mainFrame, textvariable=self.test0205Text,command=self.test0205Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
-    self.test0205Cmd.grid(row=rowIndex,column=5,sticky='w')
     rowIndex += 1
     self.test0206Cmd = Button(self.mainFrame, textvariable=self.test0206Text,command=self.test0206Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0206Cmd.grid(row=rowIndex,column=1,sticky='w')
@@ -877,6 +875,8 @@ class leakTestWindow(Frame):
     rowIndex += 1
     self.test0406Cmd = Button(self.mainFrame, textvariable=self.test0406Text,command=self.test0406Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
     self.test0406Cmd.grid(row=rowIndex,column=1,sticky='w')
+    self.test0205Cmd = Button(self.mainFrame, textvariable=self.test0205Text,command=self.test0205Cmd__click,height=gridHeight,width=gridWidth,font=("Arial",fontHeight,"bold"))
+    self.test0205Cmd.grid(row=rowIndex,column=2,sticky='w')
 
     # Test 5
     rowIndex += 1
@@ -2992,12 +2992,6 @@ class leakTestWindow(Frame):
     else:
       self.test0204Cmd["bg"] = "red"
       self.test0204Cmd["activebackground"] = "red"
-    if self.GT1000.SW_1[7]:
-      self.test0205Cmd["bg"] = "green"
-      self.test0205Cmd["activebackground"] = "green"
-    else:
-      self.test0205Cmd["bg"] = "red"
-      self.test0205Cmd["activebackground"] = "red"
     if self.GT1000.LED_HOOD[1]:
       self.test0206Cmd["bg"] = "green"
       self.test0206Cmd["activebackground"] = "green"
@@ -3027,7 +3021,6 @@ class leakTestWindow(Frame):
        (self.test0202Cmd["bg"] == "green") and \
        (self.test0203Cmd["bg"] == "green") and \
        (self.test0204Cmd["bg"] == "green") and \
-       (self.test0205Cmd["bg"] == "green") and \
        (self.test0206Cmd["bg"] == "green") and \
        (self.test0207Cmd["bg"] == "green") and \
        (self.test0208Cmd["bg"] == "green") and \
@@ -3136,12 +3129,19 @@ class leakTestWindow(Frame):
     else:
       self.test0406Cmd["bg"] = "red"
       self.test0406Cmd["activebackground"] = "red"
+    if self.GT1000.SW_1[7]:
+      self.test0205Cmd["bg"] = "green"
+      self.test0205Cmd["activebackground"] = "green"
+    else:
+      self.test0205Cmd["bg"] = "red"
+      self.test0205Cmd["activebackground"] = "red"
 
     if (self.test0401Cmd["bg"] == "green") and \
        (self.test0402Cmd["bg"] == "green") and \
        (self.test0403Cmd["bg"] == "green") and \
        (self.test0404Cmd["bg"] == "green") and \
        (self.test0405Cmd["bg"] == "green") and \
+       (self.test0205Cmd["bg"] == "green") and \
        (self.test0406Cmd["bg"] == "green"):
       self.test04Cmd["bg"] = "green"
       self.test04Cmd["activebackground"] = "green"
